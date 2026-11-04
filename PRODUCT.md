@@ -51,7 +51,9 @@ Also true and useful: bilingual English/Spanish; consultant at SDG (Solution Des
 ## Brand Commitments
 
 - Name as he writes it: **Andrés Velasco**.
-- Existing personal identity from his previous portfolio deck (evidence, not yet confirmed as binding): deep teal-slate colour, a geometric grotesk typeface, a personal photo, and the line "Efficiency through empathy" with the supporting statement "Quickly building strong working relationships within organizations and collaborating with business partners for great outcomes."
+- **The previous teal-slate identity is retired** (Andrés, Nov 2026): do not reuse its teal-slate colour or its look. The site gets a brand-new visual identity that should be visually striking and reflect his background in both graphic design and UX/UI design.
+- **Chosen look (Andrés, Nov 2026): clean, timeless and scalable**, in the category standard rather than a novel concept: the "Gallery" layout (big statement headline, rounded project tiles, pill buttons) with domain category chips and each project tile in its client's brand colour. He wants thoughtful UI details that create moments of delight and flex his graphic design and UX background.
+- His personal photo and the line "Efficiency through empathy" exist from the old deck; reuse only if he asks.
 - Voice: plain, confident, first person; no inflated claims.
 
 ## Evidence on Hand
