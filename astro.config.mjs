@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 // TODO: replace with the custom domain once chosen
-const SITE = 'https://andres-portfolio.vercel.app';
+const SITE = 'https://andres-portfolio-azure.vercel.app';
 
 export default defineConfig({
   site: SITE,
