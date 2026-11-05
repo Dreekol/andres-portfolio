@@ -1,20 +1,25 @@
 ---
+import { existsSync } from 'node:fs';
 import Base from '../layouts/Base.astro';
 import { site } from '../data/site';
+import { roles, skills, industries } from '../data/resume';
 const clients = ['Cargill', 'American National', 'HealthPartners', 'ProAg', 'Holmes Corporation / SHRM', 'Partners in Excellence', 'Revo Health / Twin Cities Orthopedics', 'Human Powered Health', 'Component Assembly Systems', 'Harris County Public Health', 'Intact Insurance', 'Raintree Resorts', 'Monte Zucker Photographic Education'];
 const tools = ['Figma', 'Adobe Creative Cloud', 'HTML & CSS', 'Astro', 'Claude Code', 'Power BI', 'Azure DevOps', 'Miro', 'SharePoint', 'Salesforce'];
+// Only offer the download once the PDF is actually in /public, so the button never 404s.
+const hasPdf = existsSync(new URL(`../../public${site.resumePdf}`, import.meta.url));
 ---
-<Base title="About" description="About Andrés Velasco, a senior UX/UI and brand designer in Saint Paul, MN with 15+ years across graphic design and product UX.">
+<Base title="About" description="About Andrés Velasco, a senior UX/UI and brand designer in Saint Paul, MN with 15+ years across graphic design and product UX. Experience, skills and résumé.">
   <section class="wrap about">
     <h1>I make complex things feel simple, and I care how they look while doing it.</h1>
     <div class="body">
       <p>I’m a senior UX/UI and brand designer with more than 15 years in design and advertising. I started in graphic design, building identities, campaigns and event experiences, and grew into product design for organizations where the stakes are high and the rules are many: healthcare, insurance, agriculture and professional education.</p>
       <p>Since 2020 I’ve been a consultant at SDG (Solution Design Group). I partner with business leaders, product owners and developers to turn tangled workflows into tools people can use, and to give teams design systems that keep growing products consistent.</p>
       <p>I’m bilingual in English and Spanish, and I build strong working relationships quickly. I also build what I design: I was a web master long before “design engineer” was a title, and today I prototype and ship with code and AI tools.</p>
+      <p class="jump"><a href="#experience">Jump to experience</a></p>
     </div>
   </section>
 
-  <section class="wrap cols reveal">
+  <section class="wrap cols reveal" aria-label="How I work, clients and tools">
     <div>
       <h2>How I work</h2>
       <ul class="list">
@@ -32,10 +37,35 @@ const tools = ['Figma', 'Adobe Creative Cloud', 'HTML & CSS', 'Astro', 'Claude C
     </div>
   </section>
 
-  <section class="wrap reveal">
-    <div class="edu">
-      <p><b>Education</b> BFA, Graphic Design, The Art Institute of Houston</p>
-      <p><b>Based in</b> {site.location}</p>
+  <section class="wrap cv" id="experience" aria-labelledby="exp-h">
+    <div class="cv-head">
+      <h2 id="exp-h">Experience</h2>
+      {hasPdf && (
+        <a class="pill" href={site.resumePdf} download>Download résumé (PDF)
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9m-4-4 4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      )}
+    </div>
+    <div class="cv-grid">
+      <dl class="facts">
+        <div><dt>Skills</dt><dd>{skills}</dd></div>
+        <div><dt>Industries</dt><dd>{industries}</dd></div>
+        <div><dt>Education</dt><dd>BFA, Graphic Design, The Art Institute of Houston</dd></div>
+        <div><dt>Languages</dt><dd>English &amp; Spanish</dd></div>
+        <div><dt>Based in</dt><dd>{site.location}</dd></div>
+      </dl>
+      <ol class="roles">
+        {roles.map((r) => (
+          <li class="reveal">
+            <p class="when">{r.dates}</p>
+            <div>
+              <h3>{r.title}</h3>
+              <p class="org">{r.org}</p>
+              <ul>{r.points.map((p) => <li>{p}</li>)}</ul>
+            </div>
+          </li>
+        ))}
+      </ol>
     </div>
   </section>
 </Base>
@@ -45,6 +75,8 @@ const tools = ['Figma', 'Adobe Creative Cloud', 'HTML & CSS', 'Astro', 'Claude C
   h1 { grid-column: 1 / 9; font-size: var(--step-4); font-weight: 550; letter-spacing: -0.038em; line-height: 1.04; }
   .body { grid-column: 5 / 12; margin-top: clamp(32px, 4vw, 56px); display: grid; gap: 1em; }
   .body p { font-size: var(--step-1); line-height: 1.62; color: var(--ink-2); max-width: 64ch; }
+  .body .jump { font-size: var(--step-0); }
+  .jump a { color: var(--ink); font-weight: 500; }
   .cols { margin-top: clamp(80px, 9vw, 128px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); }
   h2 { font-size: var(--step-2); font-weight: 550; letter-spacing: -0.025em; margin-bottom: 18px; }
   .mt { margin-top: 40px; }
@@ -54,7 +86,26 @@ const tools = ['Figma', 'Adobe Creative Cloud', 'HTML & CSS', 'Astro', 'Claude C
   .list b { color: var(--ink); font-weight: 600; display: block; }
   .tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
   .tags li { font-size: var(--step--1); padding: 8px 12px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line); }
-  .edu { margin-top: clamp(64px, 8vw, 104px); display: flex; flex-wrap: wrap; gap: 12px 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--ink-2); }
-  .edu b { color: var(--ink); font-weight: 600; margin-right: 8px; }
-  @media (max-width: 900px) { h1, .body { grid-column: 1 / -1; } .cols { grid-template-columns: 1fr; } }
+
+  /* Experience: the résumé, folded into About */
+  .cv { margin-top: clamp(96px, 11vw, 160px); scroll-margin-top: 96px; }
+  .cv-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 24px; padding-bottom: 20px; border-bottom: 1.5px solid var(--ink); }
+  .cv-head h2 { margin: 0; }
+  .cv-grid { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .facts { position: sticky; top: 100px; display: grid; gap: 20px; padding-top: 28px; font-size: var(--step--1); color: var(--ink-2); line-height: 1.55; }
+  .facts dt { color: var(--mute); font-weight: 500; margin-bottom: 2px; }
+  .roles { list-style: none; padding: 0; }
+  .roles > li { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 24px; padding-block: 28px; border-bottom: 1px solid var(--line); }
+  .when { color: var(--mute); font-size: var(--step--1); font-variant-numeric: tabular-nums; padding-top: 4px; }
+  h3 { font-size: var(--step-1); font-weight: 600; letter-spacing: -0.015em; }
+  .org { color: var(--mute); margin-top: 2px; }
+  .roles ul { margin-top: 12px; padding-left: 1.1em; display: grid; gap: 6px; color: var(--ink-2); max-width: 70ch; }
+  .roles ul li::marker { color: var(--accent); }
+
+  @media (max-width: 900px) {
+    h1, .body { grid-column: 1 / -1; }
+    .cols, .cv-grid { grid-template-columns: 1fr; }
+    .facts { position: static; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
+    .roles > li { grid-template-columns: 1fr; gap: 6px; }
+  }
 </style>

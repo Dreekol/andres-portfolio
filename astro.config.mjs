@@ -11,7 +11,7 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'never',
   // The homepage is the Work page; keep /work working for links already shared
-  redirects: { '/work': '/#work' },
+  redirects: { '/work': '/#work', '/resume': '/about#experience', '/work/harris-county/harris-county-pets-brand': '/work/harris-county/public-health-brand' },
   integrations: [
     mdx(),
     sitemap({
