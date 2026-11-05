@@ -15,11 +15,15 @@ scope: [Website, Content, Analytics reporting]
 liveUrl: https://publichealth.harriscountytx.gov/
 color: "#1F5FAE"
 colorName: Public Health Blue
-coverAlt: Harris County Public Health website
+cover: ../../../assets/work/harris-county/hcph-site-cover.jpg
+coverAlt: The Harris County Public Health website header with the logo and the About introduction
+coverPosition: top center
 ---
+import Figure from '../../../components/Figure.astro';
+import site from '../../../assets/work/harris-county/hcph-site.jpg';
 
-{/* TODO(Andrés): add a screenshot of the site (as cover: and a Figure), plus what you owned: structure, content, accessibility, analytics decisions. */}
+{/* TODO(Andrés): add a screenshot from your time there if you have one, plus what you owned: structure, content, accessibility, analytics decisions. */}
 
 I managed the website that informs 4.7 million county residents and reported on its performance with Google Analytics.
 
-The site has been updated since my time there; the live link shows its current form.
+<Figure src={site} alt="The Harris County Public Health website header: the logo, an About heading and the department's mission line" caption="The site today, with the logo in place. It has been updated since my time there." />
