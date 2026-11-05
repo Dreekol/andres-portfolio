@@ -1,0 +1,83 @@
+---
+// The filterable list of work, shared by the homepage and /work so both behave identically.
+import { getCollection } from 'astro:content';
+import ProjectTile from './ProjectTile.astro';
+import GalleryTile from './GalleryTile.astro';
+import Filter from './Filter.astro';
+import { domains, workTypes } from '../data/site';
+
+const entries = await getCollection('work');
+const all = entries.filter((e) => !e.data.parent).sort((a, b) => a.data.order - b.data.order);
+const featured = all.filter((e) => e.data.featured);
+const rest = all.filter((e) => !e.data.featured);
+const childCount = (id: string) => entries.filter((e) => e.data.parent === id).length;
+
+// Industry counts: client-level projects. Type counts: every initiative or standalone project that does that work.
+const domainCounts: Record<string, number> = {};
+all.forEach((e) => e.data.domains.forEach((d) => (domainCounts[d] = (domainCounts[d] ?? 0) + 1)));
+const typeCounts: Record<string, number> = {};
+entries.filter((e) => e.data.parent || !childCount(e.id)).forEach((e) => e.data.workTypes.forEach((t) => (typeCounts[t] = (typeCounts[t] ?? 0) + 1)));
+---
+<div class="wrap filters" id="work">
+  <div class="switch" role="group" aria-label="Filter by">
+    <button type="button" data-show="industry" aria-pressed="true">Industry</button>
+    <button type="button" data-show="type" aria-pressed="false">Type of work</button>
+    <span class="thumb" aria-hidden="true"></span>
+  </div>
+  <Filter id="f-industry" items={domains} attr="domains" counts={domainCounts} target=".tiles" label="Show projects by industry" />
+  <Filter id="f-type" items={workTypes} attr="types" counts={typeCounts} target=".tiles" label="Show projects by type of work" hidden />
+</div>
+
+<section class="wrap block" aria-labelledby="cs-h">
+  <h2 id="cs-h" class="label">Case studies</h2>
+  <div class="tiles featured">
+    {featured.map((e, i) => <ProjectTile entry={e} size={i % 3 === 0 ? 'wide' : 'narrow'} eager={i < 2} initiatives={childCount(e.id)} />)}
+  </div>
+</section>
+
+<section class="wrap block more" aria-labelledby="sw-h">
+  <h2 id="sw-h" class="label">Selected work</h2>
+  <div class="tiles gallery">
+    {rest.map((e) => <GalleryTile entry={e} />)}
+  </div>
+</section>
+
+<style>
+  .filters { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-bottom: clamp(36px, 4vw, 56px); scroll-margin-top: 96px; }
+
+  /* Segmented switch with a sliding thumb */
+  .switch { position: relative; display: inline-grid; grid-template-columns: 1fr 1fr; padding: 4px; border-radius: 12px; background: var(--soft); isolation: isolate; }
+  .switch button { position: relative; z-index: 1; border: 0; background: none; padding: 8px 14px; border-radius: 9px; font-size: var(--step--1); font-weight: 500; color: var(--mute); white-space: nowrap; transition: color var(--t-med) var(--ease-out); }
+  .switch button[aria-pressed='true'] { color: var(--ink); }
+  .thumb { position: absolute; z-index: 0; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px); border-radius: 9px; background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px -4px rgba(0, 0, 0, 0.12); transition: transform var(--t-med) var(--ease-out); }
+  .switch[data-active='type'] .thumb { transform: translateX(100%); }
+  .filters :global(.filter:not([hidden])) { animation: chips-in var(--t-med) var(--ease-out); }
+  @keyframes chips-in { from { opacity: 0; transform: translateX(-8px); } }
+
+  .label { font-size: var(--step-2); font-weight: 550; letter-spacing: -0.025em; margin-bottom: 20px; }
+  .featured { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.7vw, 24px); }
+  .featured[data-count='1'] :global(.tile) { grid-column: 1 / -1; }
+  .more { margin-top: clamp(80px, 9vw, 128px); }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 3vw, 44px) clamp(16px, 2vw, 28px); }
+  @media (max-width: 960px) { .featured { grid-template-columns: 1fr; } .gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .gallery { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  const sw = document.querySelector<HTMLElement>('.switch');
+  if (sw) {
+    const groups: Record<string, HTMLElement | null> = { industry: document.getElementById('f-industry'), type: document.getElementById('f-type') };
+    sw.querySelectorAll<HTMLButtonElement>('[data-show]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const show = btn.dataset.show!;
+        sw.dataset.active = show;
+        sw.querySelectorAll('[data-show]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        Object.entries(groups).forEach(([k, el]) => {
+          if (!el) return;
+          el.dispatchEvent(new Event('filter:reset'));
+          el.hidden = k !== show;
+        });
+      });
+    });
+  }
+</script>
