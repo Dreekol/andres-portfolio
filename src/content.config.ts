@@ -9,6 +9,14 @@ const work = defineCollection({
       /** Outcome- or problem-first title, never the client name alone */
       title: z.string(),
       client: z.string(),
+      /** Short label for an initiative, used on cards and breadcrumbs (e.g. "Design system") */
+      name: z.string().optional(),
+      /** Id of the client hub this initiative belongs to (e.g. "cargill") */
+      parent: z.string().optional(),
+      /** Discipline tags for the Type of work filter */
+      workTypes: z.array(z.enum(['Product UX', 'Design systems', 'Brand identity', 'Data visualization', 'Research'])).default([]),
+      /** Engagement period shown on hubs, only when confirmed */
+      period: z.string().optional(),
       /** One line under the title on tiles and the case-study header */
       summary: z.string(),
       featured: z.boolean().default(false),

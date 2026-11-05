@@ -13,3 +13,5 @@ export const site = {
 };
 
 export const domains = ['Healthcare', 'Insurance', 'Agriculture', 'HR & Learning'] as const;
+
+export const workTypes = ['Product UX', 'Design systems', 'Brand identity', 'Data visualization', 'Research'] as const;

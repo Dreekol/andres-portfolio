@@ -5,30 +5,56 @@ import Base from '../../layouts/Base.astro';
 import Lightbox from '../../components/Lightbox.astro';
 
 export async function getStaticPaths() {
-  const all = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
-  return all.map((entry, i) => ({ params: { slug: entry.id }, props: { entry, next: all[(i + 1) % all.length] } }));
+  const entries = await getCollection('work');
+  const byOrder = (a: any, b: any) => a.data.order - b.data.order;
+  const tops = entries.filter((e) => !e.data.parent).sort(byOrder);
+  const kids = (id: string) => entries.filter((e) => e.data.parent === id).sort(byOrder);
+  const nextTop = (id: string) => tops[(tops.findIndex((t) => t.id === id) + 1) % tops.length];
+  return entries.map((entry) => {
+    const parentId = entry.data.parent;
+    const parent = parentId ? tops.find((t) => t.id === parentId) : undefined;
+    const siblings = parentId ? kids(parentId) : [];
+    let next = parentId ? siblings[siblings.findIndex((x) => x.id === entry.id) + 1] : undefined;
+    if (!next) next = nextTop(parentId ?? entry.id);
+    return { params: { slug: entry.id }, props: { entry, next, parent, siblings } };
+  });
 }
-const { entry, next } = Astro.props;
+const { entry, next, parent, siblings } = Astro.props;
 const d = entry.data;
 const { Content } = await render(entry);
+const vt = entry.id.replace(/\//g, '-');
+const isPart = Boolean(parent);
 const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
 ---
-<Base title={`${d.client}: ${d.title}`} description={d.summary} accent={d.color}>
+<Base title={isPart ? `${d.client} · ${d.name}: ${d.title}` : `${d.client}: ${d.title}`} description={d.summary} accent={d.color}>
   <article style={`--c:${d.color}`}>
-    <header class="band" style={`view-transition-name: tile-${entry.id}`}>
+    <header class="band" style={`view-transition-name: tile-${vt}`}>
       <div class="wrap band-inner">
-        <a class="back" href="/work">
+        <a class="back" href={isPart ? `/work/${parent!.id}` : '/work'}>
           <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3m4 4L3 8l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          All work
+          {isPart ? `All ${d.client} work` : 'All work'}
         </a>
-        <p class="client">{d.client}</p>
+        {isPart ? (
+          <nav class="crumbs" aria-label="Breadcrumb">
+            <ol><li><a href="/work">Work</a></li><li><a href={`/work/${parent!.id}`}>{d.client}</a></li><li aria-current="page">{d.name}</li></ol>
+          </nav>
+        ) : (
+          <p class="client">{d.client}</p>
+        )}
         <h1>{d.title}</h1>
         <p class="summary">{d.summary}</p>
+        {isPart && siblings.length > 1 && (
+          <nav class="siblings" aria-label={`Other ${d.client} initiatives`}>
+            {siblings.map((sib) => (
+              <a href={`/work/${sib.id}`} aria-current={sib.id === entry.id ? 'page' : undefined}>{sib.data.name}</a>
+            ))}
+          </nav>
+        )}
       </div>
     </header>
 
     <div class="wrap">
-      <div class="cover" style={`view-transition-name: cover-${entry.id}`}>
+      <div class="cover" style={`view-transition-name: cover-${vt}`}>
         <Image src={d.cover} alt={d.coverAlt} widths={[640, 1000, 1400, 2000]} sizes="(max-width: 1440px) 92vw, 1300px" loading="eager" fetchpriority="high" />
       </div>
 
@@ -46,8 +72,8 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
     </div>
 
     <a class="next wrap" href={`/work/${next.id}`} data-accent={next.data.color} style={`--n:${next.data.color}`}>
-      <span class="next-label">Next project</span>
-      <span class="next-title">{next.data.client}</span>
+      <span class="next-label">{next.data.parent ? `Next ${next.data.client} initiative` : 'Next project'}</span>
+      <span class="next-title">{next.data.parent ? next.data.name : next.data.client}</span>
       <span class="next-sum">{next.data.title}</span>
       <span class="next-swatch" aria-hidden="true"></span>
     </a>
@@ -68,6 +94,18 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
   .back svg { width: 15px; height: 15px; transition: transform var(--t-med) var(--ease-out); }
   .back:hover svg { transform: translateX(-3px); }
   .client { font-weight: 600; font-size: var(--step-1); }
+  .crumbs ol { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: var(--step-0); font-weight: 500; }
+  .crumbs li + li::before { content: '/'; margin-right: 8px; opacity: 0.5; }
+  .crumbs a { text-decoration: none; opacity: 0.8; }
+  .crumbs a:hover { opacity: 1; text-decoration: underline; }
+  .crumbs [aria-current] { font-weight: 600; }
+  .siblings { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .siblings a {
+    font-size: var(--step--1); font-weight: 500; text-decoration: none; padding: 8px 13px; border-radius: 10px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35); transition: background var(--t-fast), color var(--t-fast);
+  }
+  .siblings a:hover { background: rgba(255, 255, 255, 0.14); }
+  .siblings a[aria-current='page'] { background: #fff; color: var(--c); box-shadow: none; }
   h1 { font-size: var(--step-4); font-weight: 550; letter-spacing: -0.038em; max-width: 20ch; }
   .summary { font-size: var(--step-1); line-height: 1.5; max-width: 58ch; color: color-mix(in srgb, #fff 84%, var(--c)); }
 

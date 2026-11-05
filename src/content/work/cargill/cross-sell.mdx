@@ -1,0 +1,34 @@
+---
+title: Account views that surface the next best opportunity
+client: Cargill
+name: Cross Sell
+parent: cargill
+summary: Account and company views that bring contracts, purchase history and company details together for cross-selling.
+order: 3
+domains: [Agriculture]
+workTypes: [Product UX]
+kind: Internal tool
+role: UX/UI designer
+scope: [Account view, Company details form]
+tools: [Figma, Cargill design system]
+color: "#00843D"
+colorName: Cargill Green
+cover: ../../../assets/work/cargill/cross-sell-contracts.png
+coverAlt: Account view for a sample bakery customer showing a contract snapshot and purchase history
+coverPosition: top center
+---
+import Figure from '../../../components/Figure.astro';
+import contracts from '../../../assets/work/cargill/cross-sell-contracts.png';
+import company from '../../../assets/work/cargill/cross-sell.png';
+
+{/* TODO(Andrés): add the problem, your role and the decisions behind these screens. */}
+
+## What I designed
+
+**One account view for the whole relationship.** Contracts appear as a snapshot with progress at a glance, above the customer’s purchase history by product and period.
+
+<Figure src={contracts} alt="Account view: contract snapshot with progress bars and a purchase history table" caption="Account view for a sample customer. All names and figures are placeholders." tall />
+
+**A structured company record.** Company information, sold-to and bill-to details live in one expandable form.
+
+<Figure src={company} alt="Expanded company information form with sold-to and bill-to sections" caption="Company details, expanded." tall />

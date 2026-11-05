@@ -1,0 +1,52 @@
+---
+title: A self-serve customer portal, from first visit to access granted
+client: Cargill
+name: myCargill portal
+parent: cargill
+summary: I designed myCargill, the portal where Cargill customers manage their business online, including a guided request for access.
+order: 1
+domains: [Agriculture]
+workTypes: [Product UX]
+kind: Customer portal
+role: UX/UI designer
+scope: [Portal homepage, Access request flow, Responsive design]
+team: Product owner, business analyst, developers
+tools: [Figma, Cargill design system]
+status: Live
+liveUrl: https://www.mycargill.com
+color: "#00843D"
+colorName: Cargill Green
+cover: ../../../assets/work/cargill/portal-hero.png
+coverAlt: myCargill sign-in page with the headline “Your business managed your way with myCargill”
+coverPosition: top center
+---
+import Figure from '../../../components/Figure.astro';
+import Pair from '../../../components/Pair.astro';
+import secondary from '../../../assets/work/cargill/portal-secondary.png';
+import access from '../../../assets/work/cargill/request-access.png';
+import contact from '../../../assets/work/cargill/request-contact.png';
+import sent from '../../../assets/work/cargill/request-sent.png';
+
+{/* TODO(Andrés): add timeline, the key decisions and any results you can share. */}
+
+## The problem
+
+Cargill customers needed one place to manage their business with Cargill, and a way in that didn’t depend on emailing someone for an account.
+
+## What I did
+
+**Partnered with the product owner and business analyst** to shape a portal that met business needs and followed design best practices.
+
+**Made the value clear before sign-in.** The public pages explain what customers can do in myCargill, with a direct path to request access.
+
+<Figure src={secondary} alt="myCargill public page: ‘Connect with Cargill anytime, anywhere’ with service highlights" caption="The public homepage explains the portal before asking for anything." />
+
+**Turned access into a guided, self-serve request.** Contact details, business information and the request itself are separate steps, finishing with a clear confirmation.
+
+<Pair a={contact} aAlt="Request access, contact information step" b={access} bAlt="Request access, business information step" caption="Step by step: contact details, then business information." />
+
+<Figure src={sent} alt="Request sent confirmation screen" caption="A clear confirmation so customers know what happens next." />
+
+## Result
+
+myCargill is live at mycargill.com.

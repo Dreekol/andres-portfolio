@@ -7,10 +7,12 @@ interface Props {
   entry: CollectionEntry<'work'>;
   size?: 'wide' | 'narrow';
   eager?: boolean;
+  initiatives?: number;
 }
-const { entry, size = 'narrow', eager = false } = Astro.props;
+const { entry, size = 'narrow', eager = false, initiatives = 0 } = Astro.props;
 const d = entry.data;
 const slug = entry.id;
+const vt = slug.replace(/\//g, '-');
 const [r, g, b] = hexToRgb(d.color);
 const ratio = contrast(d.color, '#ffffff');
 const grade = wcagGrade(ratio);
@@ -20,7 +22,8 @@ const grade = wcagGrade(ratio);
   href={`/work/${slug}`}
   data-accent={d.color}
   data-domains={d.domains.join('|')}
-  style={`--c:${d.color}; view-transition-name: tile-${slug}`}
+  data-types={d.workTypes.join('|')}
+  style={`--c:${d.color}; view-transition-name: tile-${vt}`}
 >
   <div class="cap">
     <div class="text">
@@ -37,7 +40,7 @@ const grade = wcagGrade(ratio);
       </span>
     </div>
   </div>
-  <div class="shot" style={`view-transition-name: cover-${slug}`}>
+  <div class="shot" style={`view-transition-name: cover-${vt}`}>
     <Image
       src={d.cover}
       alt={d.coverAlt}
@@ -49,7 +52,7 @@ const grade = wcagGrade(ratio);
     />
   </div>
   <div class="meta">
-    <span>{d.kind}</span>
+    <span>{initiatives ? `${initiatives} initiatives` : d.kind}</span>
     {d.status && <span class="status"><i aria-hidden="true"></i>{d.status}</span>}
   </div>
 </a>

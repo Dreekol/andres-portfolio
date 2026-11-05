@@ -1,0 +1,65 @@
+---
+interface Props {
+  items: readonly string[];
+  /** Which data attribute on project elements to match: data-domains or data-types */
+  attr: 'domains' | 'types';
+  counts: Record<string, number>;
+  target: string;
+  label: string;
+  hidden?: boolean;
+  id?: string;
+}
+const { items, attr, counts, target, label, hidden = false, id } = Astro.props;
+---
+<div class="filter" role="group" aria-label={label} data-filter-for={target} data-attr={attr} hidden={hidden} id={id}>
+  {items.filter((d) => counts[d]).map((d) => (
+    <button type="button" class="chip" data-value={d} aria-pressed="false">
+      {d}<span class="n" aria-label={`${counts[d]} projects`}>{counts[d]}</span>
+    </button>
+  ))}
+  <span class="status visually-hidden" aria-live="polite"></span>
+</div>
+
+<style>
+  .filter { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filter[hidden] { display: none; }
+  .n { font-size: 11px; font-variant-numeric: tabular-nums; opacity: 0.55; margin-left: 2px; }
+</style>
+
+<script>
+  // Hovering a chip previews which projects match; clicking pins the filter.
+  document.querySelectorAll<HTMLElement>('[data-filter-for]').forEach((group) => {
+    const attr = group.dataset.attr!;
+    const targets = document.querySelectorAll<HTMLElement>(group.dataset.filterFor!);
+    const chips = group.querySelectorAll<HTMLButtonElement>('[data-value]');
+    const status = group.querySelector('.status')!;
+    let pinned: string | null = null;
+
+    const apply = (value: string | null) => {
+      targets.forEach((t) => {
+        if (!value) { t.removeAttribute('data-filter'); return; }
+        t.dataset.filter = value;
+        t.querySelectorAll<HTMLElement>(`[data-${attr}]`).forEach((el) => {
+          el.classList.toggle('match', (el.dataset[attr] ?? '').split('|').includes(value));
+        });
+      });
+    };
+    const reset = () => {
+      pinned = null;
+      chips.forEach((c) => c.setAttribute('aria-pressed', 'false'));
+      apply(null);
+    };
+    group.addEventListener('filter:reset', reset);
+    chips.forEach((chip) => {
+      const v = chip.dataset.value!;
+      chip.addEventListener('pointerenter', () => { if (!pinned) apply(v); });
+      chip.addEventListener('pointerleave', () => apply(pinned));
+      chip.addEventListener('click', () => {
+        pinned = pinned === v ? null : v;
+        chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.value === pinned)));
+        apply(pinned);
+        status.textContent = pinned ? `Highlighting ${pinned} projects` : 'Showing all projects';
+      });
+    });
+  });
+</script>

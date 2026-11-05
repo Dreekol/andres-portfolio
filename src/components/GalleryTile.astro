@@ -5,8 +5,8 @@ interface Props { entry: CollectionEntry<'work'> }
 const { entry } = Astro.props;
 const d = entry.data;
 ---
-<a class="g reveal" href={`/work/${entry.id}`} data-accent={d.color} data-domains={d.domains.join('|')} style={`--c:${d.color}`}>
-  <div class="frame" style={`view-transition-name: cover-${entry.id}`}>
+<a class="g reveal" href={`/work/${entry.id}`} data-accent={d.color} data-domains={d.domains.join('|')} data-types={d.workTypes.join('|')} style={`--c:${d.color}`}>
+  <div class="frame" style={`view-transition-name: cover-${entry.id.replace(/\//g, '-')}`}>
     <Image src={d.cover} alt={d.coverAlt} widths={[400, 700, 1000]} sizes="(max-width: 760px) 92vw, 30vw" loading="lazy" style={`object-position:${d.coverPosition}`} />
   </div>
   <div class="t">
@@ -18,7 +18,6 @@ const d = entry.data;
 <style>
   .g { display: grid; gap: 14px; text-decoration: none; color: inherit; transition: opacity var(--t-med) var(--ease-out), filter var(--t-med); }
   .frame { aspect-ratio: 4 / 3; background: var(--soft); border-radius: 18px; overflow: hidden; position: relative; }
-  .frame::after { content: ''; position: absolute; inset: 0; background: var(--c); mix-blend-mode: color; opacity: 0; transition: opacity var(--t-med) var(--ease-out); }
   .frame :global(img) { width: 100%; height: 100%; object-fit: cover; transform: scale(1.001); transition: transform var(--t-slow) var(--ease-out); }
   .g:hover .frame :global(img), .g:focus-visible .frame :global(img) { transform: scale(1.04); }
   h3 { font-size: var(--step-1); font-weight: 600; letter-spacing: -0.02em; display: flex; align-items: center; gap: 9px; }

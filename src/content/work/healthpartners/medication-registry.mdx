@@ -1,0 +1,48 @@
+---
+title: A registry that turns medication-optimization outreach into a daily routine
+client: HealthPartners
+name: Medication optimization registry
+parent: healthpartners
+summary: One place to invite members, log calls and outcomes, record hours and run reports.
+order: 2
+domains: [Healthcare]
+workTypes: [Product UX]
+kind: Internal tool
+role: UX/UI designer
+scope: [Information architecture, Call logging, Reporting, Time tracking]
+tools: [Figma, Power Platform]
+color: "#306CD0"
+colorName: HealthPartners Blue
+cover: ../../../assets/work/healthpartners/medopt-calls.png
+coverAlt: Call invites list with follow-up counts and filters
+coverPosition: top left
+---
+import Figure from '../../../components/Figure.astro';
+import Pair from '../../../components/Pair.astro';
+import home from '../../../assets/work/healthpartners/medopt-home.png';
+import calls from '../../../assets/work/healthpartners/medopt-calls.png';
+import logcall from '../../../assets/work/healthpartners/medopt-log-call.png';
+import reports from '../../../assets/work/healthpartners/medopt-reports.png';
+import hours from '../../../assets/work/healthpartners/medopt-hours.png';
+import before from '../../../assets/work/healthpartners/medopt-before.png';
+import after from '../../../assets/work/healthpartners/medopt-after.png';
+
+{/* TODO(Andrés): add the problem in your words, your role and any outcomes. */}
+
+## What I designed
+
+**A home built around four jobs:** calls, reports, record hours and other payors.
+
+<Figure src={home} alt="Registry home with entry points for calls, reports, record hours and other payors" caption="Registry home." />
+
+**Outreach that shows what’s due.** Call invites surface follow-ups and this week’s invites at the top, with filters by program and outcome. Logging a call captures the member, call details and outcome in one form.
+
+<Pair a={calls} aAlt="Call invites list with counts and filters" b={logcall} bAlt="Log call form" caption="Call invites, and logging a call." />
+
+**Reporting and time tracking in the same place.**
+
+<Pair a={reports} aAlt="Reports list" b={hours} bAlt="Weekly record hours table" caption="Reports and weekly hours." />
+
+**Fewer hidden options.** Payor choices moved out of a popup and into the main navigation.
+
+<Pair a={before} aAlt="Before: payor options hidden in a popup" b={after} bAlt="After: payors in the navigation" caption="Before and after." />

@@ -1,0 +1,39 @@
+---
+title: Tracking member incentives from enrollment to reporting
+client: HealthPartners
+name: Member incentives
+parent: healthpartners
+summary: A tool for coordinators to enroll members in incentive programs, track status and report on results.
+order: 3
+domains: [Healthcare]
+workTypes: [Product UX]
+kind: Internal tool
+role: UX/UI designer
+scope: [Enrollment, Status tracking, Member records, Reporting]
+tools: [Figma, Power Platform]
+color: "#306CD0"
+colorName: HealthPartners Blue
+cover: ../../../assets/work/healthpartners/incentives.png
+coverAlt: Member incentives list with status tags, filters and export
+coverPosition: top left
+---
+import Figure from '../../../components/Figure.astro';
+import Pair from '../../../components/Pair.astro';
+import list from '../../../assets/work/healthpartners/incentives.png';
+import enroll from '../../../assets/work/healthpartners/incentives-enroll.png';
+import member from '../../../assets/work/healthpartners/incentives-member.png';
+import reports from '../../../assets/work/healthpartners/incentives-reports.png';
+
+{/* TODO(Andrés): add the problem in your words, your role and any outcomes. */}
+
+## What I designed
+
+**Status at a glance.** Active and termed incentives are separate views, with status tags, filters and export.
+
+<Figure src={list} alt="Member incentives list with status tags, filters and export" caption="The incentives list." />
+
+**A single enrollment form** capturing member identification and incentive details.
+
+<Pair a={enroll} aAlt="New enrollment form" b={member} bAlt="Member information view" caption="Enrolling a member, and the member record." />
+
+<Figure src={reports} alt="Incentive reports list" caption="Reports, filtered by type." />

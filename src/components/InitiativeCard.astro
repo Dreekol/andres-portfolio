@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+interface Props { entry: CollectionEntry<'work'> }
+const { entry } = Astro.props;
+const d = entry.data;
+---
+<a class="init reveal" href={`/work/${entry.id}`} style={`--c:${d.color}`}>
+  <div class="frame" style={`view-transition-name: cover-${entry.id.replace('/', '-')}`}>
+    <Image src={d.cover} alt={d.coverAlt} widths={[480, 800, 1200]} sizes="(max-width: 760px) 92vw, 46vw" loading="lazy" style={`object-position:${d.coverPosition}`} />
+    {d.status && <span class="status"><i aria-hidden="true"></i>{d.status}</span>}
+  </div>
+  <div class="body">
+    <p class="name">{d.name ?? d.client}</p>
+    <h3>{d.title}</h3>
+    <ul class="types" aria-label="Type of work">{d.workTypes.map((t) => <li>{t}</li>)}</ul>
+    <span class="go" aria-hidden="true">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+  </div>
+</a>
+
+<style>
+  .init {
+    display: grid; grid-template-rows: auto 1fr; text-decoration: none; color: inherit;
+    border-radius: 20px; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px var(--line);
+    transition: box-shadow var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out);
+  }
+  .init:hover, .init:focus-visible { box-shadow: 0 0 0 1.5px var(--c), 0 30px 50px -30px rgba(0, 0, 0, 0.3); transform: translateY(-3px); }
+  .frame { position: relative; aspect-ratio: 16 / 10; background: color-mix(in srgb, var(--c) 12%, white); overflow: hidden; }
+  .frame :global(img) { position: absolute; left: 7%; top: 10%; width: 86%; height: 100%; object-fit: cover; border-radius: 10px 10px 0 0; box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.35); transition: transform var(--t-slow) var(--ease-out); }
+  .init:hover .frame :global(img), .init:focus-visible .frame :global(img) { transform: translateY(-4%); }
+  .status { position: absolute; left: 14px; top: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; background: rgba(14, 14, 16, 0.78); color: #fff; padding: 5px 10px; border-radius: 999px; }
+  .status i { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; }
+  .body { position: relative; padding: 22px 24px 24px; display: grid; gap: 8px; align-content: start; }
+  .name { font-size: var(--step--1); font-weight: 600; color: var(--c); display: flex; gap: 10px; align-items: baseline; }
+  h3 { font-size: var(--step-1); font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; padding-right: 36px; }
+  .types { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .types li { font-size: 12px; font-weight: 500; padding: 5px 9px; border-radius: 8px; background: var(--soft); color: var(--ink-2); }
+  .go { position: absolute; right: 20px; top: 20px; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--soft); transition: background var(--t-med) var(--ease-out), color var(--t-med); }
+  .go svg { width: 14px; height: 14px; transition: transform var(--t-med) var(--ease-out); }
+  .init:hover .go, .init:focus-visible .go { background: var(--c); color: #fff; }
+  .init:hover .go svg, .init:focus-visible .go svg { transform: translateX(2px); }
+</style>
