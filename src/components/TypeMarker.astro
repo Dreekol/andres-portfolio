@@ -3,7 +3,9 @@
 interface Props { type: string }
 const { type } = Astro.props;
 const key: Record<string, string> = {
-  'Product UX': 'ux',
+  'Customer-facing products': 'ux',
+  'Internal tools': 'it',
+  Websites: 'wb',
   'Design systems': 'ds',
   'Brand identity': 'br',
   'Data visualization': 'dv',
@@ -15,6 +17,8 @@ const key: Record<string, string> = {
 <style>
   .tm { display: inline-block; flex: none; width: 10px; height: 10px; }
   .ux { background: var(--t-ux); border-radius: 50%; }
+  .it { background: var(--t-it); clip-path: polygon(25% 4%, 75% 4%, 100% 50%, 75% 96%, 25% 96%, 0 50%); }
+  .wb { background: var(--t-wb); border-radius: 5px 5px 0 0; }
   .ds { background: var(--t-ds); border-radius: 2px; }
   .br { width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid var(--t-br); }
   .dv { background: var(--t-dv); transform: rotate(45deg) scale(0.82); }

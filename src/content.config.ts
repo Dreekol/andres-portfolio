@@ -14,7 +14,7 @@ const work = defineCollection({
       /** Id of the client hub this initiative belongs to (e.g. "cargill") */
       parent: z.string().optional(),
       /** Discipline tags for the Type of work filter */
-      workTypes: z.array(z.enum(['Product UX', 'Design systems', 'Brand identity', 'Data visualization', 'Research'])).default([]),
+      workTypes: z.array(z.enum(['Customer-facing products', 'Internal tools', 'Websites', 'Design systems', 'Brand identity', 'Data visualization', 'Research'])).default([]),
       /** Engagement period shown on hubs, only when confirmed */
       period: z.string().optional(),
       /** One line under the title on tiles and the case-study header */
