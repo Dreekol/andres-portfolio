@@ -36,7 +36,7 @@ const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
     </div>
   </section>
 
-  <section class="wrap cols reveal" aria-label="How I work, clients and tools">
+  <section class="wrap cols reveal" aria-label="How I work and who I’ve worked with">
     <div>
       <h2>How I work</h2>
       <ul class="list">
@@ -60,8 +60,6 @@ const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
         ))}
       </ul>
       <p class="hint">Outlined names link to the work on this site; ↗ opens the organization’s own website.</p>
-      <h2 class="mt">Tools</h2>
-      <ul class="tags">{tools.map((c) => <li>{c}</li>)}</ul>
     </div>
   </section>
 
@@ -77,6 +75,7 @@ const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
     <div class="cv-grid">
       <dl class="facts">
         <div><dt>Skills</dt><dd>{skills}</dd></div>
+        <div><dt>Tools</dt><dd>{tools.join(', ')}</dd></div>
         <div><dt>Industries</dt><dd>{industries}</dd></div>
         <div><dt>Education</dt><dd>BFA, Graphic Design, The Art Institute of Houston</dd></div>
         <div><dt>Languages</dt><dd>English &amp; Spanish</dd></div>
