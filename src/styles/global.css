@@ -1,0 +1,151 @@
+@import '@fontsource-variable/geist';
+
+/* ───────────── Tokens ───────────── */
+:root {
+  --bg: #ffffff;
+  --ink: #0e0e10;
+  --ink-2: #3f3f46;
+  --mute: #6b6b74; /* 5.3:1 on white */
+  --line: #e4e4e7;
+  --soft: #f4f4f5;
+  --soft-2: #ececee;
+
+  /* The personal accent: inherits the colour of whatever project is in focus */
+  --accent: #e5482e;
+  --focus: #2563eb;
+
+  --font: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --step--1: clamp(0.84rem, 0.82rem + 0.1vw, 0.9rem);
+  --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.08rem);
+  --step-1: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
+  --step-2: clamp(1.4rem, 1.25rem + 0.7vw, 1.85rem);
+  --step-3: clamp(1.9rem, 1.5rem + 1.8vw, 2.9rem);
+  --step-4: clamp(2.3rem, 1.6rem + 3.3vw, 4.25rem);
+
+  --gutter: clamp(20px, 5vw, 72px);
+  --max: 1440px;
+  --radius: 24px;
+  --radius-sm: 12px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* exponential out */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --t-fast: 180ms;
+  --t-med: 420ms;
+  --t-slow: 760ms;
+
+  color-scheme: light;
+}
+
+/* ───────────── Base ───────────── */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 96px; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'ss01', 'cv11';
+}
+img, picture, svg, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
+h1, h2, h3, h4 { font-weight: 600; line-height: 1.08; letter-spacing: -0.03em; text-wrap: balance; }
+p { text-wrap: pretty; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+/* Browser surfaces carry the design too */
+::selection { background: color-mix(in srgb, var(--accent) 22%, white); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
+html { scrollbar-color: #c4c4cb transparent; }
+input, textarea { caret-color: var(--accent); }
+
+.wrap { width: min(100%, var(--max)); margin-inline: auto; padding-inline: var(--gutter); }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 999px; text-decoration: none; }
+.skip:focus { top: 12px; }
+
+/* ───────────── Buttons & chips ───────────── */
+.pill {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  padding: 0.68em 1.2em; border-radius: 999px;
+  background: var(--ink); color: #fff; font-weight: 500; font-size: var(--step--1);
+  text-decoration: none; border: 0; white-space: nowrap;
+  transition: transform var(--t-fast) var(--ease-out), background var(--t-fast);
+}
+.pill:hover { background: #27272a; }
+.pill:active { transform: scale(0.97); }
+.pill--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
+.pill--ghost:hover { background: var(--soft); }
+.pill svg { width: 1em; height: 1em; transition: transform var(--t-med) var(--ease-out); }
+.pill:hover svg.arrow { transform: translateX(3px); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: var(--step--1); font-weight: 500; line-height: 1;
+  padding: 9px 13px; border-radius: 10px; background: #fff; color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--line); text-decoration: none;
+  transition: box-shadow var(--t-fast), background var(--t-fast), color var(--t-fast);
+}
+.chip:hover, .chip[aria-pressed='true'] { box-shadow: inset 0 0 0 1.5px var(--ink); }
+.chip[aria-pressed='true'] { background: var(--ink); color: #fff; }
+.chip .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: 0.35; }
+
+/* ───────────── Motion system ─────────────
+   One grammar: things arrive by rising a short distance with an exponential ease-out,
+   colour travels between pages, and nothing is ever hidden waiting for JavaScript. */
+
+@view-transition { navigation: auto; }
+
+::view-transition-group(*) { animation-duration: var(--t-slow); animation-timing-function: var(--ease-out); }
+::view-transition-old(root) { animation: 260ms var(--ease-in-out) both vt-fade-out; }
+::view-transition-new(root) { animation: 520ms var(--ease-out) 60ms both vt-rise-in; }
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-rise-in { from { opacity: 0; transform: translateY(14px); } }
+
+/* Scroll reveal: progressive enhancement via scroll-driven animations.
+   Default state is fully visible; browsers without support simply show content. */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 42%;
+  }
+  @keyframes reveal {
+    from { opacity: 0.25; transform: translateY(36px) scale(0.985); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; scroll-behavior: auto !important; }
+  .reveal { animation: none !important; }
+}
+
+/* ───────────── Grid overlay (press G) ───────────── */
+.grid-overlay {
+  position: fixed; inset: 0; z-index: 90; pointer-events: none;
+  opacity: 0; transition: opacity var(--t-med) var(--ease-out);
+}
+.grid-overlay .wrap { height: 100%; display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+.grid-overlay .col {
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+  box-shadow: inset 1px 0 0 color-mix(in srgb, var(--accent) 40%, transparent), inset -1px 0 0 color-mix(in srgb, var(--accent) 40%, transparent);
+  transform: scaleY(0); transform-origin: top;
+  transition: transform var(--t-slow) var(--ease-out);
+}
+html.show-grid .grid-overlay { opacity: 1; }
+html.show-grid .grid-overlay .col { transform: scaleY(1); }
+.grid-overlay .label {
+  position: fixed; right: 16px; bottom: 16px; font-size: 12px; font-variant-numeric: tabular-nums;
+  background: var(--ink); color: #fff; padding: 8px 12px; border-radius: 999px;
+}
+@media (max-width: 760px) {
+  .grid-overlay .wrap { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .grid-overlay .col:nth-child(n + 5) { display: none; }
+}

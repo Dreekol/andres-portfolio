@@ -1,0 +1,107 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Lightbox from '../../components/Lightbox.astro';
+
+export async function getStaticPaths() {
+  const all = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  return all.map((entry, i) => ({ params: { slug: entry.id }, props: { entry, next: all[(i + 1) % all.length] } }));
+}
+const { entry, next } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
+---
+<Base title={`${d.client}: ${d.title}`} description={d.summary} accent={d.color}>
+  <article style={`--c:${d.color}`}>
+    <header class="band" style={`view-transition-name: tile-${entry.id}`}>
+      <div class="wrap band-inner">
+        <a class="back" href="/work">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3m4 4L3 8l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          All work
+        </a>
+        <p class="client">{d.client}</p>
+        <h1>{d.title}</h1>
+        <p class="summary">{d.summary}</p>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="cover" style={`view-transition-name: cover-${entry.id}`}>
+        <Image src={d.cover} alt={d.coverAlt} widths={[640, 1000, 1400, 2000]} sizes="(max-width: 1440px) 92vw, 1300px" loading="eager" fetchpriority="high" />
+      </div>
+
+      <dl class="facts">
+        <div><dt>Role</dt><dd>{d.role}</dd></div>
+        <div><dt>Scope</dt><dd>{d.scope.join(', ')}</dd></div>
+        {d.team && <div><dt>Worked with</dt><dd>{d.team}</dd></div>}
+        {d.tools.length > 0 && <div><dt>Tools</dt><dd>{d.tools.join(', ')}</dd></div>}
+        {host && <div><dt>Live</dt><dd><a href={d.liveUrl} rel="noopener">{host} ↗</a></dd></div>}
+      </dl>
+
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+
+    <a class="next wrap" href={`/work/${next.id}`} data-accent={next.data.color} style={`--n:${next.data.color}`}>
+      <span class="next-label">Next project</span>
+      <span class="next-title">{next.data.client}</span>
+      <span class="next-sum">{next.data.title}</span>
+      <span class="next-swatch" aria-hidden="true"></span>
+    </a>
+  </article>
+  <Lightbox />
+</Base>
+
+<style>
+  .band { background: var(--c); color: #fff; padding-block: clamp(36px, 5vw, 64px) clamp(120px, 14vw, 200px); }
+  .band-inner { display: grid; gap: 14px; }
+  .back {
+    justify-self: start; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    font-size: var(--step--1); font-weight: 500; padding: 8px 14px 8px 10px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14); margin-bottom: clamp(20px, 4vw, 48px);
+    transition: background var(--t-fast);
+  }
+  .back:hover { background: rgba(255, 255, 255, 0.24); }
+  .back svg { width: 15px; height: 15px; transition: transform var(--t-med) var(--ease-out); }
+  .back:hover svg { transform: translateX(-3px); }
+  .client { font-weight: 600; font-size: var(--step-1); }
+  h1 { font-size: var(--step-4); font-weight: 550; letter-spacing: -0.038em; max-width: 20ch; }
+  .summary { font-size: var(--step-1); line-height: 1.5; max-width: 58ch; color: color-mix(in srgb, #fff 84%, var(--c)); }
+
+  .cover { margin-top: clamp(-160px, -11vw, -96px); border-radius: var(--radius); overflow: hidden; background: var(--soft); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.04); max-height: 78vh; }
+  .cover :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0 32px; margin-top: clamp(32px, 4vw, 56px); border-top: 1px solid var(--line); }
+  .facts div { padding-block: 18px; border-bottom: 1px solid var(--line); }
+  dt { font-size: var(--step--1); color: var(--mute); margin-bottom: 4px; }
+  dd { font-weight: 500; line-height: 1.45; }
+  dd a { text-decoration-color: var(--c); text-decoration-thickness: 2px; }
+
+  .prose { max-width: 1100px; margin: clamp(48px, 6vw, 88px) auto 0; }
+  .prose :global(> :is(h2, p, ul, ol)) { max-width: 68ch; margin-inline: auto; }
+  .prose :global(h2) { font-size: var(--step-3); font-weight: 550; letter-spacing: -0.033em; margin-top: clamp(56px, 7vw, 96px); margin-bottom: 18px; }
+  .prose :global(h2::before) { content: ''; display: block; width: 28px; height: 4px; border-radius: 2px; background: var(--c); margin-bottom: 18px; }
+  .prose :global(p) { font-size: var(--step-1); line-height: 1.62; color: var(--ink-2); margin-bottom: 1.1em; }
+  .prose :global(p strong) { color: var(--ink); font-weight: 600; }
+  .prose :global(> figure) { margin-inline: auto; }
+
+  .next {
+    display: grid; gap: 8px; margin-top: clamp(96px, 11vw, 160px); text-decoration: none; position: relative;
+    padding-block: clamp(40px, 6vw, 72px);
+    border-top: 1px solid var(--line);
+  }
+  .next-label { font-size: var(--step--1); color: var(--mute); }
+  .next-title { font-size: var(--step-4); font-weight: 550; letter-spacing: -0.04em; line-height: 1; transition: color var(--t-med) var(--ease-out); }
+  .next-sum { color: var(--ink-2); font-size: var(--step-1); max-width: 50ch; }
+  .next-swatch {
+    position: absolute; right: var(--gutter); top: 50%; width: clamp(64px, 9vw, 120px); aspect-ratio: 1;
+    border-radius: 22px; background: var(--n); transform: translateY(-50%) rotate(-8deg) scale(0.9);
+    transition: transform var(--t-slow) var(--ease-out), border-radius var(--t-slow) var(--ease-out);
+  }
+  .next:hover .next-title, .next:focus-visible .next-title { color: var(--n); }
+  .next:hover .next-swatch, .next:focus-visible .next-swatch { transform: translateY(-50%) rotate(0) scale(1); border-radius: 50%; }
+  @media (max-width: 640px) { .next-swatch { display: none; } }
+</style>

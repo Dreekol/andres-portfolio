@@ -7,3 +7,4 @@ dist/
 .DS_Store
 # Impeccable runtime dirs (config/surfaces are committed)
 .impeccable/config.local.json
+.impeccable/review/

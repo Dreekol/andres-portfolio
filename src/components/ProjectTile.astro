@@ -1,0 +1,120 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { hexToRgb, contrast, wcagGrade } from '../lib/color';
+
+interface Props {
+  entry: CollectionEntry<'work'>;
+  size?: 'wide' | 'narrow';
+  eager?: boolean;
+}
+const { entry, size = 'narrow', eager = false } = Astro.props;
+const d = entry.data;
+const slug = entry.id;
+const [r, g, b] = hexToRgb(d.color);
+const ratio = contrast(d.color, '#ffffff');
+const grade = wcagGrade(ratio);
+---
+<a
+  class:list={['tile', size, 'reveal']}
+  href={`/work/${slug}`}
+  data-accent={d.color}
+  data-domains={d.domains.join('|')}
+  style={`--c:${d.color}; view-transition-name: tile-${slug}`}
+>
+  <div class="cap">
+    <div class="text">
+      <h3>{d.client}<svg class="go" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
+      <p>{d.title}</p>
+    </div>
+    <div class="swatch" aria-label={`${d.colorName}, ${d.color}`}>
+      <span class="chip-c" aria-hidden="true"></span>
+      <span class="hex">{d.color}</span>
+      <span class="spec" aria-hidden="true">
+        <span>{d.colorName}</span>
+        <span>RGB {r} {g} {b}</span>
+        <span>White text {ratio.toFixed(1)}:1 · {grade}</span>
+      </span>
+    </div>
+  </div>
+  <div class="shot" style={`view-transition-name: cover-${slug}`}>
+    <Image
+      src={d.cover}
+      alt={d.coverAlt}
+      widths={[480, 800, 1200, 1600]}
+      sizes={size === 'wide' ? '(max-width: 760px) 92vw, 56vw' : '(max-width: 760px) 92vw, 40vw'}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : 'auto'}
+      style={`object-position:${d.coverPosition}`}
+    />
+  </div>
+  <div class="meta">
+    <span>{d.kind}</span>
+    {d.status && <span class="status"><i aria-hidden="true"></i>{d.status}</span>}
+  </div>
+</a>
+
+<style>
+  .tile {
+    --ink-on: #fff;
+    position: relative; display: grid; grid-template-rows: auto 1fr auto;
+    min-height: clamp(420px, 40vw, 560px);
+    background: var(--c); color: var(--ink-on); text-decoration: none;
+    border-radius: var(--radius); overflow: hidden; isolation: isolate;
+    transition: transform var(--t-med) var(--ease-out), opacity var(--t-med) var(--ease-out), filter var(--t-med) var(--ease-out);
+  }
+  .tile:focus-visible { outline-offset: 4px; }
+  .cap { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: clamp(22px, 2.6vw, 36px) clamp(22px, 2.6vw, 36px) 0; }
+  h3 { font-size: var(--step-2); font-weight: 600; letter-spacing: -0.025em; display: flex; align-items: center; gap: 8px; }
+  .go { width: 0.7em; height: 0.7em; opacity: 0; transform: translate(-6px, 6px); transition: transform var(--t-med) var(--ease-out), opacity var(--t-med); }
+  .text p { margin-top: 6px; font-size: var(--step-0); color: color-mix(in srgb, var(--ink-on) 82%, var(--c)); max-width: 38ch; line-height: 1.4; }
+
+  /* Pantone-style chip; its colour + accessibility spec unfolds beneath on hover/focus */
+  .swatch {
+    position: relative; flex: none; display: flex; align-items: center; gap: 8px;
+    padding: 5px 10px 5px 5px; border-radius: 9px; background: #fff; color: var(--ink);
+    font-size: 12px; font-weight: 550; font-variant-numeric: tabular-nums; letter-spacing: 0.01em;
+    box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.45);
+    transition: border-radius var(--t-med) var(--ease-out);
+  }
+  .chip-c { width: 20px; height: 20px; border-radius: 5px; background: var(--c); }
+  .hex { text-transform: uppercase; }
+  .spec {
+    position: absolute; right: 0; top: calc(100% - 6px); z-index: 3; min-width: 100%;
+    display: grid; gap: 3px; padding: 12px 12px 10px; white-space: nowrap;
+    background: #fff; color: var(--ink-2); border-radius: 0 0 9px 9px; font-weight: 500;
+    box-shadow: 0 14px 24px -14px rgba(0, 0, 0, 0.5);
+    clip-path: inset(0 0 100% 0); opacity: 0.6;
+    transition: clip-path var(--t-med) var(--ease-out), opacity var(--t-fast);
+  }
+  .spec span:first-child { color: var(--ink); font-weight: 600; }
+  .tile:hover .spec, .tile:focus-visible .spec { clip-path: inset(0 0 0 0); opacity: 1; }
+  .tile:hover .swatch, .tile:focus-visible .swatch { border-radius: 9px 9px 0 9px; }
+
+  .shot { position: relative; margin: clamp(24px, 3vw, 40px) clamp(22px, 2.6vw, 36px) 0; min-height: 0; }
+  .shot :global(img) {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    box-shadow: 0 -2px 0 rgba(255, 255, 255, 0.08), 0 30px 60px -24px rgba(0, 0, 0, 0.55);
+    transform: translateY(14px);
+    transition: transform var(--t-slow) var(--ease-out), box-shadow var(--t-slow) var(--ease-out);
+  }
+  .meta {
+    position: absolute; left: clamp(22px, 2.6vw, 36px); bottom: 16px; z-index: 2;
+    display: flex; gap: 8px; font-size: 12px; font-weight: 500;
+  }
+  .meta span { background: rgba(14, 14, 16, 0.72); backdrop-filter: blur(8px); color: #fff; padding: 6px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
+  .status i { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); animation: live 2.4s var(--ease-out) infinite; }
+  @keyframes live { 0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.55); } 70%, 100% { box-shadow: 0 0 0 7px rgba(74, 222, 128, 0); } }
+
+  .tile:hover .shot :global(img), .tile:focus-visible .shot :global(img) { transform: translateY(0); box-shadow: 0 -2px 0 rgba(255, 255, 255, 0.08), 0 40px 70px -24px rgba(0, 0, 0, 0.6); }
+  .tile:hover .go, .tile:focus-visible .go { opacity: 1; transform: none; }
+
+  /* Domain filter states, driven from the homepage chips */
+  :global(.tiles[data-filter]) .tile:not(.match) { opacity: 0.28; filter: saturate(0.2); transform: scale(0.985); }
+
+  @media (max-width: 760px) {
+    .tile { min-height: 440px; }
+    .swatch { display: none; }
+  }
+</style>

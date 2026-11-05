@@ -1,19 +1,115 @@
 ---
-const title = 'Andrés Velasco — Senior UX/UI & Brand Designer';
-const description = 'Senior UX/UI and brand designer in Saint Paul, MN. Portfolio coming soon.';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ProjectTile from '../components/ProjectTile.astro';
+import GalleryTile from '../components/GalleryTile.astro';
+import DomainFilter from '../components/DomainFilter.astro';
+import { site } from '../data/site';
+
+const all = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const featured = all.filter((e) => e.data.featured);
+const gallery = all.filter((e) => !e.data.featured).slice(0, 6);
+const counts: Record<string, number> = {};
+all.forEach((e) => e.data.domains.forEach((d) => (counts[d] = (counts[d] ?? 0) + 1)));
+const sizes = ['wide', 'narrow', 'narrow', 'wide'] as const;
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="robots" content="noindex" />
-  </head>
-  <body style="font-family: system-ui, sans-serif; padding: 2rem; max-width: 40rem;">
-    <h1>Andrés Velasco</h1>
-    <p>Senior UX/UI &amp; Brand Designer · Saint Paul, MN</p>
-    <p>Portfolio in progress.</p>
-  </body>
-</html>
+<Base>
+  <section class="intro wrap">
+    <h1 class="hero">
+      <span class="l1">Senior UX/UI &amp; brand designer.</span>
+      <span class="l2">I design complex products for healthcare, insurance and agriculture, from identity to interface.</span>
+    </h1>
+    <aside class="facts">
+      <p class="open"><span class="pulse" aria-hidden="true"></span>{site.openTo}</p>
+      <p>15+ years · Consultant at SDG since 2020</p>
+      <p>{site.location} · English &amp; Spanish</p>
+    </aside>
+    <div class="chips">
+      <DomainFilter counts={counts} target=".tiles" />
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="featured-h">
+    <h2 id="featured-h" class="visually-hidden">Featured case studies</h2>
+    <div class="tiles featured">
+      {featured.map((e, i) => <ProjectTile entry={e} size={sizes[i % 4]} eager={i < 2} />)}
+    </div>
+  </section>
+
+  <section class="wrap selected" aria-labelledby="selected-h">
+    <div class="sec-head">
+      <h2 id="selected-h">More work, from brand identity to dashboards</h2>
+      <a class="pill pill--ghost" href="/work">All work
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="tiles gallery">
+      {gallery.map((e) => <GalleryTile entry={e} />)}
+    </div>
+  </section>
+
+  <section class="wrap how reveal" aria-labelledby="how-h">
+    <h2 id="how-h">One designer from the first logo sketch to the shipped interface.</h2>
+    <dl>
+      <div><dt>Brand</dt><dd>Identity systems, campaigns and conference design, from a public health department serving 4.7 million people to growing consultancies.</dd></div>
+      <div><dt>Product</dt><dd>Portals, internal tools and consumer flows in regulated industries, plus the design systems that keep them consistent.</dd></div>
+      <div><dt>Build</dt><dd>HTML and CSS since my web-master days; today I prototype and ship with code and AI tools. This site is one example: designed and built by me.</dd></div>
+    </dl>
+  </section>
+</Base>
+
+<style>
+  .intro {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+    column-gap: clamp(32px, 6vw, 96px); row-gap: 28px; align-items: end;
+    padding-block: clamp(56px, 9vw, 120px) clamp(36px, 5vw, 56px);
+  }
+  .hero { font-size: var(--step-4); font-weight: 550; letter-spacing: -0.038em; line-height: 1.04; max-width: 24ch; }
+  .hero span { display: block; text-wrap: pretty; }
+  .l2 { color: #a1a1aa; }
+  .facts { font-size: var(--step--1); color: var(--mute); line-height: 1.55; border-left: 1px solid var(--line); padding-left: 22px; }
+  .open { color: var(--ink); font-weight: 550; margin-bottom: 6px; display: flex; gap: 9px; align-items: baseline; }
+  .pulse { flex: none; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; transform: translateY(-1px); animation: pulse 2.6s var(--ease-out) infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); } 70%, 100% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); } }
+  .hero { grid-column: 1 / -1; }
+  .chips { grid-column: 1; grid-row: 2; align-self: end; }
+  .facts { grid-column: 2; grid-row: 2; }
+
+  /* Signature entrance: the two lines of the statement rise in sequence, once */
+  .hero span, .facts, .chips { animation: rise var(--t-slow) var(--ease-out) both; }
+  .l2 { animation-delay: 90ms; }
+  .facts { animation-delay: 180ms; }
+  .chips { animation-delay: 260ms; }
+  @keyframes rise { from { opacity: 0; transform: translateY(22px); filter: blur(4px); } }
+
+  .featured { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(14px, 1.7vw, 24px); }
+  .featured :global(.tile.wide) { grid-column: span 7; }
+  .featured :global(.tile.narrow) { grid-column: span 5; }
+
+  .selected { margin-top: clamp(96px, 11vw, 160px); }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: clamp(28px, 3vw, 40px); }
+  .sec-head h2 { font-size: var(--step-3); font-weight: 550; letter-spacing: -0.033em; max-width: 20ch; }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 3vw, 44px) clamp(16px, 2vw, 28px); }
+
+  .how { margin-top: clamp(110px, 12vw, 180px); display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+  .how h2 { grid-column: 1 / 7; font-size: var(--step-3); font-weight: 550; letter-spacing: -0.033em; max-width: 16ch; }
+  .how dl { grid-column: 7 / 13; display: grid; }
+  .how dl > div { display: grid; grid-template-columns: 110px 1fr; gap: 20px; padding-block: 22px; border-top: 1px solid var(--line); }
+  .how dl > div:last-child { border-bottom: 1px solid var(--line); }
+  .how dt { font-weight: 600; }
+  .how dd { color: var(--ink-2); max-width: 52ch; }
+
+  @media (max-width: 960px) {
+    .intro { grid-template-columns: 1fr; }
+    .chips, .facts { grid-column: 1; grid-row: auto; }
+    .facts { border-left: 0; padding-left: 0; }
+    .featured :global(.tile.wide), .featured :global(.tile.narrow) { grid-column: 1 / -1; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .how h2, .how dl { grid-column: 1 / -1; }
+  }
+  @media (max-width: 600px) {
+    .gallery { grid-template-columns: 1fr; }
+    .sec-head { flex-direction: column; align-items: start; }
+    .how dl > div { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>

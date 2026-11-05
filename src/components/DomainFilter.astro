@@ -1,0 +1,49 @@
+---
+import { domains } from '../data/site';
+interface Props { counts: Record<string, number>; target: string; label?: string }
+const { counts, target, label = 'Filter projects by industry' } = Astro.props;
+---
+<div class="filter" role="group" aria-label={label} data-filter-for={target}>
+  {domains.map((d) => (
+    <button type="button" class="chip" data-domain={d} aria-pressed="false">
+      {d}<span class="n" aria-label={`${counts[d] ?? 0} projects`}>{counts[d] ?? 0}</span>
+    </button>
+  ))}
+  <span class="status visually-hidden" aria-live="polite"></span>
+</div>
+
+<style>
+  .filter { display: flex; flex-wrap: wrap; gap: 8px; }
+  .n { font-size: 11px; font-variant-numeric: tabular-nums; opacity: 0.55; margin-left: 2px; }
+</style>
+
+<script>
+  // Hovering a chip previews which projects match; clicking pins the filter.
+  document.querySelectorAll<HTMLElement>('[data-filter-for]').forEach((group) => {
+    const targets = document.querySelectorAll<HTMLElement>(group.dataset.filterFor!);
+    const chips = group.querySelectorAll<HTMLButtonElement>('[data-domain]');
+    const status = group.querySelector('.status')!;
+    let pinned: string | null = null;
+
+    const apply = (domain: string | null) => {
+      targets.forEach((t) => {
+        if (!domain) { t.removeAttribute('data-filter'); return; }
+        t.dataset.filter = domain;
+        t.querySelectorAll<HTMLElement>('[data-domains]').forEach((el) => {
+          el.classList.toggle('match', el.dataset.domains!.split('|').includes(domain));
+        });
+      });
+    };
+    chips.forEach((chip) => {
+      const d = chip.dataset.domain!;
+      chip.addEventListener('pointerenter', () => { if (!pinned) apply(d); });
+      chip.addEventListener('pointerleave', () => apply(pinned));
+      chip.addEventListener('click', () => {
+        pinned = pinned === d ? null : d;
+        chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.domain === pinned)));
+        apply(pinned);
+        status.textContent = pinned ? `Highlighting ${pinned} projects` : 'Showing all projects';
+      });
+    });
+  });
+</script>

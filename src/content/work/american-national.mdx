@@ -1,0 +1,55 @@
+---
+title: A fully online annuity purchase, from first estimate to signed application
+client: American National
+summary: I designed the direct-to-consumer buying flow for American National’s Multi-Year Guaranteed Annuity, so people can estimate, understand and apply without an agent.
+featured: true
+order: 1
+domains: [Insurance]
+kind: Product UX · Consumer flow
+role: UX/UI designer
+scope: [Landing page, Rate calculator, Application flow, Responsive design]
+tools: [Figma, Design system]
+status: Live
+liveUrl: https://annuities.americannational.com
+color: "#0D3455"
+colorName: American National Navy
+cover: ../../assets/work/american-national/calculator.png
+coverAlt: American National rate calculator showing a $50,000 premium over five years with a bar chart of projected growth
+coverPosition: top center
+---
+import Figure from '../../components/Figure.astro';
+import Pair from '../../components/Pair.astro';
+import landing from '../../assets/work/american-national/landing-full.png';
+import calc from '../../assets/work/american-national/calculator.png';
+import intro from '../../assets/work/american-national/app-intro.png';
+import terms from '../../assets/work/american-national/terms.png';
+import mLanding from '../../assets/work/american-national/mobile-calculator.png';
+import mIntro from '../../assets/work/american-national/mobile-app-intro.png';
+
+{/* TODO(Andrés): confirm role wording, timeline, team and add the 2–3 decisions you’re proudest of, with the alternatives you rejected. */}
+
+## The problem
+
+Annuities are usually sold through an agent. American National wanted buyers to be able to purchase a fixed annuity entirely online, which meant the site had to do the agent’s job: explain a financial product plainly, show what it would earn, and carry a legally heavy application without losing people.
+
+## What I designed
+
+**A landing page that answers “is this for me?” before asking for anything.** It leads with the guaranteed rate, compares the product against CDs and savings in one table, and breaks the process into three plain steps.
+
+<Figure src={landing} alt="Full American National MYGA landing page: hero, rate callout, comparison table, ratings, three-step process and FAQs" caption="The landing page, top to bottom. Live at annuities.americannational.com." tall />
+
+**A calculator that shows the money first.** Buyers enter a premium and pick a 3, 5 or 7-year period, and the result shows future value, base rate and interest together, with a chart of growth year by year. Applying comes after the number makes sense.
+
+<Figure src={calc} alt="Rate calculator with premium amount, accumulation period options, a growth chart and future account value of $65,193" caption="Sample estimate: $50,000 over five years." />
+
+**An application that sets expectations before it asks.** The intro lists everything a buyer will need, and the required disclosures are presented in a readable panel before consent.
+
+<Pair a={intro} aAlt="Application intro listing what applicants need before they begin" b={terms} bAlt="Terms and conditions page with electronic signature and customer notice disclosures" caption="What to expect, then the disclosures, before any personal details." />
+
+**Designed for phones as much as desktops.**
+
+<Pair a={mLanding} aAlt="Mobile rate calculator results" b={mIntro} bAlt="Mobile application intro" caption="The same flow at phone width." narrow />
+
+## Result
+
+The flow is live, and anyone can buy American National’s MYG Annuity online from start to finish.

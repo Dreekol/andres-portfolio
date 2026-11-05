@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { src: ImageMetadata; alt: string; caption?: string; tall?: boolean }
+const { src, alt, caption, tall = false } = Astro.props;
+---
+<figure class:list={['fig', 'reveal', { tall }]}>
+  <button type="button" class="zoom" data-zoom={src.src} data-zoom-w={src.width} data-zoom-h={src.height} aria-label={`Enlarge image: ${alt}`}>
+    <Image src={src} alt={alt} widths={[640, 1000, 1400, 2000]} sizes="(max-width: 900px) 94vw, 1100px" loading="lazy" />
+    <span class="hint" aria-hidden="true">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M10 2h4v4M6 14H2v-4M14 2 9.5 6.5M2 14l4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+  </button>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .fig { margin-block: clamp(32px, 5vw, 56px); }
+  .zoom {
+    display: block; width: 100%; padding: 0; border: 0; background: var(--soft);
+    border-radius: 16px; overflow: hidden; position: relative; cursor: zoom-in;
+    box-shadow: 0 0 0 1px var(--line);
+  }
+  .tall .zoom { max-height: 820px; }
+  .tall .zoom :global(img) { object-fit: cover; object-position: top; }
+  .tall .zoom::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: linear-gradient(transparent, rgba(255, 255, 255, 0.9)); pointer-events: none; }
+  .zoom :global(img) { width: 100%; transition: transform var(--t-slow) var(--ease-out); }
+  .zoom:hover :global(img) { transform: scale(1.012); }
+  .hint {
+    position: absolute; right: 14px; top: 14px; z-index: 2; width: 36px; height: 36px; border-radius: 50%;
+    display: grid; place-items: center; background: rgba(14, 14, 16, 0.78); color: #fff;
+    opacity: 0; transform: scale(0.8); transition: opacity var(--t-fast), transform var(--t-med) var(--ease-out);
+  }
+  .hint svg { width: 15px; height: 15px; }
+  .zoom:hover .hint, .zoom:focus-visible .hint { opacity: 1; transform: none; }
+  figcaption { margin-top: 12px; font-size: var(--step--1); color: var(--mute); }
+</style>

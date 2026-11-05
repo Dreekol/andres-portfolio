@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+const clients = ['Cargill', 'American National', 'HealthPartners', 'ProAg', 'Holmes Corporation / SHRM', 'Partners in Excellence', 'Revo Health / Twin Cities Orthopedics', 'Human Powered Health', 'Component Assembly Systems', 'Harris County Public Health', 'Intact Insurance', 'Raintree Resorts', 'Monte Zucker Photographic Education'];
+const tools = ['Figma', 'Adobe Creative Cloud', 'HTML & CSS', 'Astro', 'Claude Code', 'Power BI', 'Azure DevOps', 'Miro', 'SharePoint', 'Salesforce'];
+---
+<Base title="About" description="About Andrés Velasco, a senior UX/UI and brand designer in Saint Paul, MN with 15+ years across graphic design and product UX.">
+  <section class="wrap about">
+    <h1>I make complex things feel simple, and I care how they look while doing it.</h1>
+    <div class="body">
+      <p>I’m a senior UX/UI and brand designer with more than 15 years in design and advertising. I started in graphic design, building identities, campaigns and event experiences, and grew into product design for organizations where the stakes are high and the rules are many: healthcare, insurance, agriculture and professional education.</p>
+      <p>Since 2020 I’ve been a consultant at SDG (Solution Design Group). I partner with business leaders, product owners and developers to turn tangled workflows into tools people can use, and to give teams design systems that keep growing products consistent.</p>
+      <p>I’m bilingual in English and Spanish, and I build strong working relationships quickly. I also build what I design: I was a web master long before “design engineer” was a title, and today I prototype and ship with code and AI tools.</p>
+    </div>
+  </section>
+
+  <section class="wrap cols reveal">
+    <div>
+      <h2>How I work</h2>
+      <ul class="list">
+        <li><b>Start with the people doing the work.</b> Interviews, workshops and journey maps before screens.</li>
+        <li><b>Design the system, not just the screen.</b> Data models, components and documentation that outlast the project.</li>
+        <li><b>Agree with developers early.</b> Feasibility, QA and handoff are part of the design, not an afterthought.</li>
+        <li><b>Accessible by default.</b> Contrast, keyboard access and plain language from the first draft.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Clients I’ve designed for</h2>
+      <ul class="tags">{clients.map((c) => <li>{c}</li>)}</ul>
+      <h2 class="mt">Tools</h2>
+      <ul class="tags">{tools.map((c) => <li>{c}</li>)}</ul>
+    </div>
+  </section>
+
+  <section class="wrap reveal">
+    <div class="edu">
+      <p><b>Education</b> BFA, Graphic Design, The Art Institute of Houston</p>
+      <p><b>Based in</b> {site.location}</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about { padding-block: clamp(56px, 8vw, 112px) 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+  h1 { grid-column: 1 / 9; font-size: var(--step-4); font-weight: 550; letter-spacing: -0.038em; line-height: 1.04; }
+  .body { grid-column: 5 / 12; margin-top: clamp(32px, 4vw, 56px); display: grid; gap: 1em; }
+  .body p { font-size: var(--step-1); line-height: 1.62; color: var(--ink-2); max-width: 64ch; }
+  .cols { margin-top: clamp(80px, 9vw, 128px); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); }
+  h2 { font-size: var(--step-2); font-weight: 550; letter-spacing: -0.025em; margin-bottom: 18px; }
+  .mt { margin-top: 40px; }
+  .list { list-style: none; padding: 0; display: grid; }
+  .list li { padding-block: 16px; border-top: 1px solid var(--line); color: var(--ink-2); }
+  .list li:last-child { border-bottom: 1px solid var(--line); }
+  .list b { color: var(--ink); font-weight: 600; display: block; }
+  .tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags li { font-size: var(--step--1); padding: 8px 12px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line); }
+  .edu { margin-top: clamp(64px, 8vw, 104px); display: flex; flex-wrap: wrap; gap: 12px 48px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--ink-2); }
+  .edu b { color: var(--ink); font-weight: 600; margin-right: 8px; }
+  @media (max-width: 900px) { h1, .body { grid-column: 1 / -1; } .cols { grid-template-columns: 1fr; } }
+</style>

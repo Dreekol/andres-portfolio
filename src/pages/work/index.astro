@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProjectTile from '../../components/ProjectTile.astro';
+import GalleryTile from '../../components/GalleryTile.astro';
+import DomainFilter from '../../components/DomainFilter.astro';
+
+const all = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const featured = all.filter((e) => e.data.featured);
+const rest = all.filter((e) => !e.data.featured);
+const counts: Record<string, number> = {};
+all.forEach((e) => e.data.domains.forEach((d) => (counts[d] = (counts[d] ?? 0) + 1)));
+---
+<Base title="Work" description="Case studies and selected work by Andrés Velasco: product UX, design systems and brand identity for healthcare, insurance and agriculture.">
+  <section class="wrap head">
+    <h1>Work</h1>
+    <p>Four in-depth case studies, then a wider selection of brand, product and data work. Client details are anonymized where needed, and data shown is placeholder.</p>
+    <DomainFilter counts={counts} target=".tiles" />
+  </section>
+
+  <section class="wrap" aria-labelledby="cs-h">
+    <h2 id="cs-h" class="label">Case studies</h2>
+    <div class="tiles featured">
+      {featured.map((e, i) => <ProjectTile entry={e} size={i % 3 === 0 ? 'wide' : 'narrow'} eager={i < 2} />)}
+    </div>
+  </section>
+
+  <section class="wrap more" aria-labelledby="sw-h">
+    <h2 id="sw-h" class="label">Selected work</h2>
+    <div class="tiles gallery">
+      {rest.map((e) => <GalleryTile entry={e} />)}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .head { padding-block: clamp(56px, 8vw, 104px) clamp(32px, 4vw, 48px); display: grid; gap: 22px; }
+  h1 { font-size: var(--step-4); font-weight: 550; letter-spacing: -0.04em; }
+  .head p { color: var(--ink-2); max-width: 60ch; font-size: var(--step-1); line-height: 1.5; }
+  .label { font-size: var(--step-2); font-weight: 550; letter-spacing: -0.025em; margin-bottom: 20px; }
+  .featured { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.7vw, 24px); }
+  .more { margin-top: clamp(80px, 9vw, 128px); }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 3vw, 44px) clamp(16px, 2vw, 28px); }
+  @media (max-width: 960px) { .featured { grid-template-columns: 1fr; } .gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .gallery { grid-template-columns: 1fr; } }
+</style>

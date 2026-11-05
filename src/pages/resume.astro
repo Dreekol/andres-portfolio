@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+const roles = [
+  { title: 'Consultant', org: 'SDG (Solution Design Group)', dates: 'March 2020 – present',
+    points: [
+      'Cargill: helped stand up a global white-label design system; designed the myCargill customer portal; built role-based Power BI reporting with global IT.',
+      'ProAg: led a design-system build, from planning workshops and stakeholder interviews to the Figma library, documentation and onboarding.',
+      'HealthPartners: designed the data model, journeys and accessible UI for specialty-pharmacy contracting and pricing tools.',
+      'Holmes Corporation: heuristic analysis and redesign of micro-credential and assessment experiences; facilitated stakeholder workshops.',
+      'Partners in Excellence: designed five role-based Power BI dashboard views spanning clinical, financial and HR data.',
+      'Revo Health, Human Powered Health, Component Assembly Systems: journey mapping, app modernization and website redesign.',
+    ] },
+  { title: 'Senior Designer / Web Master', org: 'Harris County Public Health', dates: '2015 – 2020',
+    points: ['Developed the brand identity for one of the largest public health organizations in America.', 'Designed conferences, campaigns and print and digital collateral.', 'Managed the website informing 4.7 million county residents; reported with Google Analytics.'] },
+  { title: 'Graphic Designer', org: 'Raintree Resorts International', dates: '2014 – 2015', points: ['Newsletters, email campaigns, responsive landing pages and social ads.'] },
+  { title: 'Graphic Lead', org: 'Hudson Trail Outfitters', dates: '2013 – 2014', points: ['Store promotions for web and print; display standards for stores.'] },
+  { title: 'Graphic Designer', org: 'Monte Zucker Photographic Education', dates: '2012 – 2013', points: ['Event and web design for a national filmmaking masterclass tour with Saturday Night Live personnel.'] },
+];
+---
+<Base title="Resume" description="Resume of Andrés Velasco, senior UX/UI and brand designer.">
+  <section class="wrap head">
+    <h1>Resume</h1>
+    <a class="pill" href={site.resumePdf} download>Download PDF
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9m-4-4 4 4 4-4M3 14h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+  <section class="wrap cv">
+    <aside>
+      <p class="name">{site.name}</p>
+      <p>{site.role}</p>
+      <p>{site.location}</p>
+      <p>English &amp; Spanish</p>
+      <h2>Industries</h2>
+      <p>Healthcare, insurance, agricultural commodities and insurance, HR &amp; learning, public health, marketing &amp; advertising</p>
+      <h2>Skills</h2>
+      <p>Needs analysis, workshops, UX strategy, design systems, wireframing, prototyping, usability and UAT testing, accessibility, brand identity, data visualization</p>
+      <h2>Education</h2>
+      <p>BFA, Graphic Design, The Art Institute of Houston</p>
+    </aside>
+    <ol class="roles">
+      {roles.map((r) => (
+        <li class="reveal">
+          <div class="when">{r.dates}</div>
+          <div>
+            <h3>{r.title}</h3>
+            <p class="org">{r.org}</p>
+            <ul>{r.points.map((p) => <li>{p}</li>)}</ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .head { display: flex; justify-content: space-between; align-items: end; gap: 24px; padding-block: clamp(56px, 8vw, 104px) clamp(32px, 4vw, 48px); }
+  h1 { font-size: var(--step-4); font-weight: 550; letter-spacing: -0.04em; }
+  .cv { display: grid; grid-template-columns: 280px 1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  aside { position: sticky; top: 100px; font-size: var(--step--1); color: var(--ink-2); line-height: 1.55; }
+  aside .name { font-weight: 600; color: var(--ink); font-size: var(--step-1); }
+  aside h2 { font-size: var(--step--1); color: var(--mute); font-weight: 500; letter-spacing: 0; margin: 22px 0 4px; }
+  .roles { list-style: none; padding: 0; }
+  .roles > li { display: grid; grid-template-columns: 170px 1fr; gap: 24px; padding-block: 28px; border-top: 1px solid var(--line); }
+  .when { color: var(--mute); font-size: var(--step--1); font-variant-numeric: tabular-nums; padding-top: 4px; }
+  h3 { font-size: var(--step-1); font-weight: 600; letter-spacing: -0.015em; }
+  .org { color: var(--mute); margin-top: 2px; }
+  ul { margin-top: 12px; padding-left: 1.1em; display: grid; gap: 6px; color: var(--ink-2); max-width: 70ch; }
+  ul li::marker { color: var(--accent); }
+  @media (max-width: 860px) { .cv { grid-template-columns: 1fr; } aside { position: static; } .roles > li { grid-template-columns: 1fr; gap: 6px; } }
+</style>
