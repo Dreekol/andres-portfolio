@@ -13,6 +13,9 @@
     "@astrojs/mdx": "^8.1.2",
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource/bodoni-moda": "^5.3.0",
+    "@fontsource/geist-mono": "^5.3.0",
+    "@fontsource/unifrakturcook": "^5.3.0",
     "astro": "^7.4.5",
     "sharp": "^0.35.5"
   }

@@ -2,12 +2,16 @@
 import Base from '../layouts/Base.astro';
 import WorkBrowser from '../components/WorkBrowser.astro';
 import { site } from '../data/site';
+// Typefaces for the "identity" specimen: blackletter, Didone italic, mono. Used only in the hero animation.
+import '@fontsource/unifrakturcook/700.css';
+import '@fontsource/bodoni-moda/700-italic.css';
+import '@fontsource/geist-mono/500.css';
 ---
 <Base>
   <section class="intro wrap">
     <h1 class="hero">
       <span class="l1">Senior UX/UI &amp; brand designer.</span>
-      <span class="l2">I help teams make complicated things feel simple, <span class="ink">from <span class="idn">identity<svg class="path" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true"><g class="handles"><path d="M4 16 40 2M110 12 70 24M110 12 150 0M196 14 170 4"/></g><path class="stroke" pathLength="1" d="M4 16C40 2 70 24 110 12S170 4 196 14"/></svg><i class="h h1" style="left:20%;top:8%"></i><i class="h h2" style="left:35%;top:100%"></i><i class="h h3" style="left:75%;top:0"></i><i class="h h4" style="left:85%;top:17%"></i><i class="a a1" style="left:2%"></i><i class="a a2" style="left:55%"></i><i class="a a3" style="left:98%"></i></span> to <span class="ifc"><span class="ifc-box" aria-hidden="true"></span>interface.<svg class="cur" viewBox="0 0 20 24" aria-hidden="true"><path d="M2 2v18l5-4.5 3.2 7 3-1.4-3.2-6.8H17z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span></span></span>
+      <span class="l2">I help teams make complicated things feel simple, <span class="ink">from <span class="idn"><span class="base">identity</span><span class="face f1" aria-hidden="true">identity</span><span class="face f2" aria-hidden="true">identity</span><span class="face f3" aria-hidden="true">identity</span><svg class="path" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true"><g class="handles"><path d="M4 16 40 2M110 12 70 24M110 12 150 0M196 14 170 4"/></g><path class="stroke" pathLength="1" d="M4 16C40 2 70 24 110 12S170 4 196 14"/></svg><i class="h h1" style="left:20%;top:8%"></i><i class="h h2" style="left:35%;top:100%"></i><i class="h h3" style="left:75%;top:0"></i><i class="h h4" style="left:85%;top:17%"></i><i class="a a1" style="left:2%"></i><i class="a a2" style="left:55%"></i><i class="a a3" style="left:98%"></i></span> to <span class="ifc"><span class="ifc-box" aria-hidden="true"></span>interface.<svg class="cur" viewBox="0 0 20 24" aria-hidden="true"><path d="M2 2v18l5-4.5 3.2 7 3-1.4-3.2-6.8H17z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></span></span></span>
     </h1>
     <ul class="facts">
       <li class="open"><span class="pulse" aria-hidden="true"></span>{site.openTo}</li>
@@ -39,25 +43,38 @@ import { site } from '../data/site';
   /* "identity": a vector path drawn with a pen, anchors and handles showing, then the handles put away */
   .idn, .ifc { position: relative; display: inline-block; white-space: nowrap; }
   .path { position: absolute; left: 0; right: 0; bottom: -0.24em; width: 100%; height: 0.34em; overflow: visible; }
-  .path .stroke { fill: none; stroke: var(--accent); stroke-width: 5px; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 760ms var(--ease-in-out) 1000ms forwards; }
+  .path .stroke { fill: none; stroke: var(--accent); stroke-width: 5px; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 760ms var(--ease-in-out) 1750ms forwards; }
   .handles path { fill: none; stroke: #8a8a94; stroke-width: 1px; vector-effect: non-scaling-stroke; }
-  .handles { opacity: 0; animation: handles 2000ms ease 1100ms both; }
+  .handles { opacity: 0; animation: handles 2000ms ease 1850ms both; }
   .a, .h { position: absolute; top: 66%; translate: -50% -50%; opacity: 0; pointer-events: none; }
   .a { width: 0.16em; height: 0.16em; min-width: 10px; min-height: 10px; background: #fff; border: 1.5px solid var(--accent); animation: pop 360ms var(--ease-out) both; }
-  .a1 { animation-delay: 950ms; } .a2 { top: 50%; animation-delay: 1500ms; } .a3 { animation-delay: 1750ms; }
+  .a1 { animation-delay: 1700ms; } .a2 { top: 50%; animation-delay: 2250ms; } .a3 { animation-delay: 2500ms; }
   .a2 { top: 50%; }
-  .h { width: 0.09em; height: 0.09em; min-width: 7px; min-height: 7px; border-radius: 50%; background: #8a8a94; animation: handle-dot 2000ms ease 1100ms both; }
+  .h { width: 0.09em; height: 0.09em; min-width: 7px; min-height: 7px; border-radius: 50%; background: #8a8a94; animation: handle-dot 2000ms ease 1850ms both; }
   @keyframes draw { to { stroke-dashoffset: 0; } }
   @keyframes handles { 0%, 8% { opacity: 0; } 18%, 72% { opacity: 1; } 100% { opacity: 0; } }
   @keyframes handle-dot { 0%, 8% { opacity: 0; } 18%, 72% { opacity: 1; } 100% { opacity: 0; } }
   @keyframes pop { from { opacity: 0; scale: 0.2; } to { opacity: 1; scale: 1; } }
   /* the anchors on the ends stay as a quiet signature; the middle one goes with the handles */
-  .a2 { animation: pop 360ms var(--ease-out) 1500ms both, away 400ms ease 3000ms forwards; }
+  .a2 { animation: pop 360ms var(--ease-out) 2250ms both, away 400ms ease 3750ms forwards; }
   @keyframes away { to { opacity: 0; } }
 
+
+  /* Type specimen: the word tries on three brand voices (900ms to 1680ms), then settles on the site's own face.
+     The real text stays in the DOM and keeps the layout; the specimen faces are overlaid and hidden from assistive tech. */
+  .face { position: absolute; left: 0; top: 0; opacity: 0; pointer-events: none; line-height: inherit; }
+  .f1 { font-family: 'UnifrakturCook', serif; font-weight: 700; letter-spacing: 0; font-size: 1.02em; top: -0.04em; animation: face-a 1680ms steps(1, end) both; }
+  .f2 { font-family: 'Bodoni Moda', 'Didot', serif; font-style: italic; font-weight: 700; letter-spacing: -0.015em; animation: face-b 1680ms steps(1, end) both; }
+  .f3 { font-family: 'Geist Mono', ui-monospace, monospace; font-weight: 500; letter-spacing: -0.06em; font-size: 0.76em; top: 0.1em; animation: face-c 1680ms steps(1, end) both; }
+  .base { animation: base-hide 1680ms steps(1, end) both; }
+  @keyframes base-hide { 0% { opacity: 1; } 53.5% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes face-a { 0% { opacity: 0; } 53.5% { opacity: 1; } 69% { opacity: 0; } 100% { opacity: 0; } }
+  @keyframes face-b { 0% { opacity: 0; } 69% { opacity: 1; } 84.5% { opacity: 0; } 100% { opacity: 0; } }
+  @keyframes face-c { 0% { opacity: 0; } 84.5% { opacity: 1; } 99.9% { opacity: 0; } 100% { opacity: 0; } }
+
   /* "interface": a cursor arrives, presses, and the word becomes a focused control */
-  .ifc-box { position: absolute; inset: -0.04em -0.14em -0.02em; border-radius: 0.24em; background: color-mix(in srgb, var(--focus) 10%, transparent); box-shadow: 0 0 0 2px var(--focus); opacity: 0; scale: 0.94; animation: ui-in 520ms var(--ease-out) 2550ms forwards; z-index: -1; }
-  .cur { position: absolute; right: -0.14em; bottom: -0.3em; width: 0.34em; height: auto; fill: var(--ink); opacity: 0; translate: 90% 110%; animation: cursor 1400ms var(--ease-in-out) 1850ms forwards; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
+  .ifc-box { position: absolute; inset: -0.04em -0.14em -0.02em; border-radius: 0.24em; background: color-mix(in srgb, var(--focus) 10%, transparent); box-shadow: 0 0 0 2px var(--focus); opacity: 0; scale: 0.94; animation: ui-in 520ms var(--ease-out) 3400ms forwards; z-index: -1; }
+  .cur { position: absolute; right: -0.14em; bottom: -0.3em; width: 0.34em; height: auto; fill: var(--ink); opacity: 0; translate: 90% 110%; animation: cursor 1400ms var(--ease-in-out) 2550ms forwards; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
   @keyframes cursor { 0% { opacity: 0; translate: 90% 110%; } 15% { opacity: 1; } 60% { translate: 0 0; scale: 1; } 72% { translate: 0 0; scale: 0.82; } 100% { opacity: 1; translate: 0 0; scale: 1; } }
   @keyframes ui-in { 0% { opacity: 0; scale: 0.94; } 60% { opacity: 1; scale: 1.03; } 100% { opacity: 1; scale: 1; } }
   .facts { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 0; font-size: var(--step--1); color: var(--mute); }
