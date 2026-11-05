@@ -46,7 +46,7 @@ Also true and useful: bilingual English/Spanish; consultant at SDG (Solution Des
 - **NDA handling:** public pages show anonymized, "portfolio-safe" screens with business-specific details replaced by placeholders. Client logos and brand colours may be shown. A password-protected tier holds deeper material (files under `password only` folders). Protected pages are `noindex` and excluded from the sitemap; their images must not ship as public build assets.
 - **Figma:** his Figma account is owned by SDG, so nothing links to or embeds Figma. Local exports are fine.
 - **Prototypes are not rebuilt.** Static screens illustrate ideas.
-- **Open decisions:** personal email, LinkedIn URL and resume PDF are placeholders until Andrés supplies them; domain name undecided; password mechanism (free middleware vs. Vercel Pro) to be settled before the protected tier launches.
+- **Open decisions:** domain name undecided. (Settled: real email and LinkedIn are live; the protected tier uses free Vercel Routing Middleware in `middleware.ts`, gating `/private/*` behind the `PORTFOLIO_PASSWORD` env var. Protected images live in `public/private/` and are referenced with plain `<img>` so they never become public build assets.)
 
 ## Brand Commitments
 
