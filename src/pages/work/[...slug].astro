@@ -30,13 +30,13 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
   <article style={`--c:${d.color}`}>
     <header class="band" style={`view-transition-name: tile-${vt}`}>
       <div class="wrap band-inner">
-        <a class="back" href={isPart ? `/work/${parent!.id}` : '/work'}>
+        <a class="back" href={isPart ? `/work/${parent!.id}` : '/#work'}>
           <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3m4 4L3 8l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           {isPart ? `All ${d.client} work` : 'All work'}
         </a>
         {isPart ? (
           <nav class="crumbs" aria-label="Breadcrumb">
-            <ol><li><a href="/work">Work</a></li><li><a href={`/work/${parent!.id}`}>{d.client}</a></li><li aria-current="page">{d.name}</li></ol>
+            <ol><li><a href="/#work">Work</a></li><li><a href={`/work/${parent!.id}`}>{d.client}</a></li><li aria-current="page">{d.name}</li></ol>
           </nav>
         ) : (
           <p class="client">{d.client}</p>

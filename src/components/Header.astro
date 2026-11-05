@@ -2,9 +2,9 @@
 import { site } from '../data/site';
 const path = Astro.url.pathname;
 const links = [
-  { href: '/work', label: 'Work' },
-  { href: '/about', label: 'About' },
-  { href: '/resume', label: 'Resume' },
+  { href: '/', label: 'Work', match: (p: string) => p === '/' || p.startsWith('/work') },
+  { href: '/about', label: 'About', match: (p: string) => p.startsWith('/about') },
+  { href: '/resume', label: 'Resume', match: (p: string) => p.startsWith('/resume') },
 ];
 ---
 <header class="site-header">
@@ -15,7 +15,7 @@ const links = [
     <nav aria-label="Primary">
       <ul>
         {links.map((l) => (
-          <li><a href={l.href} aria-current={path.startsWith(l.href) ? 'page' : undefined}>{l.label}</a></li>
+          <li><a href={l.href} aria-current={l.match(path) ? 'page' : undefined}>{l.label}</a></li>
         ))}
       </ul>
       <a class="pill" href={`mailto:${site.email}`}>Get in touch</a>

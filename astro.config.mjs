@@ -10,11 +10,13 @@ export default defineConfig({
   site: SITE,
   output: 'static',
   trailingSlash: 'never',
+  // The homepage is the Work page; keep /work working for links already shared
+  redirects: { '/work': '/#work' },
   integrations: [
     mdx(),
     sitemap({
       // Password-protected material never goes in the sitemap
-      filter: (page) => !page.includes('/private'),
+      filter: (page) => !page.includes('/private') && !/\/work\/?$/.test(page),
     }),
   ],
 });
