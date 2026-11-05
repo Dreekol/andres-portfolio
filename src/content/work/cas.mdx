@@ -8,6 +8,8 @@ workTypes: [Websites, Brand identity]
 kind: Website modernization
 role: Design lead
 scope: [Audit, Roadmap, Wireframes, Content strategy, Style guide, Testing]
+tools: [Wix]
+liveUrl: https://www.componentassembly.com/
 color: "#C2410C"
 colorName: Construction Orange
 cover: ../../assets/work/cas/style-guide.jpg
@@ -15,8 +17,32 @@ coverAlt: CAS style guide cover
 coverPosition: center
 ---
 import Figure from '../../components/Figure.astro';
+import Pair from '../../components/Pair.astro';
 import home from '../../assets/work/cas/home.jpg';
+import hero from '../../assets/work/cas/site-hero.jpg';
+import sectors from '../../assets/work/cas/site-sectors.jpg';
+import services from '../../assets/work/cas/site-services.jpg';
+import portfolio from '../../assets/work/cas/site-portfolio.jpg';
+import sports from '../../assets/work/cas/site-sports.jpg';
+import m1 from '../../assets/work/cas/site-mobile.jpg';
+import m2 from '../../assets/work/cas/site-mobile-2.jpg';
 
 I evaluated the existing site, set goals and success metrics, built the roadmap, and led critiques with junior designers. I created the wireframes, planned the content migration, chose technology for accessibility and easy upkeep, and tested iteratively with users.
 
-<Figure src={home} alt="Redesigned CAS homepage at desktop width" caption="The redesigned homepage." tall />
+<Figure src={home} alt="Homepage design with placeholder copy, sector cards, services and office locations" caption="The homepage design, before final copy." tall />
+
+## The live site
+
+The finished site leads with the work itself: landmark projects like One World Trade Center, sectors from cultural centers to stadiums, and the six services CAS offers, all on a structure the team can keep current in Wix.
+
+<Figure src={hero} alt="Live homepage hero: America’s Premier Drywall & Ceiling Contractor over the lower Manhattan skyline" caption="The homepage, live at componentassembly.com." />
+
+<Figure src={sectors} alt="Featured sectors on the homepage: commercial, cultural and hospitality, each with a landmark project photo" caption="Featured sectors, each anchored by a landmark project." />
+
+<Figure src={services} alt="Services page with six services, each with a photo and a list of specialties" caption="Services, from drywall to pre-construction." tall />
+
+<Figure src={portfolio} alt="Portfolio page with featured projects, new and notable projects, and project galleries by sector" caption="The portfolio: featured projects, new work and galleries by sector." tall />
+
+<Figure src={sports} alt="Selected sports projects: Yankee Stadium, LA Chargers practice facility, Gillette Stadium, Nationals Park, TD Garden and Arthur Ashe Stadium" caption="A sector gallery: selected sports projects." />
+
+<Pair a={m1} aAlt="Homepage hero at phone width" b={m2} bAlt="About section and values at phone width" caption="The same site at phone width." narrow />
