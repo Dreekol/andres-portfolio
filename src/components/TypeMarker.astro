@@ -1,0 +1,22 @@
+---
+// A shape + colour marker for a type of work, so the key reads without relying on colour alone.
+interface Props { type: string }
+const { type } = Astro.props;
+const key: Record<string, string> = {
+  'Product UX': 'ux',
+  'Design systems': 'ds',
+  'Brand identity': 'br',
+  'Data visualization': 'dv',
+  Research: 'rs',
+};
+---
+<i class:list={['tm', key[type] ?? 'ux']} aria-hidden="true"></i>
+
+<style>
+  .tm { display: inline-block; flex: none; width: 10px; height: 10px; }
+  .ux { background: var(--t-ux); border-radius: 50%; }
+  .ds { background: var(--t-ds); border-radius: 2px; }
+  .br { width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid var(--t-br); }
+  .dv { background: var(--t-dv); transform: rotate(45deg) scale(0.82); }
+  .rs { border: 2px solid var(--t-rs); border-radius: 50%; }
+</style>

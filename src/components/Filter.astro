@@ -1,4 +1,5 @@
 ---
+import TypeMarker from './TypeMarker.astro';
 interface Props {
   items: readonly string[];
   /** Which data attribute on project elements to match: data-domains or data-types */
@@ -14,7 +15,7 @@ const { items, attr, counts, target, label, hidden = false, id } = Astro.props;
 <div class="filter" role="group" aria-label={label} data-filter-for={target} data-attr={attr} hidden={hidden} id={id}>
   {items.filter((d) => counts[d]).map((d) => (
     <button type="button" class="chip" data-value={d} aria-pressed="false">
-      {d}<span class="n" aria-label={`${counts[d]} projects`}>{counts[d]}</span>
+      {attr === 'types' && <TypeMarker type={d} />}{d}<span class="n" aria-label={`${counts[d]} projects`}>{counts[d]}</span>
     </button>
   ))}
   <button type="button" class="clear" hidden>

@@ -2,7 +2,8 @@
 // The filterable list of work, shared by the homepage and /work so both behave identically.
 import { getCollection } from 'astro:content';
 import ProjectTile from './ProjectTile.astro';
-import GalleryTile from './GalleryTile.astro';
+import WorkIndex from './WorkIndex.astro';
+import TypeMarker from './TypeMarker.astro';
 import Filter from './Filter.astro';
 import { domains, workTypes } from '../data/site';
 
@@ -36,10 +37,13 @@ entries.filter((e) => e.data.parent || !childCount(e.id)).forEach((e) => e.data.
 </section>
 
 <section class="wrap block more" aria-labelledby="sw-h">
-  <h2 id="sw-h" class="label">Selected work</h2>
-  <div class="tiles gallery">
-    {rest.map((e) => <GalleryTile entry={e} />)}
+  <div class="sw-head">
+    <h2 id="sw-h" class="label">Selected work</h2>
+    <ul class="key" aria-label="Type of work key">
+      {workTypes.filter((t) => rest.some((e) => e.data.workTypes.includes(t))).map((t) => <li><TypeMarker type={t} />{t}</li>)}
+    </ul>
   </div>
+  <WorkIndex entries={rest} />
 </section>
 
 <style>
@@ -58,9 +62,11 @@ entries.filter((e) => e.data.parent || !childCount(e.id)).forEach((e) => e.data.
   .featured { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.7vw, 24px); }
   .featured[data-count='1'] :global(.tile) { grid-column: 1 / -1; }
   .more { margin-top: clamp(80px, 9vw, 128px); }
-  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 3vw, 44px) clamp(16px, 2vw, 28px); }
-  @media (max-width: 960px) { .featured { grid-template-columns: 1fr; } .gallery { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .gallery { grid-template-columns: 1fr; } }
+  .sw-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 24px; margin-bottom: 18px; }
+  .sw-head .label { margin-bottom: 0; }
+  .key { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: var(--step--1); color: var(--ink-2); }
+  .key li { display: inline-flex; align-items: center; gap: 7px; }
+  @media (max-width: 960px) { .featured { grid-template-columns: 1fr; } }
 </style>
 
 <script>

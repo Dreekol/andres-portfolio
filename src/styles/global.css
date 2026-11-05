@@ -14,6 +14,13 @@
   --accent: #e5482e;
   --focus: #2563eb;
 
+  /* Type-of-work key (shape + colour) */
+  --t-ux: #2563eb;
+  --t-ds: #7c3aed;
+  --t-br: #e5482e;
+  --t-dv: #059669;
+  --t-rs: #d97706;
+
   --font: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
 
   --step--1: clamp(0.84rem, 0.82rem + 0.1vw, 0.9rem);
