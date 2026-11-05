@@ -1,0 +1,52 @@
+---
+title: Testing the quoting experience with agents
+client: ProAg
+name: Quoting experience
+parent: proag
+summary: A heuristic evaluation of the quoter, then quoter and printout concepts reviewed with agents and stakeholders.
+order: 2
+domains: [Insurance, Agriculture]
+workTypes: [Research, Customer-facing products]
+kind: Heuristic evaluation · Concept testing
+role: UX designer (SDG team)
+scope: [Heuristic evaluation, Severity scoring, Quoter concepts, Printout validation]
+tools: [Figma]
+color: "#004C22"
+colorName: ProAg Green
+cover: ../../../assets/work/proag/q-summary.jpg
+coverAlt: Evaluation summary listing 38 documented items by severity
+coverPosition: left center
+---
+import Figure from '../../../components/Figure.astro';
+import methods from '../../../assets/work/proag/q-methods.jpg';
+import heuristics from '../../../assets/work/proag/q-heuristics.jpg';
+import severity from '../../../assets/work/proag/q-severity.jpg';
+import summary from '../../../assets/work/proag/q-summary.jpg';
+import quoter from '../../../assets/work/proag/q-quoter-research.jpg';
+import printout from '../../../assets/work/proag/q-printout-research.jpg';
+
+Quoting was the biggest pain point agents described, so we moved from strategy to the quoter itself, using three methods of increasing fidelity.
+
+<Figure src={methods} alt="Fidelity of methods: heuristic evaluation, quoter concepts and printout validation, from low to high fidelity" caption="Three methods, from low to high fidelity." />
+
+## Heuristic evaluation
+
+We walked through the “create a quote” flow and graded it against Jakob Nielsen’s 10 usability heuristics, scoring each issue by how often it happens, how hard it is to overcome and how long it persists.
+
+<Figure src={heuristics} alt="Illustrations of Jakob Nielsen’s 10 usability heuristics" caption="The 10 heuristics we evaluated against." />
+
+<Figure src={severity} alt="Severity scale from 0, no violations, to 4, usability catastrophe" caption="How each issue was scored." />
+
+<Figure src={summary} alt="Evaluation summary: 38 items, including 16 major problems and 1 catastrophe" caption="38 issues documented, 16 of them major." />
+
+## Quoter and printout concepts
+
+Building on earlier concepts, we made a low to mid-fidelity prototype with two landing-page variants and a customer detail page, applied the design system, and reviewed it with 3 agents and 3 stakeholders. We did the same for redesigned printout summaries.
+
+<Figure src={quoter} alt="Quoter research summary: positive feedback on look and feel and on streamlined navigation, mixed feedback on customer versus quote orientation" caption="Quoter concepts: what agents and stakeholders said." />
+
+<Figure src={printout} alt="Printout research summary: positive feedback on formatting, mixed feedback on which summaries are useful, and support for a live quote preview" caption="Printouts: agents differ, which pointed to the need for more personas." />
+
+## What we learned
+
+Agents responded well to the cleaner look and consolidated navigation. Where feedback split, it split by how each agent works, which showed ProAg needed more than one agent persona before going further.
