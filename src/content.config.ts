@@ -33,6 +33,8 @@ const work = defineCollection({
       /** Client brand colour, sampled from the shipped product */
       color: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
       colorName: z.string(),
+      /** Client logo shown on the client tile (full colour, displayed on a white plate) */
+      logo: image().optional(),
       cover: image(),
       coverAlt: z.string(),
       /** CSS object-position for the cover crop on tiles */

@@ -1,35 +1,44 @@
 ---
+// Client tile: logo on a white plate, outcome title, and an index of the work done for that client.
+// Each row links straight to its initiative (or to the case study for single-project clients).
 import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { hexToRgb, contrast, wcagGrade } from '../lib/color';
 
 interface Props {
   entry: CollectionEntry<'work'>;
-  size?: 'wide' | 'narrow';
   eager?: boolean;
+  /** kept for API compatibility with earlier callers */
+  size?: 'wide' | 'narrow';
   initiatives?: number;
 }
-const { entry, size = 'narrow', eager = false, initiatives = 0 } = Astro.props;
+const { entry, eager = false } = Astro.props;
 const d = entry.data;
 const slug = entry.id;
 const vt = slug.replace(/\//g, '-');
+const children = (await getCollection('work')).filter((e) => e.data.parent === slug).sort((a, b) => a.data.order - b.data.order);
+const rows = children.length
+  ? children.map((c) => ({ href: `/work/${c.id}`, name: c.data.name ?? c.data.title, types: c.data.workTypes, status: c.data.status }))
+  : [{ href: `/work/${slug}`, name: d.name ?? d.kind, types: d.workTypes, status: d.status }];
 const [r, g, b] = hexToRgb(d.color);
 const ratio = contrast(d.color, '#ffffff');
 const grade = wcagGrade(ratio);
 ---
-<a
-  class:list={['tile', size, 'reveal']}
-  href={`/work/${slug}`}
+<article
+  class:list={['tile', 'reveal', { hub: children.length > 0 }]}
   data-accent={d.color}
   data-domains={d.domains.join('|')}
   data-types={d.workTypes.join('|')}
   style={`--c:${d.color}; view-transition-name: tile-${vt}`}
 >
-  <div class="cap">
-    <div class="text">
-      <h3>{d.client}<svg class="go" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></h3>
-      <p>{d.title}</p>
-    </div>
+  <div class="top">
+    <a class="plate" href={`/work/${slug}`} aria-label={`${d.client}: ${children.length ? 'overview of all initiatives' : 'case study'}`}>
+      {d.logo ? (
+        <Image src={d.logo} alt="" height={44} densities={[1, 2]} loading={eager ? 'eager' : 'lazy'} class="logo" />
+      ) : (
+        <span class="wordmark">{d.client}</span>
+      )}
+    </a>
     <div class="swatch" aria-label={`${d.colorName}, ${d.color}`}>
       <span class="chip-c" aria-hidden="true"></span>
       <span class="hex">{d.color}</span>
@@ -40,37 +49,81 @@ const grade = wcagGrade(ratio);
       </span>
     </div>
   </div>
-  <div class="shot" style={`view-transition-name: cover-${vt}`}>
-    <Image
-      src={d.cover}
-      alt={d.coverAlt}
-      widths={[480, 800, 1200, 1600]}
-      sizes={size === 'wide' ? '(max-width: 760px) 92vw, 56vw' : '(max-width: 760px) 92vw, 40vw'}
-      loading={eager ? 'eager' : 'lazy'}
-      fetchpriority={eager ? 'high' : 'auto'}
-      style={`object-position:${d.coverPosition}`}
-    />
+
+  <h3><a href={`/work/${slug}`}>{d.title}</a></h3>
+  {!children.length && <p class="summary">{d.summary}</p>}
+
+  <div class="index">
+    {children.length > 0 && <p class="count">{children.length} initiatives</p>}
+    <ul>
+      {rows.map((row) => (
+        <li>
+          <a class="row" href={row.href}>
+            <span class="name">{row.name}</span>
+            <span class="tags">
+              {row.status && <span class="tag live"><i aria-hidden="true"></i>{row.status}</span>}
+              {row.types.map((t) => <span class="tag">{t}</span>)}
+            </span>
+            <span class="go" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </div>
-  <div class="meta">
-    <span>{initiatives ? `${initiatives} initiatives` : d.kind}</span>
-    {d.status && <span class="status"><i aria-hidden="true"></i>{d.status}</span>}
-  </div>
-</a>
+</article>
 
 <style>
   .tile {
-    --ink-on: #fff;
-    position: relative; display: grid; grid-template-rows: auto 1fr auto;
-    min-height: clamp(420px, 40vw, 560px);
-    background: var(--c); color: var(--ink-on); text-decoration: none;
-    border-radius: var(--radius); overflow: hidden; isolation: isolate;
-    transition: transform var(--t-med) var(--ease-out), opacity var(--t-med) var(--ease-out), filter var(--t-med) var(--ease-out);
+    --on: #fff;
+    --soft-on: color-mix(in srgb, #fff 80%, var(--c));
+    --line-on: color-mix(in srgb, #fff 26%, var(--c));
+    position: relative; display: flex; flex-direction: column;
+    min-height: clamp(380px, 34vw, 480px);
+    padding: clamp(22px, 2.6vw, 36px);
+    background: var(--c); color: var(--on);
+    border-radius: var(--radius); isolation: isolate;
+    transition: transform var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out);
   }
-  .tile:focus-visible { outline-offset: 4px; }
-  .cap { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: clamp(22px, 2.6vw, 36px) clamp(22px, 2.6vw, 36px) 0; }
-  h3 { font-size: var(--step-2); font-weight: 600; letter-spacing: -0.025em; display: flex; align-items: center; gap: 8px; }
-  .go { width: 0.7em; height: 0.7em; opacity: 0; transform: translate(-6px, 6px); transition: transform var(--t-med) var(--ease-out), opacity var(--t-med); }
-  .text p { margin-top: 6px; font-size: var(--step-0); color: color-mix(in srgb, var(--ink-on) 82%, var(--c)); max-width: 38ch; line-height: 1.4; }
+  .tile:hover { box-shadow: 0 30px 60px -36px color-mix(in srgb, var(--c) 80%, black); }
+
+  .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .plate {
+    display: inline-flex; align-items: center; height: 76px; padding: 0 22px; border-radius: 16px;
+    background: #fff; color: #000; text-decoration: none;
+    box-shadow: 0 12px 28px -18px rgba(0, 0, 0, 0.55);
+    transition: transform var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out);
+  }
+  .plate :global(.logo) { height: 40px; width: auto; display: block; }
+  .wordmark { font-weight: 650; font-size: 1.3rem; letter-spacing: -0.02em; color: var(--c); }
+  .plate:hover, .plate:focus-visible { transform: translateY(-2px) rotate(-1deg); box-shadow: 0 18px 32px -18px rgba(0, 0, 0, 0.6); }
+
+  h3 { margin-top: clamp(28px, 3vw, 40px); font-size: var(--step-2); font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; max-width: 22ch; }
+  h3 a { text-decoration: none; }
+  h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.16em; }
+  .summary { margin-top: 12px; color: var(--soft-on); max-width: 46ch; line-height: 1.5; }
+
+  .index { margin-top: auto; padding-top: clamp(24px, 3vw, 36px); }
+  .count { font-size: var(--step--1); font-weight: 500; color: var(--soft-on); margin-bottom: 8px; }
+  ul { list-style: none; padding: 0; border-top: 1px solid var(--line-on); }
+  li { border-bottom: 1px solid var(--line-on); }
+  .row {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto 30px; align-items: center; gap: 12px;
+    padding: 14px 4px; text-decoration: none; color: var(--on);
+    transition: padding var(--t-med) var(--ease-out), background var(--t-med) var(--ease-out);
+    border-radius: 10px;
+  }
+  .name { font-weight: 550; font-size: var(--step-0); line-height: 1.3; }
+  .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+  .tag { font-size: 12px; font-weight: 500; padding: 4px 9px; border-radius: 7px; background: rgba(255, 255, 255, 0.14); white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+  .tag.live i { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; animation: live 2.4s var(--ease-out) infinite; }
+  @keyframes live { 0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.55); } 70%, 100% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); } }
+  .go { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, 0.14); transition: background var(--t-med) var(--ease-out), color var(--t-med); }
+  .go svg { width: 14px; height: 14px; transition: transform var(--t-med) var(--ease-out); }
+  .row:hover, .row:focus-visible { background: rgba(255, 255, 255, 0.08); padding-inline: 14px 10px; }
+  .row:hover .go, .row:focus-visible .go { background: #fff; color: var(--c); }
+  .row:hover .go svg, .row:focus-visible .go svg { transform: translateX(2px); }
 
   /* Pantone-style chip; its colour + accessibility spec unfolds beneath on hover/focus */
   .swatch {
@@ -91,31 +144,15 @@ const grade = wcagGrade(ratio);
     transition: clip-path var(--t-med) var(--ease-out), opacity var(--t-fast);
   }
   .spec span:first-child { color: var(--ink); font-weight: 600; }
-  .tile:hover .spec, .tile:focus-visible .spec { clip-path: inset(0 0 0 0); opacity: 1; }
-  .tile:hover .swatch, .tile:focus-visible .swatch { border-radius: 9px 9px 0 9px; }
-
-  .shot { position: relative; margin: clamp(24px, 3vw, 40px) clamp(22px, 2.6vw, 36px) 0; min-height: 0; }
-  .shot :global(img) {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-    box-shadow: 0 -2px 0 rgba(255, 255, 255, 0.08), 0 30px 60px -24px rgba(0, 0, 0, 0.55);
-    transform: translateY(14px);
-    transition: transform var(--t-slow) var(--ease-out), box-shadow var(--t-slow) var(--ease-out);
-  }
-  .meta {
-    position: absolute; left: clamp(22px, 2.6vw, 36px); bottom: 16px; z-index: 2;
-    display: flex; gap: 8px; font-size: 12px; font-weight: 500;
-  }
-  .meta span { background: rgba(14, 14, 16, 0.72); backdrop-filter: blur(8px); color: #fff; padding: 6px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
-  .status i { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); animation: live 2.4s var(--ease-out) infinite; }
-  @keyframes live { 0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.55); } 70%, 100% { box-shadow: 0 0 0 7px rgba(74, 222, 128, 0); } }
-
-  .tile:hover .shot :global(img), .tile:focus-visible .shot :global(img) { transform: translateY(0); box-shadow: 0 -2px 0 rgba(255, 255, 255, 0.08), 0 40px 70px -24px rgba(0, 0, 0, 0.6); }
-  .tile:hover .go, .tile:focus-visible .go { opacity: 1; transform: none; }
-
+  .swatch:hover .spec, .tile:focus-within .swatch .spec, .top:hover .spec { clip-path: inset(0 0 0 0); opacity: 1; }
+  .swatch:hover, .top:hover .swatch { border-radius: 9px 9px 0 9px; }
 
   @media (max-width: 760px) {
-    .tile { min-height: 440px; }
     .swatch { display: none; }
+    .plate { height: 64px; padding: 0 18px; }
+    .plate :global(.logo) { height: 32px; }
+    .row { grid-template-columns: minmax(0, 1fr) 30px; }
+    .tags { grid-column: 1; grid-row: 2; justify-content: flex-start; }
+    .go { grid-column: 2; grid-row: 1 / span 2; }
   }
 </style>
