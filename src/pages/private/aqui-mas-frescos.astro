@@ -1,0 +1,15 @@
+---
+import Private from '../../layouts/Private.astro';
+import F from '../../components/PrivateFigure.astro';
+const p = '/private/aqui-mas-frescos';
+---
+<Private
+  title="Aquí Más Frescos working diagrams"
+  client="Cargill"
+  color="#00843D"
+  back={{ href: '/work/cargill/aqui-mas-frescos', label: 'Aquí Más Frescos case study' }}
+  intro="Two working diagrams from the Aquí Más Frescos research: the order workflow across the apps and systems involved, and the user journey map."
+>
+  <F src={`${p}/order-workflow.jpg`} width={2000} height={1228} alt="Order workflow diagram from app download and sign-up through checkout, back-end order creation, truck delivery and payment" caption="The order workflow, from download and sign-up to delivery and payment, across the customer app, back end and delivery app." />
+  <F src={`${p}/user-journey.jpg`} width={2000} height={815} alt="User journey map diagram" caption="The user journey map." />
+</Private>

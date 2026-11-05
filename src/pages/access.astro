@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+const mailto = `mailto:${site.email}?subject=${encodeURIComponent('Portfolio access request')}&body=${encodeURIComponent('Hi Andrés, I’d like the password for the protected work on your portfolio. ')}`;
+---
+<Base title="Protected work" description="Some client work on this site is password protected. Request access by email." noindex>
+  <section class="wrap access">
+    <h1>This work is password protected.</h1>
+    <p class="lede">Some client material, like workshop readouts and working diagrams, stays behind a password out of respect for the people I designed it with. The overviews are public on each case study.</p>
+
+    <form method="post" action="/unlock" class="form">
+      <input type="hidden" name="next" value="/private" id="next" />
+      <label for="pw">Password</label>
+      <div class="row">
+        <input id="pw" name="password" type="password" autocomplete="current-password" required aria-describedby="err" />
+        <button class="pill" type="submit">Unlock</button>
+      </div>
+      <p id="err" class="err" role="alert" hidden>That password didn’t work. Check it and try again, or ask me for a new one.</p>
+    </form>
+
+    <p class="ask">Don’t have the password? <a href={mailto}>Email me</a> and I’ll send it.</p>
+  </section>
+</Base>
+
+<script is:inline>
+  (() => {
+    const q = new URLSearchParams(location.search);
+    const n = q.get('next');
+    if (n && /^\/private(\/[\w\-./]*)?$/.test(n)) document.getElementById('next').value = n;
+    if (q.get('error')) { const e = document.getElementById('err'); e.hidden = false; document.getElementById('pw').setAttribute('aria-invalid', 'true'); }
+  })();
+</script>
+
+<style>
+  .access { padding-block: clamp(64px, 10vw, 136px); max-width: 720px; margin-inline: 0; }
+  h1 { font-size: var(--step-3); font-weight: 550; letter-spacing: -0.032em; line-height: 1.08; }
+  .lede { margin-top: 20px; font-size: var(--step-1); line-height: 1.6; color: var(--ink-2); max-width: 58ch; }
+  .form { margin-top: 40px; display: grid; gap: 10px; max-width: 460px; }
+  label { font-weight: 500; }
+  .row { display: flex; gap: 10px; }
+  input[type='password'] { flex: 1; min-width: 0; font: inherit; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #c9c9d0; background: #fff; color: var(--ink); }
+  input[type='password']:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-color: var(--ink); }
+  input[aria-invalid='true'] { border-color: #b91c1c; }
+  .err { color: #b91c1c; font-size: var(--step--1); }
+  .ask { margin-top: 28px; color: var(--ink-2); }
+  .ask a { color: var(--ink); font-weight: 500; }
+</style>

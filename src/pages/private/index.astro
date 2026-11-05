@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+// Landing page after unlocking without a specific destination. Gated by middleware.ts.
+const items = [
+  { href: '/private/holmes-sage-workshop', client: 'Holmes Corporation', title: 'SAGE portal workshop analysis' },
+  { href: '/private/aqui-mas-frescos', client: 'Cargill', title: 'Aquí Más Frescos working diagrams' },
+];
+---
+<Base title="Protected work" description="Password-protected client work." noindex>
+  <section class="wrap pi">
+    <h1>Protected work</h1>
+    <p>You’re in. These pages go deeper than the public case studies.</p>
+    <ul>
+      {items.map((i) => <li><a href={i.href}><span>{i.client}</span>{i.title}</a></li>)}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .pi { padding-block: clamp(64px, 10vw, 136px); }
+  h1 { font-size: var(--step-3); font-weight: 550; letter-spacing: -0.032em; }
+  p { margin-top: 12px; color: var(--ink-2); font-size: var(--step-1); }
+  ul { list-style: none; padding: 0; margin-top: 36px; display: grid; max-width: 720px; }
+  li { border-top: 1px solid var(--line); }
+  li:last-child { border-bottom: 1px solid var(--line); }
+  a { display: grid; gap: 2px; padding-block: 18px; text-decoration: none; color: var(--ink); font-size: var(--step-1); font-weight: 550; }
+  a span { color: var(--mute); font-size: var(--step--1); font-weight: 500; }
+  a:hover { color: var(--ink-2); }
+</style>

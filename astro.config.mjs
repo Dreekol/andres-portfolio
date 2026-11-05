@@ -16,7 +16,7 @@ export default defineConfig({
     mdx(),
     sitemap({
       // Password-protected material never goes in the sitemap
-      filter: (page) => !page.includes('/private') && !/\/work\/?$/.test(page),
+      filter: (page) => !page.includes('/private') && !page.includes('/access') && !/\/work\/?$/.test(page),
     }),
   ],
 });

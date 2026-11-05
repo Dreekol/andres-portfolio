@@ -1,11 +1,10 @@
 // Single source of truth for personal details.
-// TODO(Andrés): replace the placeholder email, LinkedIn and resume before launch.
 export const site = {
   name: 'Andrés Velasco',
   role: 'Senior UX/UI & Brand Designer',
   location: 'Saint Paul, MN',
-  email: 'hello@example.com',
-  linkedin: 'https://www.linkedin.com/in/your-profile',
+  email: 'a.velasco.gd@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/andres-velasco-92752934/',
   resumePdf: '/andres-velasco-resume.pdf',
   openTo: 'Open to senior product, design lead and UX + brand roles',
   description:

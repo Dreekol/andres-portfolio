@@ -1,0 +1,28 @@
+---
+// Points from a public case study to its password-protected detail page.
+interface Props { href: string; title: string; text: string }
+const { href, title, text } = Astro.props;
+---
+<a class="pn" href={href}>
+  <span class="ic" aria-hidden="true">
+    <svg viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.5"/></svg>
+  </span>
+  <span class="tx">
+    <span class="t">{title}</span>
+    <span class="d">{text}</span>
+  </span>
+  <span class="go">Password required</span>
+</a>
+
+<style>
+  .pn { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; max-width: 68ch; margin: clamp(32px, 5vw, 56px) auto; padding: 18px 20px; border-radius: 16px; background: var(--soft); color: var(--ink); text-decoration: none; transition: box-shadow var(--t-fast) var(--ease-out); }
+  .pn:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .pn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .ic { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--c, var(--ink)); color: #fff; }
+  .ic svg { width: 16px; height: 16px; }
+  .tx { display: grid; gap: 2px; }
+  .t { font-weight: 600; }
+  .d { color: var(--ink-2); font-size: var(--step--1); line-height: 1.5; }
+  .go { font-size: var(--step--1); font-weight: 500; color: var(--mute); white-space: nowrap; }
+  @media (max-width: 560px) { .pn { grid-template-columns: auto 1fr; } .go { grid-column: 2; } }
+</style>
