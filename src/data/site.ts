@@ -9,7 +9,7 @@ export const site = {
   resumePdf: '/andres-velasco-resume.pdf',
   openTo: 'Open to senior product, design lead and UX + brand roles',
   description:
-    'Andrés Velasco is a senior UX/UI and brand designer in Saint Paul, MN, designing complex products for healthcare, insurance and agriculture, from identity to interface.',
+    'Andrés Velasco is a senior UX/UI and brand designer in Saint Paul, MN, helping teams make complicated things feel simple, from identity to interface.',
 };
 
 export const domains = ['Healthcare', 'Insurance', 'Agriculture', 'HR & Learning'] as const;
