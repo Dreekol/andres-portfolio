@@ -28,7 +28,13 @@ const { items, attr, counts, target, label, hidden = false, id } = Astro.props;
 <style>
   .filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
   .filter[hidden] { display: none; }
-  .n { font-size: 11px; font-variant-numeric: tabular-nums; opacity: 0.55; margin-left: 2px; }
+  .n {
+    min-width: 24px; height: 24px; padding: 0 7px; border-radius: 999px; display: inline-grid; place-items: center;
+    background: #fff; color: var(--mute); font-size: 11.5px; font-weight: 600; font-variant-numeric: tabular-nums;
+    transition: background var(--t-fast), color var(--t-fast);
+  }
+  .chip[aria-pressed='true'] .n { background: rgba(255, 255, 255, 0.16); color: #fff; }
+  .chip :global(.tm) { margin-right: -2px; }
   .clear {
     display: inline-flex; align-items: center; gap: 6px; border: 0; background: none; padding: 9px 6px;
     font-size: var(--step--1); font-weight: 500; color: var(--mute);
