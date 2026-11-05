@@ -5,7 +5,7 @@ interface Props { entry: CollectionEntry<'work'> }
 const { entry } = Astro.props;
 const d = entry.data;
 ---
-<a class="g reveal" href={`/work/${entry.id}`} data-accent={d.color} data-domains={d.domains.join('|')} data-types={d.workTypes.join('|')} style={`--c:${d.color}`}>
+<a class="g reveal" href={`/work/${entry.id}`} data-accent={d.color} data-domains={d.domains.join('|')} data-types={d.workTypes.join('|')} style={`--c:${d.color}; view-transition-name: card-${entry.id.replace(/\//g, '-')}`}>
   <div class="frame" style={`view-transition-name: cover-${entry.id.replace(/\//g, '-')}`}>
     <Image src={d.cover} alt={d.coverAlt} widths={[400, 700, 1000]} sizes="(max-width: 760px) 92vw, 30vw" loading="lazy" style={`object-position:${d.coverPosition}`} />
   </div>
@@ -24,5 +24,4 @@ const d = entry.data;
   .dot { width: 10px; height: 10px; border-radius: 3px; background: var(--c); transition: transform var(--t-med) var(--ease-out), border-radius var(--t-med); }
   .g:hover .dot, .g:focus-visible .dot { transform: rotate(45deg) scale(1.15); border-radius: 2px; }
   p { margin-top: 4px; color: var(--mute); font-size: var(--step--1); line-height: 1.45; max-width: 40ch; }
-  :global([data-filter]) .g:not(.match) { opacity: 0.25; filter: saturate(0.1); }
 </style>

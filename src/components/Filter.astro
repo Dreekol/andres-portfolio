@@ -17,49 +17,73 @@ const { items, attr, counts, target, label, hidden = false, id } = Astro.props;
       {d}<span class="n" aria-label={`${counts[d]} projects`}>{counts[d]}</span>
     </button>
   ))}
+  <button type="button" class="clear" hidden>
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4.5 4.5 7 7m0-7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    Show all
+  </button>
   <span class="status visually-hidden" aria-live="polite"></span>
 </div>
 
 <style>
-  .filter { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
   .filter[hidden] { display: none; }
   .n { font-size: 11px; font-variant-numeric: tabular-nums; opacity: 0.55; margin-left: 2px; }
+  .clear {
+    display: inline-flex; align-items: center; gap: 6px; border: 0; background: none; padding: 9px 6px;
+    font-size: var(--step--1); font-weight: 500; color: var(--mute);
+    text-decoration: underline; text-underline-offset: 0.22em; text-decoration-thickness: 1px;
+  }
+  .clear[hidden] { display: none; }
+  .clear:hover { color: var(--ink); }
+  .clear svg { width: 14px; height: 14px; }
 </style>
 
 <script>
-  // Hovering a chip previews which projects match; clicking pins the filter.
+  // Selecting a chip shows only the matching projects; selecting it again (or "Show all") brings everything back.
+  // The reflow is animated with a same-document view transition where supported.
   document.querySelectorAll<HTMLElement>('[data-filter-for]').forEach((group) => {
     const attr = group.dataset.attr!;
     const targets = document.querySelectorAll<HTMLElement>(group.dataset.filterFor!);
     const chips = group.querySelectorAll<HTMLButtonElement>('[data-value]');
+    const clear = group.querySelector<HTMLButtonElement>('.clear')!;
     const status = group.querySelector('.status')!;
-    let pinned: string | null = null;
+    let active: string | null = null;
 
-    const apply = (value: string | null) => {
+    const render = () => {
+      let total = 0;
       targets.forEach((t) => {
-        if (!value) { t.removeAttribute('data-filter'); return; }
-        t.dataset.filter = value;
-        t.querySelectorAll<HTMLElement>(`[data-${attr}]`).forEach((el) => {
-          el.classList.toggle('match', (el.dataset[attr] ?? '').split('|').includes(value));
+        const items = t.querySelectorAll<HTMLElement>(`[data-${attr}]`);
+        let shown = 0;
+        items.forEach((el) => {
+          const match = !active || (el.dataset[attr] ?? '').split('|').includes(active);
+          el.toggleAttribute('data-out', !match);
+          if (match) shown++;
         });
+        total += shown;
+        if (active) t.dataset.filter = active; else t.removeAttribute('data-filter');
+        t.dataset.count = String(shown);
+        // Hide a whole section when nothing in it matches
+        const section = t.closest('section');
+        if (section) section.toggleAttribute('data-empty', shown === 0);
       });
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.value === active)));
+      clear.hidden = !active;
+      status.textContent = active ? `Showing ${total} ${active} project${total === 1 ? '' : 's'}` : 'Showing all projects';
     };
-    const reset = () => {
-      pinned = null;
-      chips.forEach((c) => c.setAttribute('aria-pressed', 'false'));
-      apply(null);
+
+    const set = (value: string | null) => {
+      active = value;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const doc = document as Document & { startViewTransition?: (cb: () => void) => unknown };
+      if (doc.startViewTransition && !reduce) {
+        document.documentElement.classList.add('filtering');
+        const vt = doc.startViewTransition(render) as { finished: Promise<void> };
+        vt.finished.finally(() => document.documentElement.classList.remove('filtering'));
+      } else render();
     };
-    group.addEventListener('filter:reset', reset);
-    chips.forEach((chip) => {
-      const v = chip.dataset.value!;
-      chip.addEventListener('pointerenter', () => { if (!pinned) apply(v); });
-      chip.addEventListener('pointerleave', () => apply(pinned));
-      chip.addEventListener('click', () => {
-        pinned = pinned === v ? null : v;
-        chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.value === pinned)));
-        apply(pinned);
-        status.textContent = pinned ? `Highlighting ${pinned} projects` : 'Showing all projects';
-      });
-    });
+
+    chips.forEach((chip) => chip.addEventListener('click', () => set(active === chip.dataset.value ? null : chip.dataset.value!)));
+    clear.addEventListener('click', () => { set(null); chips[0]?.focus(); });
+    group.addEventListener('filter:reset', () => { active = null; render(); });
   });
 </script>

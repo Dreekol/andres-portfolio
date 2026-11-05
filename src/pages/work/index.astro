@@ -65,6 +65,7 @@ entries.filter((e) => e.data.parent || !childCount(e.id)).forEach((e) => e.data.
 
   .label { font-size: var(--step-2); font-weight: 550; letter-spacing: -0.025em; margin-bottom: 20px; }
   .featured { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.7vw, 24px); }
+  .featured[data-count='1'] :global(.tile) { grid-column: 1 / -1; }
   .more { margin-top: clamp(80px, 9vw, 128px); }
   .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 3vw, 44px) clamp(16px, 2vw, 28px); }
   @media (max-width: 960px) { .featured { grid-template-columns: 1fr; } .gallery { grid-template-columns: repeat(2, 1fr); } }

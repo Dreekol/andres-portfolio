@@ -113,8 +113,6 @@ const grade = wcagGrade(ratio);
   .tile:hover .shot :global(img), .tile:focus-visible .shot :global(img) { transform: translateY(0); box-shadow: 0 -2px 0 rgba(255, 255, 255, 0.08), 0 40px 70px -24px rgba(0, 0, 0, 0.6); }
   .tile:hover .go, .tile:focus-visible .go { opacity: 1; transform: none; }
 
-  /* Domain filter states, driven from the homepage chips */
-  :global(.tiles[data-filter]) .tile:not(.match) { opacity: 0.28; filter: saturate(0.2); transform: scale(0.985); }
 
   @media (max-width: 760px) {
     .tile { min-height: 440px; }

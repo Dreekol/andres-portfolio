@@ -127,6 +127,14 @@ input, textarea { caret-color: var(--accent); }
   .reveal { animation: none !important; }
 }
 
+/* ───────────── Filtering ───────────── */
+[data-out] { display: none !important; }
+section[data-empty] { display: none; }
+html.filtering::view-transition-old(root), html.filtering::view-transition-new(root) { animation: none; }
+html.filtering::view-transition-group(*) { animation-duration: 520ms; }
+::view-transition-old(*):only-child { animation: vt-fade-out 220ms var(--ease-in-out) both; }
+::view-transition-new(*):only-child { animation: vt-rise-in 420ms var(--ease-out) both; }
+
 /* ───────────── Grid overlay (press G) ───────────── */
 .grid-overlay {
   position: fixed; inset: 0; z-index: 90; pointer-events: none;

@@ -12,7 +12,7 @@ const childCount = (id: string) => entries.filter((e) => e.data.parent === id).l
 const featured = all.filter((e) => e.data.featured);
 const gallery = all.filter((e) => !e.data.featured).slice(0, 6);
 const counts: Record<string, number> = {};
-all.forEach((e) => e.data.domains.forEach((d) => (counts[d] = (counts[d] ?? 0) + 1)));
+[...featured, ...gallery].forEach((e) => e.data.domains.forEach((d) => (counts[d] = (counts[d] ?? 0) + 1)));
 const sizes = ['wide', 'narrow', 'narrow', 'wide'] as const;
 ---
 <Base>
@@ -87,6 +87,9 @@ const sizes = ['wide', 'narrow', 'narrow', 'wide'] as const;
   .featured { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(14px, 1.7vw, 24px); }
   .featured :global(.tile.wide) { grid-column: span 7; }
   .featured :global(.tile.narrow) { grid-column: span 5; }
+  /* When filtered, matching tiles share the row evenly */
+  .featured[data-filter] :global(.tile) { grid-column: span 6; }
+  .featured[data-count='1'] :global(.tile) { grid-column: 1 / -1; }
 
   .selected { margin-top: clamp(96px, 11vw, 160px); }
   .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: clamp(28px, 3vw, 40px); }
