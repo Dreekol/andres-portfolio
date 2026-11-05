@@ -1,21 +1,38 @@
 ---
-title: A step-by-step new account setup
+title: A six-step account setup and quote for commercial trucking insurance
 client: Intact Insurance
-summary: A guided, multi-step account setup flow.
+summary: The flow brokers use in Intact’s Specialty360 portal to open a commercial trucking account and quote coverage for its owner-operators and contract drivers.
 order: 15
 domains: [Insurance]
 workTypes: [Customer-facing products]
-kind: Onboarding flow
+kind: Account setup · Quoting
 role: UX/UI designer
-scope: [Onboarding flow]
+scope: [Account setup, Eligibility, Product selection, Quoting]
 color: "#B91C1C"
 colorName: Intact Red
 cover: ../../assets/work/intact/setup-1.png
-coverAlt: First step of the new account setup flow
+coverAlt: First step of the new account setup flow, with the six steps listed on the left
 ---
 import Figure from '../../components/Figure.astro';
+import s2 from '../../assets/work/intact/setup-2.png';
 import s3 from '../../assets/work/intact/setup-3.png';
+import s4 from '../../assets/work/intact/setup-4.png';
+import s5 from '../../assets/work/intact/setup-5.png';
 
-{/* TODO(Andrés): add a short description of your role and the problem. */}
+{/* TODO(Andrés): add the problem in your words, the team and any outcomes. */}
 
-<Figure src={s3} alt="New account setup, step three" caption="Step three of the setup flow." tall />
+I designed the new account setup flow brokers use to bring a trucking client to Intact and quote coverage. It splits a long application into six steps (basic info, motor carrier, eligibility, product, quote and summary), with the steps listed down the left and Save and Exit always in reach.
+
+**Look the client up instead of retyping them.** On step 2 the broker enters the carrier’s USDOT number and the flow pulls in the company name and address. The broker of record and sales rep arrive pre-filled on step 1.
+
+<Figure src={s2} alt="Step two: a USDOT number lookup returns the carrier’s name and address, above the contact fields" caption="Step two: a USDOT lookup fills in the carrier." />
+
+**Ask in the broker’s words.** Each section opens with a plain question, such as “Help us find your client!” or “What do your drivers haul?” Eligibility covers driver affiliation, commodities, hazardous materials and loss history for the current period and three prior years.
+
+<Figure src={s3} alt="Step three: yes or no questions on driver affiliation, a commodities picker, a hazardous materials question and a loss history table" caption="Step three: eligibility, from driver affiliation to loss history." tall />
+
+**Shape the quote around the fleet.** On step 4 the broker picks occupational accident, non-trucking liability or vehicle physical damage, enters owner-operators and contract drivers by state, and splits the fleet by equipment type. Step 5 sets the limits and benefits for each product.
+
+<Figure src={s4} alt="Step four: product checkboxes, owner-operator and contract-driver counts by state, and an equipment percentage table" caption="Step four: products, drivers and equipment." tall />
+
+<Figure src={s5} alt="Step five: benefit and limit options for occupational accident and non-trucking liability" caption="Step five: limits and benefits for each product." tall />
