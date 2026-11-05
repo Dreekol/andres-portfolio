@@ -12,6 +12,6 @@ export const site = {
     'Andrés Velasco is a senior UX/UI and brand designer in Saint Paul, MN, helping teams make complicated things feel simple, from identity to interface.',
 };
 
-export const domains = ['Healthcare', 'Insurance', 'Agriculture', 'Public sector', 'Manufacturing', 'HR & Learning'] as const;
+export const domains = ['Healthcare', 'Insurance', 'Agriculture', 'Public sector', 'Manufacturing', 'Financial services', 'Design & creative', 'HR & Learning'] as const;
 
 export const workTypes = ['Customer-facing products', 'Internal tools', 'Websites', 'Design systems', 'Brand identity', 'Data visualization', 'Research'] as const;

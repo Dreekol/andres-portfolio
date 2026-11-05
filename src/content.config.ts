@@ -21,7 +21,7 @@ const work = defineCollection({
       summary: z.string(),
       featured: z.boolean().default(false),
       order: z.number(),
-      domains: z.array(z.enum(['Healthcare', 'Insurance', 'Agriculture', 'HR & Learning', 'Public sector', 'Manufacturing'])),
+      domains: z.array(z.enum(['Healthcare', 'Insurance', 'Agriculture', 'HR & Learning', 'Public sector', 'Manufacturing', 'Financial services', 'Design & creative'])),
       /** What kind of work, shown as the tile tag */
       kind: z.string(),
       role: z.string(),
