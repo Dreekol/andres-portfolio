@@ -3,7 +3,6 @@
 // Each row links straight to its initiative (or to the case study for single-project clients).
 import { Image } from 'astro:assets';
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { hexToRgb, contrast, wcagGrade } from '../lib/color';
 
 interface Props {
   entry: CollectionEntry<'work'>;
@@ -20,9 +19,6 @@ const children = (await getCollection('work')).filter((e) => e.data.parent === s
 const rows = children.length
   ? children.map((c) => ({ href: `/work/${c.id}`, name: c.data.name ?? c.data.title, types: c.data.workTypes, status: c.data.status }))
   : [{ href: `/work/${slug}`, name: d.name ?? d.kind, types: d.workTypes, status: d.status }];
-const [r, g, b] = hexToRgb(d.color);
-const ratio = contrast(d.color, '#ffffff');
-const grade = wcagGrade(ratio);
 ---
 <article
   class:list={['tile', 'reveal', { hub: children.length > 0 }]}
@@ -39,15 +35,6 @@ const grade = wcagGrade(ratio);
         <span class="wordmark">{d.client}</span>
       )}
     </a>
-    <div class="swatch" aria-label={`${d.colorName}, ${d.color}`}>
-      <span class="chip-c" aria-hidden="true"></span>
-      <span class="hex">{d.color}</span>
-      <span class="spec" aria-hidden="true">
-        <span>{d.colorName}</span>
-        <span>RGB {r} {g} {b}</span>
-        <span>White text {ratio.toFixed(1)}:1 · {grade}</span>
-      </span>
-    </div>
   </div>
 
   <h3><a href={`/work/${slug}`}>{d.title}</a></h3>
@@ -102,7 +89,7 @@ const grade = wcagGrade(ratio);
 
   h3 { margin-top: clamp(28px, 3vw, 40px); font-size: var(--step-2); font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; max-width: 22ch; }
   h3 a { text-decoration: none; outline: none; }
-  /* Stretched link: the whole card opens the client page; rows, logo and swatch sit above it */
+  /* Stretched link: the whole card opens the client page; rows and logo sit above it */
   h3 a::after { content: ''; position: absolute; inset: 0; z-index: 0; border-radius: inherit; }
   .tile:has(h3 a:focus-visible) { outline: 2px solid var(--focus); outline-offset: 4px; }
   .top, .index, .summary { position: relative; z-index: 1; }
@@ -136,30 +123,8 @@ const grade = wcagGrade(ratio);
   .row:hover .go, .row:focus-visible .go { background: #fff; color: var(--c); }
   .row:hover .go svg, .row:focus-visible .go svg { transform: translateX(2px); }
 
-  /* Pantone-style chip; its colour + accessibility spec unfolds beneath on hover/focus */
-  .swatch {
-    position: relative; flex: none; display: flex; align-items: center; gap: 8px;
-    padding: 5px 10px 5px 5px; border-radius: 9px; background: #fff; color: var(--ink);
-    font-size: 12px; font-weight: 550; font-variant-numeric: tabular-nums; letter-spacing: 0.01em;
-    box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.45);
-    transition: border-radius var(--t-med) var(--ease-out);
-  }
-  .chip-c { width: 20px; height: 20px; border-radius: 5px; background: var(--c); }
-  .hex { text-transform: uppercase; }
-  .spec {
-    position: absolute; right: 0; top: calc(100% - 6px); z-index: 3; min-width: 100%;
-    display: grid; gap: 3px; padding: 12px 12px 10px; white-space: nowrap;
-    background: #fff; color: var(--ink-2); border-radius: 0 0 9px 9px; font-weight: 500;
-    box-shadow: 0 14px 24px -14px rgba(0, 0, 0, 0.5);
-    clip-path: inset(0 0 100% 0); opacity: 0.6;
-    transition: clip-path var(--t-med) var(--ease-out), opacity var(--t-fast);
-  }
-  .spec span:first-child { color: var(--ink); font-weight: 600; }
-  .swatch:hover .spec, .tile:focus-within .swatch .spec, .top:hover .spec { clip-path: inset(0 0 0 0); opacity: 1; }
-  .swatch:hover, .top:hover .swatch { border-radius: 9px 9px 0 9px; }
 
   @media (max-width: 760px) {
-    .swatch { display: none; }
     .plate { height: 64px; padding: 0 18px; }
     .plate :global(.logo) { height: 32px; }
     .row { grid-template-columns: minmax(0, 1fr) 30px; }
