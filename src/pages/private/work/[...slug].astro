@@ -1,0 +1,47 @@
+---
+// Protected companion pages for case studies: /private/work/<case-study-id>.
+// Content comes from src/data/protected.ts; images live in public/private/work/… and are only served through the gate (middleware.ts).
+import { getEntry } from 'astro:content';
+import Private from '../../../layouts/Private.astro';
+import F from '../../../components/PrivateFigure.astro';
+import { protectedWork } from '../../../data/protected';
+
+export async function getStaticPaths() {
+  return Object.keys(protectedWork).map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params as { slug: string };
+const page = protectedWork[slug];
+const entry = await getEntry('work', slug);
+if (!entry) throw new Error(`protected.ts refers to missing case study: ${slug}`);
+const d = entry.data;
+const label = d.name ? `${d.name} case study` : `${d.client} case study`;
+---
+<Private
+  title={page.title}
+  client={d.client}
+  color={d.color}
+  back={{ href: `/work/${slug}`, label }}
+  intro={page.intro}
+>
+  {page.sections.map((s) => (
+    <>
+      {s.heading && <h2>{s.heading}</h2>}
+      {s.figures.map((f) => (
+        f.images.length === 1
+          ? <F src={f.images[0].src} width={f.images[0].width} height={f.images[0].height} alt={f.images[0].alt} caption={f.caption} />
+          : <div class="pair">
+              {f.images.map((im) => <F src={im.src} width={im.width} height={im.height} alt={im.alt} />)}
+              {f.caption && <p class="pair-cap">{f.caption}</p>}
+            </div>
+      ))}
+    </>
+  ))}
+</Private>
+
+<style>
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; margin-block: clamp(28px, 4vw, 48px); }
+  .pair :global(.fig) { margin: 0; }
+  .pair-cap { grid-column: 1 / -1; margin: 0 !important; color: var(--mute) !important; font-size: var(--step--1) !important; }
+  @media (max-width: 700px) { .pair { grid-template-columns: 1fr; } }
+</style>

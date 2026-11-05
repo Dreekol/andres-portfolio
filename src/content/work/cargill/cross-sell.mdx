@@ -18,8 +18,8 @@ coverAlt: Account view for a sample bakery customer showing a contract snapshot 
 coverPosition: top center
 ---
 import Figure from '../../../components/Figure.astro';
+import ProtectedNote from '../../../components/ProtectedNote.astro';
 import contracts from '../../../assets/work/cargill/cross-sell-contracts.png';
-import company from '../../../assets/work/cargill/cross-sell.png';
 
 {/* TODO(Andrés): add the problem, your role and the decisions behind these screens. */}
 
@@ -31,4 +31,4 @@ import company from '../../../assets/work/cargill/cross-sell.png';
 
 **A structured company record.** Company information, sold-to and bill-to details live in one expandable form.
 
-<Figure src={company} alt="Expanded company information form with sold-to and bill-to sections" caption="Company details, expanded." tall />
+<ProtectedNote href="/private/work/cargill/cross-sell" title="Cross Sell screens" text="The company details view." />

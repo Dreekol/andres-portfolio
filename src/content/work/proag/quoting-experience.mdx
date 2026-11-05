@@ -18,12 +18,11 @@ coverAlt: Evaluation summary listing 38 documented items by severity
 coverPosition: left center
 ---
 import Figure from '../../../components/Figure.astro';
+import ProtectedNote from '../../../components/ProtectedNote.astro';
 import methods from '../../../assets/work/proag/q-methods.jpg';
 import heuristics from '../../../assets/work/proag/q-heuristics.jpg';
 import severity from '../../../assets/work/proag/q-severity.jpg';
 import summary from '../../../assets/work/proag/q-summary.jpg';
-import quoter from '../../../assets/work/proag/q-quoter-research.jpg';
-import printout from '../../../assets/work/proag/q-printout-research.jpg';
 
 Quoting was the biggest pain point agents described, so we moved from strategy to the quoter itself, using three methods of increasing fidelity.
 
@@ -43,10 +42,8 @@ We walked through the “create a quote” flow and graded it against Jakob Niel
 
 Building on earlier concepts, we made a low to mid-fidelity prototype with two landing-page variants and a customer detail page, applied the design system, and reviewed it with 3 agents and 3 stakeholders. We did the same for redesigned printout summaries.
 
-<Figure src={quoter} alt="Quoter research summary: positive feedback on look and feel and on streamlined navigation, mixed feedback on customer versus quote orientation" caption="Quoter concepts: what agents and stakeholders said." />
-
-<Figure src={printout} alt="Printout research summary: positive feedback on formatting, mixed feedback on which summaries are useful, and support for a live quote preview" caption="Printouts: agents differ, which pointed to the need for more personas." />
-
 ## What we learned
 
 Agents responded well to the cleaner look and consolidated navigation. Where feedback split, it split by how each agent works, which showed ProAg needed more than one agent persona before going further.
+
+<ProtectedNote href="/private/work/proag/quoting-experience" title="Quoting research findings" text="What agents and stakeholders said about each concept." />

@@ -19,10 +19,9 @@ coverAlt: Contract pricing screen with status, dates and a pricing table
 coverPosition: top left
 ---
 import Figure from '../../../components/Figure.astro';
+import ProtectedNote from '../../../components/ProtectedNote.astro';
 import Pair from '../../../components/Pair.astro';
 import pricing from '../../../assets/work/healthpartners/pricing.jpg';
-import contract from '../../../assets/work/healthpartners/contract.jpg';
-import fee from '../../../assets/work/healthpartners/fee-schedule.jpg';
 
 ## The problem
 
@@ -36,11 +35,11 @@ HealthPartners’ Specialty Pharmacy Network contracts directly with more than 2
 
 <Figure src={pricing} alt="Pricing screen within a contract, with status, effective dates and a pricing table" caption="Pricing lives inside the contract it belongs to." />
 
-<Pair a={contract} aAlt="Contract detail screen" b={fee} bAlt="Fee schedule screen" caption="Contracts and fee schedules." />
-
 **Tested early in mid-fidelity**, so stakeholders could react before development, while issues were still cheap to fix.
 
 **Designed for accessibility from the start**, following guidelines so every user could work in the tool.
+
+<ProtectedNote href="/private/work/healthpartners/pharmacy-contracting" title="Pharmacy contracting screens" text="Contract detail and fee schedules." />
 
 ## Result
 

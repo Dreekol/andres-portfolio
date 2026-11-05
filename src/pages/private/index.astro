@@ -1,10 +1,17 @@
 ---
+import { getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { protectedWork } from '../../data/protected';
 // Landing page after unlocking without a specific destination. Gated by middleware.ts.
+const generated = await Promise.all(Object.entries(protectedWork).map(async ([slug, p]) => {
+  const d = (await getEntry('work', slug))!.data;
+  return { href: `/private/work/${slug}`, client: d.client, title: p.title, order: d.order };
+}));
 const items = [
-  { href: '/private/holmes-sage-workshop', client: 'Holmes Corporation', title: 'SAGE portal workshop analysis' },
-  { href: '/private/aqui-mas-frescos', client: 'Cargill', title: 'Aquí Más Frescos working diagrams' },
-];
+  { href: '/private/holmes-sage-workshop', client: 'Holmes Corporation', title: 'SAGE portal workshop analysis', order: 99 },
+  { href: '/private/aqui-mas-frescos', client: 'Cargill', title: 'Aquí Más Frescos working diagrams', order: 0 },
+  ...generated,
+].sort((a, b) => a.client.localeCompare(b.client) || a.title.localeCompare(b.title));
 ---
 <Base title="Protected work" description="Password-protected client work." noindex>
   <section class="wrap pi">

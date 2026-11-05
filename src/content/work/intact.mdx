@@ -14,10 +14,8 @@ cover: ../../assets/work/intact/setup-1.png
 coverAlt: First step of the new account setup flow, with the six steps listed on the left
 ---
 import Figure from '../../components/Figure.astro';
+import ProtectedNote from '../../components/ProtectedNote.astro';
 import s2 from '../../assets/work/intact/setup-2.png';
-import s3 from '../../assets/work/intact/setup-3.png';
-import s4 from '../../assets/work/intact/setup-4.png';
-import s5 from '../../assets/work/intact/setup-5.png';
 
 {/* TODO(Andrés): add the problem in your words, the team and any outcomes. */}
 
@@ -29,10 +27,6 @@ I designed the new account setup flow brokers use to bring a trucking client to 
 
 **Ask in the broker’s words.** Each section opens with a plain question, such as “Help us find your client!” or “What do your drivers haul?” Eligibility covers driver affiliation, commodities, hazardous materials and loss history for the current period and three prior years.
 
-<Figure src={s3} alt="Step three: yes or no questions on driver affiliation, a commodities picker, a hazardous materials question and a loss history table" caption="Step three: eligibility, from driver affiliation to loss history." tall />
-
 **Shape the quote around the fleet.** On step 4 the broker picks occupational accident, non-trucking liability or vehicle physical damage, enters owner-operators and contract drivers by state, and splits the fleet by equipment type. Step 5 sets the limits and benefits for each product.
 
-<Figure src={s4} alt="Step four: product checkboxes, owner-operator and contract-driver counts by state, and an equipment percentage table" caption="Step four: products, drivers and equipment." tall />
-
-<Figure src={s5} alt="Step five: benefit and limit options for occupational accident and non-trucking liability" caption="Step five: limits and benefits for each product." tall />
+<ProtectedNote href="/private/work/intact" title="Account setup, steps three to five" text="Eligibility, products and quoting." />

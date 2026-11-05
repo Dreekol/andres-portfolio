@@ -19,9 +19,8 @@ coverAlt: Data visualization usage guidelines from the design system
 coverPosition: top center
 ---
 import Figure from '../../../components/Figure.astro';
+import ProtectedNote from '../../../components/ProtectedNote.astro';
 import Pair from '../../../components/Pair.astro';
-import vstyle from '../../../assets/work/cargill/dataviz-style.jpg';
-import vtypes from '../../../assets/work/cargill/dataviz-types.jpg';
 import vusage from '../../../assets/work/cargill/dataviz-usage.jpg';
 
 ## The problem
@@ -38,9 +37,9 @@ Cargill teams around the world built products that looked and behaved differentl
 
 **Wrote it down so it scales.** I documented my design choices against chart-usage best practice and added components so future reports stay consistent.
 
-<Pair a={vstyle} aAlt="Data visualization style guidelines" b={vusage} bAlt="Data visualization usage guidelines" caption="Data-viz guidance in the design system, adapted from established best practice." />
+<Figure src={vusage} alt="Data visualization usage guidelines" caption="Data-viz usage guidance in the design system, adapted from established best practice." />
 
-<Figure src={vtypes} alt="Chart types reference: when to use each chart" caption="Chart types and when to use them." tall />
+<ProtectedNote href="/private/work/cargill/design-system" title="Data-visualization standards" text="Style guidelines and the chart-type reference." />
 
 ## Result
 

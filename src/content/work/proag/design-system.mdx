@@ -18,16 +18,11 @@ coverAlt: ProAg design system library with onboarding, changelog, foundations an
 coverPosition: center right
 ---
 import Figure from '../../../components/Figure.astro';
-import library from '../../../assets/work/proag/library.png';
-import cadence from '../../../assets/work/proag/cadence.png';
-import language from '../../../assets/work/proag/language.png';
+import ProtectedNote from '../../../components/ProtectedNote.astro';
 import principles from '../../../assets/work/proag/ds-principles.jpg';
 import palette from '../../../assets/work/proag/ds-palette.jpg';
 import type from '../../../assets/work/proag/ds-type.jpg';
 import icons from '../../../assets/work/proag/ds-icons.jpg';
-import states from '../../../assets/work/proag/ds-states.jpg';
-import docs from '../../../assets/work/proag/ds-docs.jpg';
-import implementation from '../../../assets/work/proag/ds-implementation.jpg';
 
 ## The problem
 
@@ -55,23 +50,13 @@ The UX strategy pointed to one cohesive experience across ProAg’s tools. Its s
 
 ## Components and documentation
 
-<Figure src={library} alt="Design system library: developer onboarding, what’s new changelog, foundations and components" caption="The library: Figma onboarding, changelog and monthly updates, foundations and components." />
-
-<Figure src={states} alt="Button states, interactions and variations laid out in a grid" caption="States, interactions and variations for every component." />
-
-<Figure src={docs} alt="Component documentation for text fields and dropdowns, with specs and usage" caption="Each component documented with specs and usage." />
-
 ## How teams use it
 
 **Built the operating model around the components.** I organized ProAg’s Figma instance and created the documentation, ceremonies, templates and onboarding material for people joining.
 
-<Figure src={cadence} alt="Working cadence diagram: planning, design, spec and document, negotiate, handoff, develop, QA, with revise loops" caption="The working cadence, from planning to QA. Avatars stand in for team members." />
-
 **Gave design and development one vocabulary.** Defining components in shared chunks of information created a language between teams, keeping components and products consistent.
 
-<Figure src={implementation} alt="Implementation diagram: a component in Figma, its inspected properties, and the matching code" caption="From Figma component to code." />
-
-<Figure src={language} alt="Button and icon button specs across two variant themes, with sizing and token annotations" caption="Component specs across variant themes." />
+<ProtectedNote href="/private/work/proag/design-system" title="Design system library and specs" text="The library, component specs, the working cadence and code handoff." />
 
 ## Result
 

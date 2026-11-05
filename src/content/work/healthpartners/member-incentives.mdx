@@ -18,11 +18,9 @@ coverAlt: Member incentives list with status tags, filters and export
 coverPosition: top left
 ---
 import Figure from '../../../components/Figure.astro';
+import ProtectedNote from '../../../components/ProtectedNote.astro';
 import Pair from '../../../components/Pair.astro';
 import list from '../../../assets/work/healthpartners/incentives.png';
-import enroll from '../../../assets/work/healthpartners/incentives-enroll.png';
-import member from '../../../assets/work/healthpartners/incentives-member.png';
-import reports from '../../../assets/work/healthpartners/incentives-reports.png';
 
 {/* TODO(Andrés): add the problem in your words, your role and any outcomes. */}
 
@@ -34,6 +32,4 @@ import reports from '../../../assets/work/healthpartners/incentives-reports.png'
 
 **A single enrollment form** capturing member identification and incentive details.
 
-<Pair a={enroll} aAlt="New enrollment form" b={member} bAlt="Member information view" caption="Enrolling a member, and the member record." />
-
-<Figure src={reports} alt="Incentive reports list" caption="Reports, filtered by type." />
+<ProtectedNote href="/private/work/healthpartners/member-incentives" title="Member incentives screens" text="Enrollment, the member record and reports." />
