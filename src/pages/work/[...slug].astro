@@ -47,6 +47,13 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
         )}
         <h1>{d.title}</h1>
         <p class="summary">{d.summary}</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>{d.role}</dd></div>
+          <div><dt>Scope</dt><dd>{d.scope.join(', ')}</dd></div>
+          {d.team && <div><dt>Worked with</dt><dd>{d.team}</dd></div>}
+          {d.tools.length > 0 && <div><dt>Tools</dt><dd>{d.tools.join(', ')}</dd></div>}
+          {host && <div><dt>Live</dt><dd><a href={d.liveUrl} rel="noopener">{host}&nbsp;↗</a></dd></div>}
+        </dl>
         {isPart && siblings.length > 1 && (
           <nav class="siblings" aria-label={`Other ${d.client} initiatives`}>
             {siblings.map((sib) => (
@@ -59,22 +66,18 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
 
     <div class="wrap">
       {isHub ? (
+        <>
         <section class="hub-cards" aria-label={`${d.client} initiatives`}>
           {children.map((c) => <InitiativeCard entry={c} />)}
         </section>
+        <p class="note">Client details are anonymized and all data shown is placeholder.</p>
+        </>
       ) : (
         <div class="cover" style={`view-transition-name: cover-${vt}`}>
           <Image src={d.cover} alt={d.coverAlt} widths={[640, 1000, 1400, 2000]} sizes="(max-width: 1440px) 92vw, 1300px" loading="eager" fetchpriority="high" />
         </div>
       )}
 
-      <dl class="facts">
-        <div><dt>Role</dt><dd>{d.role}</dd></div>
-        <div><dt>Scope</dt><dd>{d.scope.join(', ')}</dd></div>
-        {d.team && <div><dt>Worked with</dt><dd>{d.team}</dd></div>}
-        {d.tools.length > 0 && <div><dt>Tools</dt><dd>{d.tools.join(', ')}</dd></div>}
-        {host && <div><dt>Live</dt><dd><a href={d.liveUrl} rel="noopener">{host} ↗</a></dd></div>}
-      </dl>
 
       <div class="prose">
         <Content />
@@ -93,7 +96,8 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
 
 <style>
   .band { background: var(--c); color: #fff; padding-block: clamp(36px, 5vw, 64px) clamp(120px, 14vw, 200px); }
-  .band-inner { display: grid; gap: 14px; }
+  .band-inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .band-inner > * { min-width: 0; }
   .back {
     justify-self: start; display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
     font-size: var(--step--1); font-weight: 500; padding: 8px 14px 8px 10px; border-radius: 999px;
@@ -127,11 +131,15 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
   .cover { margin-top: clamp(-160px, -11vw, -96px); border-radius: var(--radius); overflow: hidden; background: var(--soft); box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.04); max-height: 78vh; }
   .cover :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
-  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0 32px; margin-top: clamp(32px, 4vw, 56px); border-top: 1px solid var(--line); }
-  .facts div { padding-block: 18px; border-bottom: 1px solid var(--line); }
-  dt { font-size: var(--step--1); color: var(--mute); margin-bottom: 4px; }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 0 32px; margin-top: clamp(20px, 2.4vw, 32px); border-top: 1px solid rgba(255, 255, 255, 0.28); max-width: 1180px; }
+  .facts div { padding-block: 14px 16px; }
+  dt { font-size: var(--step--1); color: color-mix(in srgb, #fff 72%, var(--c)); margin-bottom: 4px; }
+  dd { font-size: var(--step-0); }
+  @media (max-width: 560px) { .facts { grid-template-columns: 1fr 1fr; gap: 0 20px; } .facts div { padding-block: 10px 12px; } }
+  .note { margin-top: 14px; font-size: var(--step--1); color: var(--mute); }
   dd { font-weight: 500; line-height: 1.45; }
-  dd a { text-decoration-color: var(--c); text-decoration-thickness: 2px; }
+  dd a { color: #fff; text-decoration-color: rgba(255, 255, 255, 0.6); text-decoration-thickness: 1.5px; }
+  dd a:hover { text-decoration-color: #fff; }
 
   .prose { max-width: 1100px; margin: clamp(48px, 6vw, 88px) auto 0; }
   .prose :global(> :is(h2, p, ul, ol)) { max-width: 68ch; margin-inline: auto; }
