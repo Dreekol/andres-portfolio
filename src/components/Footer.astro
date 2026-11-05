@@ -1,5 +1,8 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { site } from '../data/site';
+const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
@@ -13,7 +16,7 @@ const year = new Date().getFullYear();
           <span data-label>Copy email</span>
         </button>
         <a class="pill pill--ghost" href={site.linkedin} rel="me noopener">LinkedIn</a>
-        <a class="pill pill--ghost" href="/about#experience">Experience</a>
+        {hasPdf ? <a class="pill pill--ghost" href={site.resumePdf} download>Download résumé</a> : <a class="pill pill--ghost" href="/about#experience">Experience</a>}
       </div>
     </div>
     <div class="meta">

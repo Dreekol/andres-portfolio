@@ -1,12 +1,29 @@
 ---
 import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import Base from '../layouts/Base.astro';
 import { site } from '../data/site';
 import { roles, skills, industries } from '../data/resume';
-const clients = ['Cargill', 'American National', 'HealthPartners', 'ProAg', 'Holmes Corporation / SHRM', 'Partners in Excellence', 'Revo Health / Twin Cities Orthopedics', 'Human Powered Health', 'Component Assembly Systems', 'Harris County Public Health', 'Intact Insurance', 'Raintree Resorts', 'Monte Zucker Photographic Education'];
+// Clients with work on this site link to it; the rest link to their own site, or stay plain when none exists.
+const clients: { name: string; href?: string; external?: boolean }[] = [
+  { name: 'Cargill', href: '/work/cargill' },
+  { name: 'American National', href: '/work/american-national' },
+  { name: 'HealthPartners', href: '/work/healthpartners' },
+  { name: 'ProAg', href: '/work/proag' },
+  { name: 'Harris County Public Health', href: '/work/harris-county' },
+  { name: 'Holmes Corporation / SHRM', href: '/work/holmes' },
+  { name: 'Partners in Excellence', href: '/work/partners-in-excellence' },
+  { name: 'Revo Health / Twin Cities Orthopedics', href: '/work/revo-health' },
+  { name: 'Component Assembly Systems', href: '/work/cas' },
+  { name: 'Intact Insurance', href: '/work/intact' },
+  { name: 'Next Level Partners', href: '/work/next-level-partners' },
+  { name: 'Human Powered Health', href: 'https://humanpoweredhealth.com/', external: true },
+  { name: 'Raintree Resorts', href: 'https://www.raintreevacationclub.com/', external: true },
+  { name: 'Monte Zucker Photographic Education' },
+];
 const tools = ['Figma', 'Adobe Creative Cloud', 'HTML & CSS', 'Astro', 'Claude Code', 'Power BI', 'Azure DevOps', 'Miro', 'SharePoint', 'Salesforce'];
 // Only offer the download once the PDF is actually in /public, so the button never 404s.
-const hasPdf = existsSync(new URL(`../../public${site.resumePdf}`, import.meta.url));
+const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
 ---
 <Base title="About" description="About Andrés Velasco, a senior UX/UI and brand designer in Saint Paul, MN with 15+ years across graphic design and product UX. Experience, skills and résumé.">
   <section class="wrap about">
@@ -30,8 +47,19 @@ const hasPdf = existsSync(new URL(`../../public${site.resumePdf}`, import.meta.u
       </ul>
     </div>
     <div>
-      <h2>Clients I’ve designed for</h2>
-      <ul class="tags">{clients.map((c) => <li>{c}</li>)}</ul>
+      <h2>Who I’ve worked with</h2>
+      <ul class="tags clients">
+        {clients.map((c) => (
+          <li>
+            {c.href ? (
+              <a href={c.href} {...(c.external ? { rel: 'noopener', target: '_blank' } : {})}>
+                {c.name}{c.external ? <span class="ext" aria-hidden="true">↗</span> : null}{c.external && <span class="visually-hidden"> (opens their website in a new tab)</span>}
+              </a>
+            ) : <span>{c.name}</span>}
+          </li>
+        ))}
+      </ul>
+      <p class="hint">Outlined names link to the work on this site; ↗ opens the organization’s own website.</p>
       <h2 class="mt">Tools</h2>
       <ul class="tags">{tools.map((c) => <li>{c}</li>)}</ul>
     </div>
@@ -85,7 +113,17 @@ const hasPdf = existsSync(new URL(`../../public${site.resumePdf}`, import.meta.u
   .list li:last-child { border-bottom: 1px solid var(--line); }
   .list b { color: var(--ink); font-weight: 600; display: block; }
   .tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-  .tags li { font-size: var(--step--1); padding: 8px 12px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line); }
+  /* Plain tags are filled and quiet; outlined tags are links */
+  .tags li { font-size: var(--step--1); padding: 8px 12px; border-radius: 10px; background: var(--soft); color: var(--ink-2); }
+  .clients li { padding: 0; background: none; }
+  .clients a, .clients span:not(.ext):not(.visually-hidden) { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 10px; }
+  .clients a { box-shadow: inset 0 0 0 1.5px #c9c9d0; }
+  .clients span:not(.ext):not(.visually-hidden) { background: var(--soft); }
+  .clients a { color: var(--ink); text-decoration: none; font-weight: 500; transition: background var(--t-fast) var(--ease-out), box-shadow var(--t-fast); }
+  .clients a:hover { background: var(--soft); box-shadow: inset 0 0 0 1px var(--ink); }
+  .clients span:not(.ext):not(.visually-hidden) { color: var(--ink-2); }
+  .ext { font-size: 0.9em; color: var(--mute); }
+  .hint { margin-top: 12px; font-size: var(--step--1); color: var(--mute); }
 
   /* Experience: the résumé, folded into About */
   .cv { margin-top: clamp(96px, 11vw, 160px); scroll-margin-top: 96px; }
