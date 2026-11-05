@@ -84,6 +84,8 @@ const { items, attr, counts, target, label, hidden = false, id } = Astro.props;
       chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.value === active)));
       clear.hidden = !active;
       status.textContent = active ? `Showing ${total} ${active} project${total === 1 ? '' : 's'}` : 'Showing all projects';
+      // Let other parts of the page (like the Other selected work note) reflect the active filter
+      document.dispatchEvent(new CustomEvent('work:filter', { detail: { active, group: group.id } }));
     };
 
     const set = (value: string | null) => {
@@ -100,5 +102,7 @@ const { items, attr, counts, target, label, hidden = false, id } = Astro.props;
     chips.forEach((chip) => chip.addEventListener('click', () => set(active === chip.dataset.value ? null : chip.dataset.value!)));
     clear.addEventListener('click', () => { set(null); chips[0]?.focus(); });
     group.addEventListener('filter:reset', () => { active = null; render(); });
+    // Clear from elsewhere on the page without moving focus back up to the chips
+    group.addEventListener('filter:clear', () => set(null));
   });
 </script>

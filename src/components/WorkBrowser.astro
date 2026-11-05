@@ -38,11 +38,18 @@ entries.filter((e) => e.data.parent || !childCount(e.id)).forEach((e) => e.data.
 
 <section class="wrap block more" aria-labelledby="sw-h">
   <div class="sw-head">
-    <h2 id="sw-h" class="label">Other selected work</h2>
+    <h2 id="sw-h" class="label" tabindex="-1">Other selected work</h2>
     <ul class="key" aria-label="Type of work key">
       {workTypes.filter((t) => rest.some((e) => e.data.workTypes.includes(t))).map((t) => <li><TypeMarker type={t} />{t}</li>)}
     </ul>
   </div>
+  <p class="now" hidden>
+    <span class="now-text"></span>
+    <button type="button" class="now-clear">
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4.5 4.5 7 7m0-7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Show all
+    </button>
+  </p>
   <WorkIndex entries={rest} />
 </section>
 
@@ -73,10 +80,37 @@ entries.filter((e) => e.data.parent || !childCount(e.id)).forEach((e) => e.data.
   .sw-head .label { margin-bottom: 0; }
   .key { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: var(--step--1); color: var(--ink-2); }
   .key li { display: inline-flex; align-items: center; gap: 7px; }
+  /* Shown above the list while a filter is on, so the state is visible without scrolling back to the chips */
+  .now { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin: 0 0 16px; padding: 10px 10px 10px 16px; border-radius: 12px; background: var(--soft); font-size: var(--step--1); color: var(--ink-2); }
+  .now[hidden] { display: none; }
+  .now :global(b) { color: var(--ink); font-weight: 600; }
+  .now-clear { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; border: 0; background: none; padding: 6px 8px; border-radius: 8px; font: inherit; font-weight: 500; color: var(--ink); text-decoration: underline; text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+  .now-clear:hover { background: #fff; }
+  .now-clear:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .now-clear svg { width: 14px; height: 14px; }
   @media (max-width: 960px) { .featured { grid-template-columns: 1fr; } }
 </style>
 
 <script>
+  // "Showing N <filter> projects" note above Other selected work
+  const now = document.querySelector<HTMLElement>('.now');
+  const list = document.querySelector<HTMLElement>('.more .tiles');
+  let activeGroup: string | null = null;
+  document.addEventListener('work:filter', (e) => {
+    const { active, group } = (e as CustomEvent<{ active: string | null; group: string }>).detail;
+    if (!now || !list) return;
+    if (!active) { if (activeGroup === group || !activeGroup) { now.hidden = true; activeGroup = null; } return; }
+    activeGroup = group;
+    const text = now.querySelector('.now-text')!;
+    text.replaceChildren('Filtered by ', Object.assign(document.createElement('b'), { textContent: active }));
+    now.hidden = false;
+  });
+  now?.querySelector('.now-clear')?.addEventListener('click', () => {
+    if (activeGroup) document.getElementById(activeGroup)?.dispatchEvent(new Event('filter:clear'));
+    // The button hides itself, so hand keyboard focus to the list heading
+    document.getElementById('sw-h')?.focus({ preventScroll: true });
+  });
+
   const sw = document.querySelector<HTMLElement>('.switch');
   if (sw) {
     const groups: Record<string, HTMLElement | null> = { industry: document.getElementById('f-industry'), type: document.getElementById('f-type') };
