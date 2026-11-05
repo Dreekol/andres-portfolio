@@ -32,34 +32,6 @@ const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
       <p>I’m a senior UX/UI and brand designer with more than 15 years in design and advertising. I started in graphic design, building identities, campaigns and event experiences, and grew into product design for organizations where the stakes are high and the rules are many: healthcare, insurance, agriculture and professional education.</p>
       <p>Since 2020 I’ve been a consultant at SDG (Solution Design Group). I partner with business leaders, product owners and developers to turn tangled workflows into tools people can use, and to give teams design systems that keep growing products consistent.</p>
       <p>I’m bilingual in English and Spanish, and I build strong working relationships quickly. I also build what I design: I was a web master long before “design engineer” was a title, and today I prototype and ship with code and AI tools.</p>
-      <p class="jump"><a href="#experience">Jump to experience</a></p>
-    </div>
-  </section>
-
-  <section class="wrap cols reveal" aria-label="How I work and who I’ve worked with">
-    <div>
-      <h2>How I work</h2>
-      <ul class="list">
-        <li><b>Start with the people doing the work.</b> Interviews, workshops and journey maps before screens.</li>
-        <li><b>Design the system, not just the screen.</b> Data models, components and documentation that outlast the project.</li>
-        <li><b>Agree with developers early.</b> Feasibility, QA and handoff are part of the design, not an afterthought.</li>
-        <li><b>Accessible by default.</b> Contrast, keyboard access and plain language from the first draft.</li>
-      </ul>
-    </div>
-    <div>
-      <h2>Who I’ve worked with</h2>
-      <ul class="tags clients">
-        {clients.map((c) => (
-          <li>
-            {c.href ? (
-              <a href={c.href} {...(c.external ? { rel: 'noopener', target: '_blank' } : {})}>
-                {c.name}{c.external ? <span class="ext" aria-hidden="true">↗</span> : null}{c.external && <span class="visually-hidden"> (opens their website in a new tab)</span>}
-              </a>
-            ) : <span>{c.name}</span>}
-          </li>
-        ))}
-      </ul>
-      <p class="hint">Outlined names link to the work on this site; ↗ opens the organization’s own website.</p>
     </div>
   </section>
 
@@ -93,6 +65,33 @@ const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
           </li>
         ))}
       </ol>
+    </div>
+  </section>
+
+  <section class="wrap cols reveal" aria-label="How I work and who I’ve worked with">
+    <div>
+      <h2>How I work</h2>
+      <ul class="list">
+        <li><b>Start with the people doing the work.</b> Interviews, workshops and journey maps before screens.</li>
+        <li><b>Design the system, not just the screen.</b> Data models, components and documentation that outlast the project.</li>
+        <li><b>Agree with developers early.</b> Feasibility, QA and handoff are part of the design, not an afterthought.</li>
+        <li><b>Accessible by default.</b> Contrast, keyboard access and plain language from the first draft.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Who I’ve worked with</h2>
+      <ul class="tags clients">
+        {clients.map((c) => (
+          <li>
+            {c.href ? (
+              <a href={c.href} {...(c.external ? { rel: 'noopener', target: '_blank' } : {})}>
+                {c.name}{c.external ? <span class="ext" aria-hidden="true">↗</span> : null}{c.external && <span class="visually-hidden"> (opens their website in a new tab)</span>}
+              </a>
+            ) : <span>{c.name}</span>}
+          </li>
+        ))}
+      </ul>
+      <p class="hint">Outlined names link to the work on this site; ↗ opens the organization’s own website.</p>
     </div>
   </section>
 </Base>
