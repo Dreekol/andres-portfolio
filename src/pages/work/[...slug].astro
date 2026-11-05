@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Lightbox from '../../components/Lightbox.astro';
+import InitiativeCard from '../../components/InitiativeCard.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('work');
@@ -16,14 +17,17 @@ export async function getStaticPaths() {
     const siblings = parentId ? kids(parentId) : [];
     let next = parentId ? siblings[siblings.findIndex((x) => x.id === entry.id) + 1] : undefined;
     if (!next) next = nextTop(parentId ?? entry.id);
-    return { params: { slug: entry.id }, props: { entry, next, parent, siblings } };
+    return { params: { slug: entry.id }, props: { entry, next, parent, siblings, children: kids(entry.id) } };
   });
 }
-const { entry, next, parent, siblings } = Astro.props;
+const { entry, next, parent, siblings, children } = Astro.props;
 const d = entry.data;
 const { Content } = await render(entry);
 const vt = entry.id.replace(/\//g, '-');
 const isPart = Boolean(parent);
+const isHub = children.length > 0;
+// Initiatives show their client's logo; client pages show their own
+const logo = d.logo ?? parent?.data.logo;
 const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
 ---
 <Base title={isPart ? `${d.client} · ${d.name}: ${d.title}` : `${d.client}: ${d.title}`} description={d.summary} accent={d.color}>
@@ -39,7 +43,7 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
             <ol><li><a href="/#work">Work</a></li><li><a href={`/work/${parent!.id}`}>{d.client}</a></li><li aria-current="page">{d.name}</li></ol>
           </nav>
         ) : (
-          <p class="client">{d.client}</p>
+          <p class="client">{logo ? <span class="plate"><Image src={logo} alt={d.client} height={44} densities={[1, 2]} loading="eager" /></span> : d.client}</p>
         )}
         <h1>{d.title}</h1>
         <p class="summary">{d.summary}</p>
@@ -54,9 +58,15 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
     </header>
 
     <div class="wrap">
-      <div class="cover" style={`view-transition-name: cover-${vt}`}>
-        <Image src={d.cover} alt={d.coverAlt} widths={[640, 1000, 1400, 2000]} sizes="(max-width: 1440px) 92vw, 1300px" loading="eager" fetchpriority="high" />
-      </div>
+      {isHub ? (
+        <section class="hub-cards" aria-label={`${d.client} initiatives`}>
+          {children.map((c) => <InitiativeCard entry={c} />)}
+        </section>
+      ) : (
+        <div class="cover" style={`view-transition-name: cover-${vt}`}>
+          <Image src={d.cover} alt={d.coverAlt} widths={[640, 1000, 1400, 2000]} sizes="(max-width: 1440px) 92vw, 1300px" loading="eager" fetchpriority="high" />
+        </div>
+      )}
 
       <dl class="facts">
         <div><dt>Role</dt><dd>{d.role}</dd></div>
@@ -94,6 +104,11 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
   .back svg { width: 15px; height: 15px; transition: transform var(--t-med) var(--ease-out); }
   .back:hover svg { transform: translateX(-3px); }
   .client { font-weight: 600; font-size: var(--step-1); }
+  .plate { display: inline-flex; align-items: center; height: 76px; padding: 0 22px; border-radius: 16px; background: #fff; box-shadow: 0 12px 28px -18px rgba(0, 0, 0, 0.55); }
+  .plate :global(img) { height: 40px; width: auto; }
+  .hub-cards { margin-top: clamp(-160px, -11vw, -96px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 24px); position: relative; z-index: 1; }
+  .hub-cards :global(.init) { box-shadow: 0 0 0 1px var(--line), 0 30px 60px -40px rgba(0, 0, 0, 0.35); }
+  @media (max-width: 720px) { .hub-cards { grid-template-columns: 1fr; } .plate { height: 60px; padding: 0 16px; } .plate :global(img) { height: 30px; } }
   .crumbs ol { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: var(--step-0); font-weight: 500; }
   .crumbs li + li::before { content: '/'; margin-right: 8px; opacity: 0.5; }
   .crumbs a { text-decoration: none; opacity: 0.8; }

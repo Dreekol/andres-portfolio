@@ -87,6 +87,7 @@ const grade = wcagGrade(ratio);
     transition: transform var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out);
   }
   .tile:hover { box-shadow: 0 30px 60px -36px color-mix(in srgb, var(--c) 80%, black); }
+  .tile { border-radius: var(--radius); }
 
   .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
   .plate {
@@ -100,12 +101,22 @@ const grade = wcagGrade(ratio);
   .plate:hover, .plate:focus-visible { transform: translateY(-2px) rotate(-1deg); box-shadow: 0 18px 32px -18px rgba(0, 0, 0, 0.6); }
 
   h3 { margin-top: clamp(28px, 3vw, 40px); font-size: var(--step-2); font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; max-width: 22ch; }
-  h3 a { text-decoration: none; }
-  h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.16em; }
+  h3 a { text-decoration: none; outline: none; }
+  /* Stretched link: the whole card opens the client page; rows, logo and swatch sit above it */
+  h3 a::after { content: ''; position: absolute; inset: 0; z-index: 0; border-radius: inherit; }
+  .tile:has(h3 a:focus-visible) { outline: 2px solid var(--focus); outline-offset: 4px; }
+  .top, .index, .summary { position: relative; z-index: 1; }
+  .summary { pointer-events: none; }
+  .index { pointer-events: none; }
+  .index ul, .count { pointer-events: auto; }
+  .tile { cursor: pointer; }
+  .tile:hover { transform: translateY(-3px); }
+  .tile:hover h3 a { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.16em; }
+  .tile:has(.row:hover):hover h3 a { text-decoration: none; }
   .summary { margin-top: 12px; color: var(--soft-on); max-width: 46ch; line-height: 1.5; }
 
   .index { margin-top: auto; padding-top: clamp(24px, 3vw, 36px); }
-  .count { font-size: var(--step--1); font-weight: 500; color: var(--soft-on); margin-bottom: 8px; }
+  .count { pointer-events: none; font-size: var(--step--1); font-weight: 500; color: var(--soft-on); margin-bottom: 8px; }
   ul { list-style: none; padding: 0; border-top: 1px solid var(--line-on); }
   li { border-bottom: 1px solid var(--line-on); }
   .row {
