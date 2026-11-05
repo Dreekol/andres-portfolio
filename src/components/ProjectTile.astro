@@ -44,7 +44,7 @@ const rows = children.length
     {children.length > 0 && <p class="count">{children.length} initiatives</p>}
     <ul>
       {rows.map((row) => (
-        <li>
+        <li data-types={row.types.join('|')}>
           <a class="row" href={row.href}>
             <span class="name">{row.name}</span>
             <span class="tags">

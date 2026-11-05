@@ -35,8 +35,11 @@ const work = defineCollection({
       colorName: z.string(),
       /** Client logo shown on the client tile (full colour, displayed on a white plate) */
       logo: image().optional(),
-      cover: image(),
-      coverAlt: z.string(),
+      /** Optional: initiatives without a screenshot yet show a typographic placeholder */
+      cover: image().optional(),
+      coverAlt: z.string().default(''),
+      /** Set false for public work, so the hub drops the "anonymized / placeholder data" note */
+      anonymized: z.boolean().default(true),
       /** CSS object-position for the cover crop on tiles */
       coverPosition: z.string().default('top center'),
     }),

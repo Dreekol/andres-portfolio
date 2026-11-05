@@ -66,6 +66,14 @@ const { items, attr, counts, target, label, hidden = false, id } = Astro.props;
           el.toggleAttribute('data-out', !match);
           if (match) shown++;
         });
+        // A hub tile lists its initiatives: show only the ones that match, and keep the count honest
+        t.querySelectorAll<HTMLElement>('.index').forEach((index) => {
+          const count = index.querySelector('.count');
+          if (count) {
+            const n = index.querySelectorAll('li:not([data-out])').length;
+            count.textContent = `${n} initiative${n === 1 ? '' : 's'}`;
+          }
+        });
         total += shown;
         if (active) t.dataset.filter = active; else t.removeAttribute('data-filter');
         t.dataset.count = String(shown);

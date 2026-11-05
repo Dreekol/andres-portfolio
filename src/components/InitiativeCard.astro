@@ -7,7 +7,11 @@ const d = entry.data;
 ---
 <a class="init reveal" href={`/work/${entry.id}`} style={`--c:${d.color}`}>
   <div class="frame" style={`view-transition-name: cover-${entry.id.replace('/', '-')}`}>
-    <Image src={d.cover} alt={d.coverAlt} widths={[480, 800, 1200]} sizes="(max-width: 760px) 92vw, 46vw" loading="lazy" style={`object-position:${d.coverPosition}`} />
+    {d.cover ? (
+      <Image src={d.cover} alt={d.coverAlt} widths={[480, 800, 1200]} sizes="(max-width: 760px) 92vw, 46vw" loading="lazy" style={`object-position:${d.coverPosition}`} />
+    ) : (
+      <span class="ph" aria-hidden="true">{d.liveUrl ? new URL(d.liveUrl).hostname.replace(/^www\./, '') : d.name ?? d.client}</span>
+    )}
     {d.status && <span class="status"><i aria-hidden="true"></i>{d.status}</span>}
   </div>
   <div class="body">
@@ -29,6 +33,7 @@ const d = entry.data;
   .init:hover, .init:focus-visible { box-shadow: 0 0 0 1.5px var(--c), 0 30px 50px -30px rgba(0, 0, 0, 0.3); transform: translateY(-3px); }
   .frame { position: relative; aspect-ratio: 16 / 10; background: color-mix(in srgb, var(--c) 12%, white); overflow: hidden; }
   .frame :global(img) { position: absolute; left: 7%; top: 10%; width: 86%; height: 100%; object-fit: cover; border-radius: 10px 10px 0 0; box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.35); transition: transform var(--t-slow) var(--ease-out); }
+  .ph { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; font-size: var(--step-1); font-weight: 600; letter-spacing: -0.02em; color: var(--c); }
   .init:hover .frame :global(img), .init:focus-visible .frame :global(img) { transform: translateY(-4%); }
   .status { position: absolute; left: 14px; top: 14px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; background: rgba(14, 14, 16, 0.78); color: #fff; padding: 5px 10px; border-radius: 999px; }
   .status i { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; }

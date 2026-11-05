@@ -25,9 +25,11 @@ const { entries } = Astro.props;
           <span class="go" aria-hidden="true">
             <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
-          <span class="preview" aria-hidden="true">
-            <Image src={d.cover} alt="" widths={[360, 640]} sizes="320px" loading="lazy" style={`object-position:${d.coverPosition}`} />
-          </span>
+          {d.cover && (
+            <span class="preview" aria-hidden="true">
+              <Image src={d.cover} alt="" widths={[360, 640]} sizes="320px" loading="lazy" style={`object-position:${d.coverPosition}`} />
+            </span>
+          )}
         </a>
       </li>
     );

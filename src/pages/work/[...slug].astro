@@ -32,7 +32,7 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
 ---
 <Base title={isPart ? `${d.client} · ${d.name}: ${d.title}` : `${d.client}: ${d.title}`} description={d.summary} accent={d.color}>
   <article style={`--c:${d.color}`}>
-    <header class="band" style={`view-transition-name: tile-${vt}`}>
+    <header class:list={['band', { nocover: !isHub && !d.cover }]} style={`view-transition-name: tile-${vt}`}>
       <div class="wrap band-inner">
         <a class="back" href={isPart ? `/work/${parent!.id}` : '/#work'}>
           <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3m4 4L3 8l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -70,9 +70,9 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
         <section class="hub-cards" aria-label={`${d.client} initiatives`}>
           {children.map((c) => <InitiativeCard entry={c} />)}
         </section>
-        <p class="note">Client details are anonymized and all data shown is placeholder.</p>
+        {d.anonymized && <p class="note">Client details are anonymized and all data shown is placeholder.</p>}
         </>
-      ) : (
+      ) : d.cover && (
         <div class="cover" style={`view-transition-name: cover-${vt}`}>
           <Image src={d.cover} alt={d.coverAlt} widths={[640, 1000, 1400, 2000]} sizes="(max-width: 1440px) 92vw, 1300px" loading="eager" fetchpriority="high" />
         </div>
@@ -96,6 +96,7 @@ const host = d.liveUrl ? new URL(d.liveUrl).host.replace(/^www\./, '') : null;
 
 <style>
   .band { background: var(--c); color: #fff; padding-block: clamp(36px, 5vw, 64px) clamp(120px, 14vw, 200px); }
+  .band.nocover { padding-bottom: clamp(48px, 6vw, 80px); }
   .band-inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .band-inner > * { min-width: 0; }
   .back {
