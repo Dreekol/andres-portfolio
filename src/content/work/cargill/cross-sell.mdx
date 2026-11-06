@@ -1,34 +1,61 @@
 ---
-title: Account views that surface the next best opportunity
+title: Helping sales reps grow the accounts they already have
 client: Cargill
 name: Cross Sell
 parent: cargill
-summary: Account and company views that bring contracts, purchase history and company details together for cross-selling.
+summary: A cross-selling tool for Cargill's sales reps, shaped with reps and customers. It shows who to call, which products to offer and a quick way to act on each one.
 order: 3
 domains: [Agriculture]
-workTypes: [Internal tools]
-kind: Internal tool
+workTypes: [Internal tools, Research]
+kind: Internal tool · UX research
 role: UX/UI designer
-scope: [Account view, Company details form]
-tools: [Figma, Cargill design system]
+scope: [Research, Prototyping, Account view, Suggested products, Feedback loop]
+tools: [Figma, InVision]
 color: "#00843D"
 colorName: Cargill Green
-cover: ../../../assets/work/cargill/cross-sell-contracts.png
-coverAlt: Account view shown as a wireframe
+cover: ../../../assets/work/cargill/xs-pattern-accounts.jpg
+coverAlt: The target customer list and the account view, shown as wireframe patterns
 coverPosition: top center
 ---
 import Figure from '../../../components/Figure.astro';
+import Process from '../../../components/Process.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
-import contracts from '../../../assets/work/cargill/cross-sell-contracts.png';
+import accounts from '../../../assets/work/cargill/xs-pattern-accounts.jpg';
+import actions from '../../../assets/work/cargill/xs-pattern-actions.jpg';
+import feedback from '../../../assets/work/cargill/xs-pattern-feedback.jpg';
 
-{/* TODO(Andrés): add the problem, your role and the decisions behind these screens. */}
+## The challenge
+
+Cargill's sales reps knew their customers well, but not always which other Cargill products those customers could use. The goal was a tool inside the sales system reps already worked in. It would point each rep to the right customers and the right products, and make it easy to act.
+
+## How the engagement ran
+
+<Process steps={[
+  { title: 'Listen', text: 'Interviews with sales reps, coordinators and customers about how accounts get set up and grown.' },
+  { title: 'Prototype', text: 'A clickable prototype of new-customer setup and the supplier offerings customers care about.' },
+  { title: 'Test', text: 'Walk-throughs with customers and the sales team, with their feedback folded back in.' },
+  { title: 'Design the MVP', text: 'A list of target customers, an account view with suggested products, and quick actions.' },
+  { title: 'Plan what’s next', text: 'A future state where feedback from reps improves every suggestion.' },
+]} />
 
 ## What I designed
 
-**One account view for the whole relationship.** Contracts appear as a snapshot with progress at a glance, above the customer’s purchase history by product and period.
+The screens below are shown as patterns: the layout and how it works, without the application's content.
 
-<Figure src={contracts} alt="Account view with a contract snapshot and a history table, shown as a wireframe" caption="The account view, shown as a wireframe." tall />
+**Find the right customers, then dig in.** Reps start from a ranked list of target customers. Each account opens to one view: how the latest marketing campaign landed, suggested products with how strong each opportunity is, and the customer's purchase history.
 
-**A structured company record.** Company information, sold-to and bill-to details live in one expandable form.
+<Figure src={accounts} alt="Two wireframe patterns: a ranked list of target customers, and an account view with campaign status, suggested products and purchase history" caption="The target list and the account view, shown as patterns." />
+
+**Act on every suggestion.** For each suggested product, a rep can create an opportunity, snooze it until later, or mark it complete. A short note keeps the next person in the loop.
+
+<Figure src={actions} alt="Three dialog patterns: snooze a suggestion, mark it complete, and add an opportunity" caption="Snooze, mark complete, or add an opportunity." />
+
+**Learn from every answer.** In the future state, reps tell the tool why a product wasn't a fit or how the conversation went, so the next round of suggestions gets better.
+
+<Figure src={feedback} alt="Three feedback dialog patterns with illustrations: why a product wasn't a match, how the conversation went, and a thank-you" caption="The future state: feedback that improves the suggestions." />
+
+## Result
+
+The team got an MVP design for the cross-selling tool, shaped by what reps and customers told us, and a future state to grow into.
 
 <ProtectedNote href="/private/work/cargill/cross-sell" title="Cross Sell screens" text="The company details view." />

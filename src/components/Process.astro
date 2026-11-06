@@ -1,0 +1,46 @@
+---
+// A high-level, ordered view of how an engagement ran. Steps are a real sequence, so they are numbered.
+interface Step { title: string; text: string }
+interface Props { steps: Step[]; label?: string }
+const { steps, label = 'How the engagement ran' } = Astro.props;
+---
+<div class="process-wrap reveal">
+<ol class="process" aria-label={label} style={`--n:${steps.length}`}>
+  {steps.map((s, i) => (
+    <li>
+      <span class="dot" aria-hidden="true">{i + 1}</span>
+      <h3>{s.title}</h3>
+      <p>{s.text}</p>
+    </li>
+  ))}
+</ol>
+</div>
+
+<style>
+  .process-wrap { margin-block: clamp(32px, 5vw, 56px); }
+  .process {
+    list-style: none; padding: clamp(24px, 3vw, 36px); margin: 0;
+    display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px);
+    background: var(--soft); border-radius: 16px; position: relative;
+  }
+  li { position: relative; }
+  /* the connector runs from each dot to the next one */
+  li:not(:last-child)::after {
+    content: ''; position: absolute; top: 15px; left: 40px; right: calc(-1 * clamp(16px, 2vw, 28px));
+    height: 2px; background: color-mix(in srgb, var(--c, var(--ink)) 35%, transparent);
+  }
+  .dot {
+    display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--c, var(--ink)); color: #fff; font-size: 0.875rem; font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .process li h3 { margin: 14px 0 6px; font-size: var(--step-0, 1rem); font-weight: 600; letter-spacing: -0.01em; }
+  .process li p { margin: 0; font-size: var(--step--1, 0.875rem); color: var(--mute); line-height: 1.5; max-width: none; }
+  @media (max-width: 860px) {
+    .process { grid-template-columns: 1fr; gap: 20px; }
+    li { padding-left: 48px; }
+    .dot { position: absolute; left: 0; top: 0; }
+    .process li h3 { margin-top: 4px; }
+    li:not(:last-child)::after { top: 36px; bottom: -20px; left: 15px; right: auto; width: 2px; height: auto; }
+  }
+</style>
