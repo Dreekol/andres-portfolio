@@ -1,41 +1,63 @@
 ---
 title: A white-label design system adopted across Cargill’s global products
 client: Cargill
-name: White-label design system
+name: Design system
 parent: cargill
-summary: I helped stand up and scale Cargill’s white-label design system, including its documentation, rituals, audits and data-visualization standards.
+summary: I helped scale Cargill’s design system. I audited it, documented it, brought its designers together through ceremonies, town halls and office hours, and connected them more closely with developers.
 order: 2
 domains: [Agriculture]
 workTypes: [Design systems, Data visualization]
 kind: Design system
 role: Design system designer
-scope: [Documentation, Onboarding, Ceremonies, Product audits, Data-viz standards, Power BI reporting]
-team: Developers, global IT
+scope: [Audits, Documentation, Ceremonies and town halls, Office hours, Handoff and design QA, Data-viz standards]
+team: Designers, developers, global IT
 tools: [Figma, Power BI, Azure DevOps]
 color: "#00843D"
 colorName: Cargill Green
-cover: ../../../assets/work/cargill/dataviz-usage.jpg
-coverAlt: Data visualization usage guidelines from the design system
-coverPosition: top center
+cover: ../../../assets/work/cargill/ds-cover.jpg
+coverAlt: "Illustration of the design system: theme colors, a type specimen and Material icons flow into a button documentation page showing its anatomy, spacing, variants and states"
+coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
+import Process from '../../../components/Process.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
-import Pair from '../../../components/Pair.astro';
 import vusage from '../../../assets/work/cargill/dataviz-usage.jpg';
 
-## The problem
+## The challenge
 
-Cargill wanted its products around the world to look and behave consistently, without every team solving the same problems on its own.
+Cargill wanted its products around the world to look and behave consistently, without every team solving the same problems on its own. A design system existed, but a system only helps if teams know it, trust it and actually build with it.
 
-## What I did
+## How the work ran
 
-**Helped stand up a white-label system for global adoption.** I produced the documentation, onboarded and trained new team members, created the working ceremonies, and audited global products against the system.
+<Process label="How the work ran" steps={[
+  { title: 'Audit', text: 'Review the legacy system, the product teams using it and the templates they built from.' },
+  { title: 'Document', text: 'Write down the foundations and components so anyone can pick them up.' },
+  { title: 'Bring people together', text: 'Global ceremonies, town halls and office hours for the designers using the system.' },
+  { title: 'Connect with development', text: 'Closer ties with developers on problem solving, handoff and design QA.' },
+  { title: 'Extend to data', text: 'Data-visualization standards and role-based reporting in Power BI.' },
+]} />
 
-**Agreed a design-to-development contract.** I co-created a QA relationship with developers and a negotiation process for feasibility, so designs translated into code as intended.
+<h3><span class="step">1</span>Audit</h3>
 
-**Extended the system to data.** With the global IT group, I designed role-based Power BI dashboards, so every level of stakeholder could find, understand and report on what they needed. I checked in with developers often to keep the designs buildable in Power BI.
+I started by auditing the legacy design system, the product teams using it, and the templates they worked from. That gave a clear picture of how teams were really using the system.
 
-**Wrote it down so it scales.** I documented my design choices against chart-usage best practice and added components so future reports stay consistent.
+<h3><span class="step">2</span>Document</h3>
+
+The system is built on shared foundations: a color theme with alternates, one typeface across a full type scale, and a single icon library. On top of those sit the components. I documented them so a designer could open a component and find what they needed: its anatomy, spacing, variants, states and when to use each one. I also onboarded and trained new team members on the system.
+
+<h3><span class="step">3</span>Bring people together</h3>
+
+A system lives through the people who use it. I created global ceremonies and ran town halls to showcase products built with the design system. Alongside them, office hours gave designers a place to bring questions.
+
+I worked directly with the designers designing with the system. The showcases and office hours helped them connect, help each other and get inspired by what other teams were shipping.
+
+<h3><span class="step">4</span>Connect with development</h3>
+
+The same sessions brought designers closer to developers, so they could solve problems together. We co-created a QA relationship and a way to negotiate feasibility, and aligned on ways of working for handoff and design QA, so designs translated into code as intended.
+
+<h3><span class="step">5</span>Extend to data</h3>
+
+With the global IT group, I designed role-based Power BI dashboards, so every level of stakeholder could find, understand and report on what they needed. I checked in with developers often to keep the designs buildable in Power BI. Then I documented my design choices against chart-usage best practice and added components so future reports stay consistent.
 
 <Figure src={vusage} alt="Data visualization usage guidelines" caption="Data-viz usage guidance in the design system, adapted from established best practice." />
 
@@ -43,4 +65,4 @@ Cargill wanted its products around the world to look and behave consistently, wi
 
 ## Result
 
-A shared system, with documentation and rituals, that Cargill teams use to build consistently, including role-based reporting.
+Cargill teams got a shared system to build on and documentation that answers their questions. Its designers became a community that helps each other through showcases and office hours, and handoff and design QA with developers got clearer. The system also gained standards for data and reporting.
