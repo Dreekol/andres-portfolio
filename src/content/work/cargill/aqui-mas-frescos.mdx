@@ -1,20 +1,20 @@
 ---
-title: A UX assessment of sign-up for a food delivery app in Honduras
+title: Redesigning sign-up for a food delivery app in Central America
 client: Cargill
 name: Aquí + Frescos
 parent: cargill
-summary: I assessed sign-up for Cargill's food shopping app in Honduras, set up how design would work with the product team, and laid out what to fix first.
+summary: I assessed sign-up for Cargill's food shopping app, redesigned how people sign up and sign in, and sketched the next features for the roadmap.
 order: 4
 domains: [Agriculture]
-workTypes: [Research, Customer-facing products]
-kind: UX research · Mobile
-role: UX researcher & designer
-scope: [UX assessment, Flow mapping, Ways of working, Prioritization]
+workTypes: [Customer-facing products, Research]
+kind: Mobile app · UX research
+role: UX designer & researcher
+scope: [UX assessment, Sign-up and sign-in flows, Feature concepts, Ways of working]
 tools: [Figma, Miro]
 color: "#00843D"
 colorName: Cargill Green
-cover: ../../../assets/work/cargill/amf-brand.jpg
-coverAlt: "Aquí + Frescos marketing art: a delivery scooter riding past the app on a phone"
+cover: ../../../assets/work/cargill/amf-design-signup.jpg
+coverAlt: "Four Aquí + Frescos sign-up screens: welcome, choose your city, sign-up options and create a password"
 coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
@@ -29,10 +29,13 @@ import ways from '../../../assets/work/cargill/amf-ways-of-working.jpg';
 import deliv from '../../../assets/work/cargill/amf-deliverables.jpg';
 import future from '../../../assets/work/cargill/amf-future.jpg';
 import next from '../../../assets/work/cargill/amf-next-steps.jpg';
+import signup2 from '../../../assets/work/cargill/amf-design-signup-2.jpg';
+import signin from '../../../assets/work/cargill/amf-design-signin.jpg';
+import concepts from '../../../assets/work/cargill/amf-design-concepts.jpg';
 
 ## The product
 
-Aquí + Frescos is Cargill's food shopping brand in Honduras. People buy chicken, dairy, meat and groceries from Cargill's own brands in one place, either at neighborhood stores or through a mobile app with home delivery.
+Aquí + Frescos is Cargill's food shopping brand in Central America. People buy chicken, dairy, meat and groceries from Cargill's own brands in one place, either at neighborhood stores or through a mobile app with home delivery.
 
 <Pair a={brand} aAlt="Aquí + Frescos ad: a delivery scooter and the app on a phone" b={onePlace} bAlt="Aquí + Frescos ad: a storefront surrounded by groceries, dairy, meat and other products" narrow caption="The brand's own marketing: home delivery, and all the shopping in one place." />
 
@@ -54,12 +57,20 @@ New customers had to create an account before they could order, and sign-up and 
 
 <Pair a={ways} aAlt="Ways of working slide: the work cadence from project onboarding to development" b={deliv} bAlt="Deliverables slide: Figma file stages and a typical timeline" caption="The work cadence, and how the design file was organized." />
 
-**Prioritized what comes next:** the app enhancements in order of priority, and a short plan that started with a component library and the registration and onboarding fixes.
+**Redesigned sign-up and sign-in.** I designed the new flows end to end. People can look around as a guest, choose their city first so they see local prices, and sign up with a social account or an email. Signing back in got the same care: clear help when a login fails, a simple way to reset a password, and Touch ID so returning customers can skip typing.
+
+<Figure src={signup2} alt="Four sign-up screens: city confirmed, confirm a phone number, create a password with clear rules, and account confirmed" caption="Signing up: confirm a city and a phone number, set a password, and you're in." />
+
+<Figure src={signin} alt="Four sign-in screens: help after failed logins, choose how to reset a password, turn on Touch ID, and Touch ID added" caption="Signing back in: password help and Touch ID." />
+
+**Sketched what comes next.** Past those first pains, I laid out concepts for the home screen, search, checkout and the customer profile. They gave the team a starting point for each future feature, ready to place on the roadmap.
+
+<Figure src={concepts} alt="Four concept screens shown as wireframes: home, search, choosing delivery or pick-up, and the customer profile" caption="Concepts for the next features, shown as wireframes." />
 
 <Pair a={future} aAlt="Future enhancement prioritization slide, descriptions blurred" b={next} bAlt="Next steps slide, timings blurred" caption="Enhancements in priority order, and the next steps." />
 
 ## Result
 
-The team came away with a shared picture of where sign-up broke down, a working rhythm for design and development, and a prioritized plan to fix registration first.
+The team got redesigned sign-up and sign-in flows, a working rhythm for design and development, and concepts for the next features ready to place on the roadmap.
 
 <ProtectedNote href="/private/aqui-mas-frescos" title="Working diagrams" text="The order workflow and the user journey map." />
