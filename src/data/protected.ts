@@ -6,7 +6,7 @@ export type PSection = { heading?: string | null; figures: PFigure[] };
 export const protectedWork: Record<string, { title: string; intro: string; sections: PSection[] }> = {
   "cargill/cross-sell": {
     "title": "Cross Sell screens",
-    "intro": "The company details view from Cross Sell. All names and figures are placeholders.",
+    "intro": "More of the Cross Sell interface, shown as wireframes.",
     "sections": [
       {
         "heading": "What I designed",
@@ -17,7 +17,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/cargill/cross-sell/cross-sell.jpg",
                 "width": 1240,
                 "height": 3020,
-                "alt": "Expanded company information form with sold-to and bill-to sections"
+                "alt": "Expanded company information form, shown as a wireframe"
               }
             ],
             "caption": "Company details, expanded."
@@ -28,7 +28,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
   },
   "cargill/design-system": {
     "title": "Data-visualization standards",
-    "intro": "The style guidelines and chart-type reference from Cargill’s white-label design system.",
+    "intro": "The style guidelines and chart-type reference I wrote for the design system.",
     "sections": [
       {
         "heading": "What I did",
@@ -61,7 +61,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
   },
   "healthpartners/medication-registry": {
     "title": "Medication optimization registry screens",
-    "intro": "The rest of the registry: call invites and logging, reports, weekly hours, and the navigation change for other payors.",
+    "intro": "More of the registry, shown as wireframes.",
     "sections": [
       {
         "heading": "What I designed",
@@ -72,13 +72,13 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/healthpartners/medication-registry/medopt-calls.jpg",
                 "width": 1366,
                 "height": 768,
-                "alt": "Call invites list with counts and filters"
+                "alt": "Call invites list, shown as a wireframe"
               },
               {
                 "src": "/private/work/healthpartners/medication-registry/medopt-log-call.jpg",
                 "width": 1366,
                 "height": 768,
-                "alt": "Log call form"
+                "alt": "Log a call form, shown as a wireframe"
               }
             ],
             "caption": "Call invites, and logging a call."
@@ -89,13 +89,13 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/healthpartners/medication-registry/medopt-reports.jpg",
                 "width": 1366,
                 "height": 768,
-                "alt": "Reports list"
+                "alt": "Reports list, shown as a wireframe"
               },
               {
                 "src": "/private/work/healthpartners/medication-registry/medopt-hours.jpg",
                 "width": 1366,
                 "height": 768,
-                "alt": "Weekly record hours table"
+                "alt": "Weekly hours grid, shown as a wireframe"
               }
             ],
             "caption": "Reports and weekly hours."
@@ -106,16 +106,16 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/healthpartners/medication-registry/medopt-before.jpg",
                 "width": 1369,
                 "height": 771,
-                "alt": "Before: payor options hidden in a popup"
+                "alt": "Before: options in a popup, shown as a wireframe"
               },
               {
                 "src": "/private/work/healthpartners/medication-registry/medopt-after.jpg",
                 "width": 1366,
                 "height": 768,
-                "alt": "After: payors in the navigation"
+                "alt": "After: options in the navigation, shown as a wireframe"
               }
             ],
-            "caption": "Before and after."
+            "caption": "Before and after: options moved out of a popup and into the navigation."
           }
         ]
       }
@@ -123,7 +123,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
   },
   "healthpartners/member-incentives": {
     "title": "Member incentives screens",
-    "intro": "Enrollment, the member record and reporting.",
+    "intro": "More of the incentives tool, shown as wireframes.",
     "sections": [
       {
         "heading": "What I designed",
@@ -134,13 +134,13 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/healthpartners/member-incentives/incentives-enroll.jpg",
                 "width": 1366,
                 "height": 768,
-                "alt": "New enrollment form"
+                "alt": "Enrollment form, shown as a wireframe"
               },
               {
                 "src": "/private/work/healthpartners/member-incentives/incentives-member.jpg",
                 "width": 1366,
                 "height": 1040,
-                "alt": "Member information view"
+                "alt": "Member record, shown as a wireframe"
               }
             ],
             "caption": "Enrolling a member, and the member record."
@@ -151,10 +151,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/healthpartners/member-incentives/incentives-reports.jpg",
                 "width": 1366,
                 "height": 768,
-                "alt": "Incentive reports list"
+                "alt": "Reports list, shown as a wireframe"
               }
             ],
-            "caption": "Reports, filtered by type."
+            "caption": "Reports."
           }
         ]
       }
@@ -162,7 +162,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
   },
   "healthpartners/pharmacy-contracting": {
     "title": "Pharmacy contracting screens",
-    "intro": "The contract detail and fee schedule screens.",
+    "intro": "More of the contracting tool, shown as wireframes.",
     "sections": [
       {
         "heading": "What I did",
@@ -173,13 +173,13 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/healthpartners/pharmacy-contracting/contract.jpg",
                 "width": 1366,
                 "height": 769,
-                "alt": "Contract detail screen"
+                "alt": "Contract detail screen, shown as a wireframe"
               },
               {
                 "src": "/private/work/healthpartners/pharmacy-contracting/fee-schedule.jpg",
                 "width": 1366,
                 "height": 769,
-                "alt": "Fee schedule screen"
+                "alt": "Fee schedule screen, shown as a wireframe"
               }
             ],
             "caption": "Contracts and fee schedules."
@@ -190,7 +190,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
   },
   "proag/ux-strategy": {
     "title": "UX strategy research and roadmap",
-    "intro": "The research behind ProAg’s UX strategy: who we interviewed, how we prioritized, the survey, early concepts and the horizon map.",
+    "intro": "The kinds of artifacts behind the UX strategy, from interviews to the roadmap. Details are blurred.",
     "sections": [
       {
         "heading": "Phase 1: discovery",
@@ -201,10 +201,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/ux-strategy/s-interviews.jpg",
                 "width": 2000,
                 "height": 1422,
-                "alt": "Interview breakdown: 14 stakeholders and 9 agents, with roles, regions and how many other insurers each agent works with"
+                "alt": "Interviews slide, details blurred"
               }
             ],
-            "caption": "Who we spoke to."
+            "caption": "Interview planning across roles and regions."
           },
           {
             "images": [
@@ -212,10 +212,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/ux-strategy/s-hmw.jpg",
                 "width": 2000,
                 "height": 1422,
-                "alt": "How Might We outcome: an impact versus effort matrix of idea themes, with the high-impact, low-effort themes listed"
+                "alt": "Impact and effort matrix, details blurred"
               }
             ],
-            "caption": "High impact, low effort first: consistent navigation, fewer entry points, clearer printouts."
+            "caption": "Ideas plotted by impact and effort."
           },
           {
             "images": [
@@ -223,10 +223,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/ux-strategy/s-paths.jpg",
                 "width": 2000,
                 "height": 1422,
-                "alt": "Path to competitive advantage chart: agent satisfaction against importance, with three paths moving from disadvantage to advantage"
+                "alt": "Strategic paths chart, details blurred"
               }
             ],
-            "caption": "Three paths, from patching to consolidation."
+            "caption": "Strategic paths for leadership to weigh."
           }
         ]
       },
@@ -239,10 +239,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/ux-strategy/s-survey.jpg",
                 "width": 2000,
                 "height": 1453,
-                "alt": "Survey outcome charts showing which tools agents use first and how they rate the experience"
+                "alt": "Survey results slide, details blurred"
               }
             ],
-            "caption": "Survey outcome: how agents get into ProAg’s tools."
+            "caption": "A survey to test what we heard."
           },
           {
             "images": [
@@ -250,10 +250,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/ux-strategy/s-dashboard.jpg",
                 "width": 2000,
                 "height": 1453,
-                "alt": "Wireframe of a dashboard home base with policyholders, updates, news and recent activity"
+                "alt": "Early concept wireframe, details blurred"
               }
             ],
-            "caption": "A dashboard as a home base."
+            "caption": "An early concept."
           },
           {
             "images": [
@@ -261,10 +261,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/ux-strategy/s-printout.jpg",
                 "width": 2000,
                 "height": 1453,
-                "alt": "Annotated printout redesign: branding moved left, previous year shown for comparison and a summary of total premium by crop. Policy and contact details are blurred."
+                "alt": "Annotated example, details blurred"
               }
             ],
-            "caption": "A printout improvement. Policy and contact details are blurred."
+            "caption": "A quick-win example."
           },
           {
             "images": [
@@ -272,18 +272,18 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/ux-strategy/s-horizon.jpg",
                 "width": 2000,
                 "height": 1453,
-                "alt": "ProAg UX Strategy Horizon Map with Now, Next and Later columns"
+                "alt": "Horizon map with three phases, details blurred"
               }
             ],
-            "caption": "The UX strategy horizon map."
+            "caption": "The phased horizon map."
           }
         ]
       }
     ]
   },
   "proag/quoting-experience": {
-    "title": "Quoting research findings",
-    "intro": "What agents and stakeholders said about the quoter and printout concepts.",
+    "title": "Quoting research summaries",
+    "intro": "How we summarized concept research for the team. Details are blurred.",
     "sections": [
       {
         "heading": "Quoter and printout concepts",
@@ -294,10 +294,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/quoting-experience/q-quoter-research.jpg",
                 "width": 1920,
                 "height": 1080,
-                "alt": "Quoter research summary: positive feedback on look and feel and on streamlined navigation, mixed feedback on customer versus quote orientation"
+                "alt": "Research summary slide, details blurred"
               }
             ],
-            "caption": "Quoter concepts: what agents and stakeholders said."
+            "caption": "Concept research, summarized."
           },
           {
             "images": [
@@ -305,18 +305,18 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/quoting-experience/q-printout-research.jpg",
                 "width": 1920,
                 "height": 1080,
-                "alt": "Printout research summary: positive feedback on formatting, mixed feedback on which summaries are useful, and support for a live quote preview"
+                "alt": "Research summary slide, details blurred"
               }
             ],
-            "caption": "Printouts: agents differ, which pointed to the need for more personas."
+            "caption": "A second round, summarized the same way."
           }
         ]
       }
     ]
   },
   "proag/research-repository": {
-    "title": "Research repository recommendation",
-    "intro": "ProAg’s research history, the requirements, the tool shortlist and recommendation, and the repository in use.",
+    "title": "Research repository evaluation",
+    "intro": "How we evaluated and demonstrated a research repository. Details are blurred.",
     "sections": [
       {
         "heading": null,
@@ -327,10 +327,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/research-repository/r-history.jpg",
                 "width": 1920,
                 "height": 1080,
-                "alt": "Timeline of research at ProAg from 2018: data-driven insights, then customer-experience research, then UX research"
+                "alt": "Research timeline, details blurred"
               }
             ],
-            "caption": "Where UX research fits in ProAg’s research history."
+            "caption": "Where UX research fits."
           },
           {
             "images": [
@@ -338,10 +338,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/research-repository/r-requirements.jpg",
                 "width": 1920,
                 "height": 1080,
-                "alt": "Requirements: easy to access and share, flexible taxonomy, self-service onboarding, organized storage, scalable features and cross-study insights"
+                "alt": "Requirements slide, details blurred"
               }
             ],
-            "caption": "Requirements for ProAg."
+            "caption": "Requirements."
           },
           {
             "images": [
@@ -349,7 +349,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/research-repository/r-shortlist.jpg",
                 "width": 1920,
                 "height": 1080,
-                "alt": "The shortlist: Dovetail, UserBit, EnjoyHQ and Condens"
+                "alt": "Tool shortlist, details blurred"
               }
             ],
             "caption": "The shortlist."
@@ -360,7 +360,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/research-repository/r-recommendation.jpg",
                 "width": 1920,
                 "height": 1080,
-                "alt": "Recommendation slide: UserBit, with a diagram of how the tools overlap across storing, analyzing and conducting research"
+                "alt": "Recommendation slide, details blurred"
               }
             ],
             "caption": "The recommendation."
@@ -371,10 +371,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/research-repository/r-tags.jpg",
                 "width": 1920,
                 "height": 1080,
-                "alt": "Repository tag boards grouping findings by frustrations, dashboard focus and confidence navigating systems"
+                "alt": "Repository tag boards, details blurred"
               }
             ],
-            "caption": "Insights surfaced with tags."
+            "caption": "Organizing insights with tags."
           },
           {
             "images": [
@@ -382,10 +382,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/proag/research-repository/r-surveys.jpg",
                 "width": 1920,
                 "height": 1080,
-                "alt": "Survey responses uploaded and charted inside the repository"
+                "alt": "Survey analysis in the repository, details blurred"
               }
             ],
-            "caption": "Survey results, charted in the repository."
+            "caption": "Analyzing surveys in the repository."
           }
         ]
       }
@@ -475,7 +475,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
   },
   "intact": {
     "title": "Account setup, steps three to five",
-    "intro": "Eligibility, product selection and quoting in the Specialty360 setup flow.",
+    "intro": "The rest of the account setup flow, shown as wireframes.",
     "sections": [
       {
         "heading": null,
@@ -486,10 +486,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/intact/setup-3.jpg",
                 "width": 2000,
                 "height": 3668,
-                "alt": "Step three: yes or no questions on driver affiliation, a commodities picker, a hazardous materials question and a loss history table"
+                "alt": "Step three of the flow, shown as a wireframe"
               }
             ],
-            "caption": "Step three: eligibility, from driver affiliation to loss history."
+            "caption": "Step three."
           },
           {
             "images": [
@@ -497,10 +497,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/intact/setup-4.jpg",
                 "width": 2000,
                 "height": 4525,
-                "alt": "Step four: product checkboxes, owner-operator and contract-driver counts by state, and an equipment percentage table"
+                "alt": "Step four of the flow, shown as a wireframe"
               }
             ],
-            "caption": "Step four: products, drivers and equipment."
+            "caption": "Step four."
           },
           {
             "images": [
@@ -508,10 +508,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/intact/setup-5.jpg",
                 "width": 2000,
                 "height": 4264,
-                "alt": "Step five: benefit and limit options for occupational accident and non-trucking liability"
+                "alt": "Step five of the flow, shown as a wireframe"
               }
             ],
-            "caption": "Step five: limits and benefits for each product."
+            "caption": "Step five."
           }
         ]
       }
@@ -519,7 +519,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
   },
   "revo-health": {
     "title": "EXCEL and Habits to Health screens",
-    "intro": "More of both products: patient records, care suites and intake in EXCEL, then the Habits to Health service blueprint, health reports, tasks and the department view. Names and figures are placeholders.",
+    "intro": "More of both products, shown as wireframes, and the service blueprint with details blurred.",
     "sections": [
       {
         "heading": "EXCEL",
@@ -530,7 +530,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/revo-health/excel-patient.jpg",
                 "width": 1366,
                 "height": 768,
-                "alt": "Patient information page with tabs for profile, pre-op info, labs, financials, notes and assessment"
+                "alt": "Patient record with tabs, shown as a wireframe"
               }
             ],
             "caption": "A patient record, organized by tabs."
@@ -541,10 +541,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/revo-health/excel-care-suites.jpg",
                 "width": 1366,
                 "height": 768,
-                "alt": "Care Suites list of patients filtered by location, with surgery date, procedure, surgeon and payor"
+                "alt": "Patient list, shown as a wireframe"
               }
             ],
-            "caption": "Care suites: patients by location and surgery date."
+            "caption": "A patient list with filters."
           },
           {
             "images": [
@@ -552,7 +552,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/revo-health/excel-new-patient.jpg",
                 "width": 1366,
                 "height": 768,
-                "alt": "New patient intake form with a step list for patient, hospital, surgery and primary care information"
+                "alt": "New patient form, shown as a wireframe"
               }
             ],
             "caption": "Adding a new patient, one section at a time."
@@ -568,10 +568,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/revo-health/hh-workflow.jpg",
                 "width": 2000,
                 "height": 3000,
-                "alt": "Habits to Health service blueprint"
+                "alt": "Service blueprint, details blurred"
               }
             ],
-            "caption": "The blueprint behind the program."
+            "caption": "The service blueprint."
           },
           {
             "images": [
@@ -579,10 +579,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/revo-health/hh-report-entry.jpg",
                 "width": 1440,
                 "height": 1024,
-                "alt": "Participant profile with an empty health report form for InBody metrics, blood pressure and cholesterol"
+                "alt": "Participant report form, shown as a wireframe"
               }
             ],
-            "caption": "Entering a participant’s health report."
+            "caption": "Entering a participant’s report."
           },
           {
             "images": [
@@ -590,7 +590,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/revo-health/hh-report-filled.jpg",
                 "width": 1440,
                 "height": 1024,
-                "alt": "Participant profile with a completed health report"
+                "alt": "Completed participant report, shown as a wireframe"
               }
             ],
             "caption": "The same report, completed."
@@ -601,7 +601,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/revo-health/hh-tasks.jpg",
                 "width": 1440,
                 "height": 1024,
-                "alt": "Participant information with a task list showing status, completion date and event date"
+                "alt": "Participant task list, shown as a wireframe"
               }
             ],
             "caption": "A participant’s tasks."
@@ -612,10 +612,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/revo-health/hh-department.jpg",
                 "width": 1440,
                 "height": 1024,
-                "alt": "Department view with monthly totals and a list of participants with export actions"
+                "alt": "Department view, shown as a wireframe"
               }
             ],
-            "caption": "The department view, with monthly totals and participants."
+            "caption": "The department view."
           }
         ]
       }
@@ -623,7 +623,7 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
   },
   "partners-in-excellence": {
     "title": "More dashboard views",
-    "intro": "The organizational snapshot and a net revenue drill-down from the Partners in Excellence dashboards. Figures are placeholders.",
+    "intro": "More of the dashboards, shown as wireframes.",
     "sections": [
       {
         "heading": null,
@@ -634,10 +634,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/partners-in-excellence/snapshot.jpg",
                 "width": 784,
                 "height": 1266,
-                "alt": "Organizational snapshot: net revenue, operating expenses, margin and cash on hand, with charts and business-metric scorecards"
+                "alt": "Organizational snapshot dashboard, shown as a wireframe"
               }
             ],
-            "caption": "The organizational snapshot, with scorecards by area."
+            "caption": "An organizational snapshot."
           },
           {
             "images": [
@@ -645,10 +645,10 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
                 "src": "/private/work/partners-in-excellence/net-revenue.jpg",
                 "width": 1060,
                 "height": 1078,
-                "alt": "Net revenue drill-down: budgeted versus actual by month, and a table of centers with variance"
+                "alt": "Drill-down dashboard, shown as a wireframe"
               }
             ],
-            "caption": "Drilling into net revenue by center."
+            "caption": "A drill-down view."
           }
         ]
       }
