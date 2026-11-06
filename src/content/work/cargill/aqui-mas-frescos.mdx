@@ -13,15 +13,16 @@ scope: [UX assessment, Sign-up and sign-in flows, Feature concepts, Ways of work
 tools: [Figma, Miro]
 color: "#00843D"
 colorName: Cargill Green
-cover: ../../../assets/work/cargill/amf-design-signup.jpg
-coverAlt: "Four Aquí + Frescos sign-up screens: welcome, choose your city, sign-up options and create a password"
+cover: ../../../assets/work/cargill/amf-cover.jpg
+coverAlt: "Three Aquí + Frescos ads: home delivery by scooter, all your shopping in one place, and stores closer to home"
 coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
 import Pair from '../../../components/Pair.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
+import Break from '../../../components/Break.astro';
 import brand from '../../../assets/work/cargill/amf-brand.jpg';
-import onePlace from '../../../assets/work/cargill/amf-one-place.jpg';
+import nearYou from '../../../assets/work/cargill/amf-near-you.jpg';
 import reg from '../../../assets/work/cargill/amf-registration.jpg';
 import findings from '../../../assets/work/cargill/amf-findings.jpg';
 import opps from '../../../assets/work/cargill/amf-opportunities.jpg';
@@ -29,6 +30,7 @@ import ways from '../../../assets/work/cargill/amf-ways-of-working.jpg';
 import deliv from '../../../assets/work/cargill/amf-deliverables.jpg';
 import future from '../../../assets/work/cargill/amf-future.jpg';
 import next from '../../../assets/work/cargill/amf-next-steps.jpg';
+import signup from '../../../assets/work/cargill/amf-design-signup.jpg';
 import signup2 from '../../../assets/work/cargill/amf-design-signup-2.jpg';
 import signin from '../../../assets/work/cargill/amf-design-signin.jpg';
 import concepts from '../../../assets/work/cargill/amf-design-concepts.jpg';
@@ -37,11 +39,11 @@ import concepts from '../../../assets/work/cargill/amf-design-concepts.jpg';
 
 Aquí + Frescos is Cargill's food shopping brand in Central America. People buy chicken, dairy, meat and groceries from Cargill's own brands in one place, either at neighborhood stores or through a mobile app with home delivery.
 
-<Pair a={brand} aAlt="Aquí + Frescos ad: a delivery scooter and the app on a phone" b={onePlace} bAlt="Aquí + Frescos ad: a storefront surrounded by groceries, dairy, meat and other products" narrow caption="The brand's own marketing: home delivery, and all the shopping in one place." />
-
 ## The problem
 
 New customers had to create an account before they could order, and sign-up and login were where they got stuck. The team needed a clear picture of the current experience before redesigning it, and a way for design to work with their product and development teams.
+
+<Break src={brand} alt="Aquí + Frescos ad: a delivery rider on a scooter next to the app on a phone" position="50% 92%" ratio="16 / 9" caption="Aquí + Frescos marketing: home delivery." />
 
 ## What I did
 
@@ -59,6 +61,8 @@ New customers had to create an account before they could order, and sign-up and 
 
 **Redesigned sign-up and sign-in.** I designed the new flows end to end. People can look around as a guest, choose their city first so they see local prices, and sign up with a social account or an email. Signing back in got the same care: clear help when a login fails, a simple way to reset a password, and Touch ID so returning customers can skip typing.
 
+<Figure src={signup} alt="Four sign-up screens: welcome with a guest option, choose your city, sign-up options, and create a password with clear rules" caption="Getting started: look around as a guest, choose a city, then sign up your way." />
+
 <Figure src={signup2} alt="Four sign-up screens: city confirmed, confirm a phone number, create a password with clear rules, and account confirmed" caption="Signing up: confirm a city and a phone number, set a password, and you're in." />
 
 <Figure src={signin} alt="Four sign-in screens: help after failed logins, choose how to reset a password, turn on Touch ID, and Touch ID added" caption="Signing back in: password help and Touch ID." />
@@ -68,6 +72,8 @@ New customers had to create an account before they could order, and sign-up and 
 <Figure src={concepts} alt="Four concept screens shown as wireframes: home, search, choosing delivery or pick-up, and the customer profile" caption="Concepts for the next features, shown as wireframes." />
 
 <Pair a={future} aAlt="Future enhancement prioritization slide, descriptions blurred" b={next} bAlt="Next steps slide, timings blurred" caption="Enhancements in priority order, and the next steps." />
+
+<Break src={nearYou} alt="Aquí + Frescos ad: map pins marking stores across a city" position="50% 90%" ratio="16 / 9" caption="Aquí + Frescos marketing: stores closer to home." />
 
 ## Result
 
