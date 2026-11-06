@@ -13,20 +13,22 @@ scope: [Research, Prototyping, Account view, Suggested products, Feedback loop]
 tools: [Figma, InVision]
 color: "#00843D"
 colorName: Cargill Green
-cover: ../../../assets/work/cargill/xs-pattern-accounts.jpg
-coverAlt: The target customer list and the account view, shown as wireframe patterns
-coverPosition: top center
+cover: ../../../assets/work/cargill/xs-pattern-feedback.jpg
+coverAlt: Three illustrated feedback dialogs from the future state, shown as wireframe patterns
+coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
 import Process from '../../../components/Process.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
-import accounts from '../../../assets/work/cargill/xs-pattern-accounts.jpg';
+import account from '../../../assets/work/cargill/xs-pattern-account.jpg';
 import actions from '../../../assets/work/cargill/xs-pattern-actions.jpg';
 import feedback from '../../../assets/work/cargill/xs-pattern-feedback.jpg';
 
 ## The challenge
 
-Cargill's sales reps knew their customers well, but not always which other Cargill products those customers could use. The goal was a tool inside the sales system reps already worked in. It would point each rep to the right customers and the right products, and make it easy to act.
+Cross-selling means helping a customer who already buys from Cargill find other products they could use. Sales reps knew their accounts well, but they didn't always know which other Cargill products a customer could use, or which customers to focus on first. Bringing on a new customer was slow too: it ran on forms and long email threads.
+
+The goal was to help reps grow the accounts they already had, inside the sales system they already worked in.
 
 ## How the engagement ran
 
@@ -38,24 +40,44 @@ Cargill's sales reps knew their customers well, but not always which other Cargi
   { title: 'Plan what’s next', text: 'A future state where feedback from reps improves every suggestion.' },
 ]} />
 
-## What I designed
+<h3><span class="step">1</span>Listen</h3>
 
-The screens below are shown as patterns: the layout and how it works, without the application's content.
+We started with conversations on both sides of the relationship. Sales reps, sales coordinators and customers walked us through how a new account gets set up and how an existing one grows.
 
-**Find the right customers, then dig in.** Reps start from a ranked list of target customers. Each account opens to one view: how the latest marketing campaign landed, suggested products with how strong each opportunity is, and the customer's purchase history.
+A few themes came up again and again. Setting up an account is a team effort on the customer's side, with buyers, finance, legal and the warehouse each owning a piece. Everyone wanted to see where things stood without chasing people by email. And reps wanted a clearer read on which customers to grow, and with what.
 
-<Figure src={accounts} alt="Two wireframe patterns: a ranked list of target customers, and an account view with campaign status, suggested products and purchase history" caption="The target list and the account view, shown as patterns." />
+<h3><span class="step">2</span>Prototype</h3>
 
-**Act on every suggestion.** For each suggested product, a rep can create an opportunity, snooze it until later, or mark it complete. A short note keeps the next person in the loop.
+The first prototype tackled the front door: bringing on a new customer. A rep starts the request. The customer gets an invitation and fills in a setup form broken into short sections, then follows a tracker that shows progress and how long setup should take.
+
+A second set of screens asked customers which supplier offerings mattered most to them, from added services to payment terms to ease of doing business.
+
+<h3><span class="step">3</span>Test</h3>
+
+We walked customers and members of the sales team through the prototype and asked them to think out loud.
+
+Customers liked having everything in one place and seeing their progress. They asked for a way to hand sections to the right department, and they were wary of clicking links in emails they weren't expecting. Reps wanted customers to confirm any information filled in for them, and they wanted reminders about who to follow up with. Each round of feedback went back into the design.
+
+<h3><span class="step">4</span>Design the MVP</h3>
+
+From there, the focus moved to the rep's side: helping them grow customers they already had.
+
+Reps start from a ranked list of target customers, ordered by potential value and geographic advantage. Each account opens to a single view: how the latest marketing campaign landed, the products that customer could use next with how strong each opportunity is, and their purchase history over time.
+
+<Figure src={account} alt="Account view shown as a wireframe pattern: campaign status at the top, a list of suggested products with opportunity strength and actions, and a purchase history table" caption="The account view, shown as a pattern." />
+
+Every suggestion needed a next step, so each one comes with quick actions. A rep can turn it into an opportunity, snooze it until a better time, or mark it complete, and leave a short note for whoever picks it up next.
 
 <Figure src={actions} alt="Three dialog patterns: snooze a suggestion, mark it complete, and add an opportunity" caption="Snooze, mark complete, or add an opportunity." />
 
-**Learn from every answer.** In the future state, reps tell the tool why a product wasn't a fit or how the conversation went, so the next round of suggestions gets better.
+<h3><span class="step">5</span>Plan what's next</h3>
 
-<Figure src={feedback} alt="Three feedback dialog patterns with illustrations: why a product wasn't a match, how the conversation went, and a thank-you" caption="The future state: feedback that improves the suggestions." />
+Suggestions only get better if the tool learns from them. In the future state, reps tell the tool why a product wasn't a fit or how the conversation went. A product that doesn't match drops off that customer's list, and the reasons feed the next round of suggestions and campaigns.
+
+<Figure src={feedback} alt="Three illustrated feedback dialogs shown as wireframe patterns: why a product wasn't a match, how the conversation went, and a thank-you" caption="The future state: feedback that improves the suggestions." />
 
 ## Result
 
-The team got an MVP design for the cross-selling tool, shaped by what reps and customers told us, and a future state to grow into.
+The team got an MVP design for the cross-selling tool, shaped by what reps and customers told us, and a future state where feedback from every conversation improves the next suggestion.
 
 <ProtectedNote href="/private/work/cargill/cross-sell" title="Cross Sell screens" text="The company details view." />
