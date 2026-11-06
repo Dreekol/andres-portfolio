@@ -3,7 +3,7 @@ title: A self-serve customer portal with a guided request for access
 client: Cargill
 name: myCargill portal
 parent: cargill
-summary: I designed myCargill, the portal where Cargill customers manage their business online.
+summary: I designed the front door to myCargill, the portal where Cargill customers manage their business online, and a self-serve way to request access. It's still live today.
 order: 1
 domains: [Agriculture]
 workTypes: [Customer-facing products]
@@ -16,37 +16,68 @@ status: Live
 liveUrl: https://www.mycargill.com
 color: "#00843D"
 colorName: Cargill Green
-cover: ../../../assets/work/cargill/portal-hero.png
-coverAlt: myCargill sign-in page shown as a wireframe
-coverPosition: top center
+cover: ../../../assets/work/cargill/mc-cover.jpg
+coverAlt: The live myCargill homepage in a browser window, with the phone version beside it
+coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
 import Pair from '../../../components/Pair.astro';
-import secondary from '../../../assets/work/cargill/portal-secondary.png';
-import access from '../../../assets/work/cargill/request-access.png';
-import contact from '../../../assets/work/cargill/request-contact.png';
-import sent from '../../../assets/work/cargill/request-sent.png';
+import Process from '../../../components/Process.astro';
+import home from '../../../assets/work/cargill/mc-design-home.jpg';
+import value from '../../../assets/work/cargill/mc-design-value.jpg';
+import steps from '../../../assets/work/cargill/mc-request-steps.jpg';
+import sent from '../../../assets/work/cargill/mc-design-sent.jpg';
+import accessType from '../../../assets/work/cargill/mc-live-access-type.jpg';
+import portals from '../../../assets/work/cargill/mc-live-portals.jpg';
 
-{/* TODO(Andrés): add timeline, the key decisions and any results you can share. */}
+## The challenge
 
-## The problem
+Managing documents and day-to-day business with Cargill was disjointed, and getting in was the first hurdle. Before myCargill, a new customer usually had to email someone and wait to be set up with an account.
 
-Cargill customers needed one place to manage their business with Cargill, and a way in that didn’t depend on emailing someone for an account.
+Cargill wanted one self-service place for customers to manage their business online. I designed the portal's front door: the page customers land on before they sign in, and a way to request access on their own.
 
-## What I did
+## How it came together
 
-**Partnered with the product owner and business analyst** to shape a portal that met business needs and followed design best practices.
+I worked closely with the product owner and a business analyst. They brought the business needs, and I shaped them into screens that followed design best practices for the developers to build.
 
-**Made the value clear before sign-in.** The public pages explain what customers can do in myCargill, with a direct path to request access.
+The portal ran alongside the build of Cargill's [white-label design system](/work/cargill/design-system), and we used it to test the system on a real product.
 
-<Figure src={secondary} alt="myCargill public page with service highlights, shown as a wireframe" caption="The public homepage explains the portal before asking for anything." />
+## The customer's path
 
-**Turned access into a guided, self-serve request.** Contact details, business information and the request itself are separate steps, finishing with a clear confirmation.
+<Process label="The customer's path" steps={[
+  { title: 'Land', text: 'See what myCargill offers, with sign-in right there for returning customers.' },
+  { title: 'Request', text: 'Ask for access in three short steps, without emailing anyone.' },
+  { title: 'Confirm', text: 'Know the request went through and what happens next.' },
+]} />
 
-<Pair a={contact} aAlt="Request access, contact information step, shown as a wireframe" b={access} bAlt="Request access, business information step, shown as a wireframe" caption="Step by step: contact details, then business information." />
+<h3><span class="step">1</span>Land</h3>
 
-<Figure src={sent} alt="Request sent confirmation, shown as a wireframe" caption="A clear confirmation so customers know what happens next." />
+The homepage does two jobs at once. Returning customers can sign in straight away from the card on the left. Everyone else sees, in plain words, what myCargill is for, and gets a clear way to request access.
+
+<Figure src={home} alt="myCargill homepage design: a sign-in card on the left and the welcome message on the right, over a photo of a field" caption="The homepage design: sign in on the left, the welcome message on the right." />
+
+Further down the page, a short section explains what customers get: immediate access to documents, self-service and information around the clock. It's paired with photos of the people Cargill works with.
+
+<Figure src={value} alt="myCargill homepage section: a headline, a short paragraph and a Get Access button next to a mosaic of photos and green tiles for document access, self-service and 24/7 information" caption="What customers get, explained before they sign up." />
+
+<h3><span class="step">2</span>Request</h3>
+
+Requesting access used to mean an email thread. I turned it into a short form split into three steps: contact details, business information, then the portal they need and why. A tracker at the top shows where they are and how much is left, so the form never feels longer than it is.
+
+<Figure src={steps} alt="Three request-access screens: contact information, business information, and the portal request with terms and a reCAPTCHA check, each with a step tracker at the top" caption="Three short steps, with a tracker showing progress." />
+
+<h3><span class="step">3</span>Confirm</h3>
+
+The last screen confirms the request was sent and tells customers what to do next: check their email to continue.
+
+<Figure src={sent} alt="Request Sent confirmation screen telling the customer to check their email to continue" caption="A clear confirmation, so customers know what happens next." />
+
+## Live today
+
+myCargill is still live at [mycargill.com](https://www.mycargill.com). The sign-in card beside the welcome message and the step-by-step request are still how customers get in. Since then, the portal has grown to cover Agriculture, Animal Nutrition and Food & Beverage, and the request now starts by asking how the person works with Cargill.
+
+<Pair a={accessType} aAlt="The live myCargill request page asking whether you are a current customer, an employee or a new customer" b={portals} bAlt="The live myCargill homepage section listing portals for Agriculture, Animal Nutrition and Food & Beverage" caption="The live site today: choosing an access type, and the portals for each business." />
 
 ## Result
 
-myCargill is live at mycargill.com.
+The portal was well received. Customers got a simpler, self-service way in: they can find out what myCargill offers and request access on their own, without an email thread. The design system got tested on a real product along the way. And the front door I designed is still the way in today.
