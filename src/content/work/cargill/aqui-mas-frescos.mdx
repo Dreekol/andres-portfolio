@@ -17,6 +17,7 @@ cover: ../../../assets/work/cargill/amf-illustration.jpg
 coverAlt: "Illustration of Aquí + Frescos: a neighborhood store with its product categories, the shopping app, a delivery scooter, and map pins for stores nearby"
 coverPosition: center
 ---
+import { Image } from 'astro:assets';
 import Figure from '../../../components/Figure.astro';
 import Pair from '../../../components/Pair.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
@@ -31,10 +32,13 @@ import signup from '../../../assets/work/cargill/amf-design-signup.jpg';
 import signup2 from '../../../assets/work/cargill/amf-design-signup-2.jpg';
 import signin from '../../../assets/work/cargill/amf-design-signin.jpg';
 import concepts from '../../../assets/work/cargill/amf-design-concepts.jpg';
+import logo from '../../../assets/work/cargill/amf-logo.png';
 
 ## The product
 
 Aquí + Frescos is Cargill's food shopping brand in Central America. People buy chicken, dairy, meat and groceries from Cargill's own brands in one place, either at neighborhood stores or through a mobile app with home delivery.
+
+<p style="margin-top: 28px;"><Image src={logo} alt="Aquí + Frescos logo" width={180} densities={[1, 2]} style="display: block; width: 180px; height: auto;" /></p>
 
 ## The problem
 
