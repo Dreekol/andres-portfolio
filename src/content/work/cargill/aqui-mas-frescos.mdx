@@ -1,52 +1,65 @@
 ---
-title: Research to take the pain out of mobile registration in Latin America
+title: A UX assessment of sign-up for a food delivery app in Honduras
 client: Cargill
-name: Aquí Más Frescos
+name: Aquí + Frescos
 parent: cargill
-summary: I researched a Latin American mobile experience and turned the findings into opportunities, deliverables and a phased plan.
+summary: I assessed sign-up for Cargill's food shopping app in Honduras, set up how design would work with the product team, and laid out what to fix first.
 order: 4
 domains: [Agriculture]
 workTypes: [Research, Customer-facing products]
 kind: UX research · Mobile
 role: UX researcher & designer
-scope: [Current-state analysis, Findings, Opportunities, Roadmap]
+scope: [UX assessment, Flow mapping, Ways of working, Prioritization]
 tools: [Figma, Miro]
 color: "#00843D"
 colorName: Cargill Green
-cover: ../../../assets/work/cargill/amf-findings.jpg
-coverAlt: Research findings slide with details blurred
+cover: ../../../assets/work/cargill/amf-brand.jpg
+coverAlt: "Aquí + Frescos marketing art: a delivery scooter riding past the app on a phone"
 coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
 import Pair from '../../../components/Pair.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
-import intro from '../../../assets/work/cargill/amf-intro.jpg';
+import brand from '../../../assets/work/cargill/amf-brand.jpg';
+import onePlace from '../../../assets/work/cargill/amf-one-place.jpg';
+import reg from '../../../assets/work/cargill/amf-registration.jpg';
 import findings from '../../../assets/work/cargill/amf-findings.jpg';
 import opps from '../../../assets/work/cargill/amf-opportunities.jpg';
-import reg from '../../../assets/work/cargill/amf-registration.jpg';
+import ways from '../../../assets/work/cargill/amf-ways-of-working.jpg';
 import deliv from '../../../assets/work/cargill/amf-deliverables.jpg';
+import future from '../../../assets/work/cargill/amf-future.jpg';
 import next from '../../../assets/work/cargill/amf-next-steps.jpg';
+
+## The product
+
+Aquí + Frescos is Cargill's food shopping brand in Honduras. People buy chicken, dairy, meat and groceries from Cargill's own brands in one place, either at neighborhood stores or through a mobile app with home delivery.
+
+<Pair a={brand} aAlt="Aquí + Frescos ad: a delivery scooter and the app on a phone" b={onePlace} bAlt="Aquí + Frescos ad: a storefront surrounded by groceries, dairy, meat and other products" narrow caption="The brand's own marketing: home delivery, and all the shopping in one place." />
 
 ## The problem
 
-The team wanted to improve how new users register in a Latin American mobile experience, and needed a clear picture of the current flow before redesigning anything.
+New customers had to create an account before they could order, and sign-up and login were where they got stuck. The team needed a clear picture of the current experience before redesigning it, and a way for design to work with their product and development teams.
 
 ## What I did
 
-**Mapped the current registration flow** step by step to see where it created friction.
+**Mapped the registration flow** end to end: every screen and decision a new customer goes through before they can shop.
 
 <Figure src={reg} alt="Registration flow diagram with details blurred" caption="The existing registration flow, mapped." />
 
-**Synthesized findings into opportunities** for the team to prioritize.
+**Assessed the experience** and grouped what I found by area, from login and password reset to the activation email. Then I turned the findings into ways to take the pain out of registration.
 
-<Pair a={findings} aAlt="Findings slide with details blurred" b={opps} bAlt="Opportunities slide with details blurred" caption="Findings, then opportunities." />
+<Pair a={findings} aAlt="Findings slide grouped by area, details blurred" b={opps} bAlt="Opportunities slide: ways to reduce the pain during registration, details blurred" caption="Findings by area, then opportunities for registration." />
 
-**Planned the work in phases**, with deliverables, a typical timeline and next steps.
+**Set up how design would work with the team.** I defined a work cadence that takes a ticket through research, concepts, team validation, prototyping, stakeholder validation and dev handoff with QA. I also organized the Figma file by stage, so everyone could see what was in exploration, up for review, waiting on approval or ready for development.
 
-<Pair a={deliv} aAlt="Deliverables slide with details blurred" b={next} bAlt="Next steps slide with details blurred" caption="Deliverables and next steps." />
+<Pair a={ways} aAlt="Ways of working slide: the work cadence from project onboarding to development" b={deliv} bAlt="Deliverables slide: Figma file stages and a typical timeline" caption="The work cadence, and how the design file was organized." />
+
+**Prioritized what comes next:** the app enhancements in order of priority, and a short plan that started with a component library and the registration and onboarding fixes.
+
+<Pair a={future} aAlt="Future enhancement prioritization slide, descriptions blurred" b={next} bAlt="Next steps slide, timings blurred" caption="Enhancements in priority order, and the next steps." />
 
 ## Result
 
-A shared understanding of the registration problem and a phased plan to fix it.
+The team came away with a shared picture of where sign-up broke down, a working rhythm for design and development, and a prioritized plan to fix registration first.
 
-<ProtectedNote href="/private/aqui-mas-frescos" title="Working diagrams" text="More of the working diagrams." />
+<ProtectedNote href="/private/aqui-mas-frescos" title="Working diagrams" text="The order workflow and the user journey map." />

@@ -9,7 +9,7 @@ const generated = await Promise.all(Object.entries(protectedWork).map(async ([sl
 }));
 const items = [
   { href: '/private/holmes-sage-workshop', client: 'Holmes Corporation', title: 'SAGE portal workshop analysis', order: 99 },
-  { href: '/private/aqui-mas-frescos', client: 'Cargill', title: 'Aquí Más Frescos working diagrams', order: 0 },
+  { href: '/private/aqui-mas-frescos', client: 'Cargill', title: 'Aquí + Frescos working diagrams', order: 0 },
   ...generated,
 ].sort((a, b) => a.client.localeCompare(b.client) || a.title.localeCompare(b.title));
 ---
