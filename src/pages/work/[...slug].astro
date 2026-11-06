@@ -147,7 +147,9 @@ const og = d.cover ? await getImage({ src: d.cover, width: 1200, height: 630, fi
   dd a:hover { text-decoration-color: #fff; }
 
   .prose { max-width: 1100px; margin: clamp(48px, 6vw, 88px) auto 0; }
-  .prose :global(> :is(h2, p, ul, ol)) { max-width: 68ch; margin-inline: auto; }
+  .prose :global(> :is(h2, h3, p, ul, ol)) { max-width: 68ch; margin-inline: auto; }
+  .prose :global(h3) { font-size: var(--step-2); font-weight: 600; letter-spacing: -0.02em; margin-top: clamp(40px, 5vw, 64px); margin-bottom: 12px; }
+  .prose :global(h3 .step) { color: var(--c); font-variant-numeric: tabular-nums; margin-right: 0.4em; }
   .prose :global(h2) { font-size: var(--step-3); font-weight: 550; letter-spacing: -0.033em; margin-top: clamp(56px, 7vw, 96px); margin-bottom: 18px; }
   .prose :global(h2::before) { content: ''; display: block; width: 28px; height: 4px; border-radius: 2px; background: var(--c); margin-bottom: 18px; }
   .prose :global(p) { font-size: var(--step-1); line-height: 1.62; color: var(--ink-2); margin-bottom: 1.1em; }
