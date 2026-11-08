@@ -24,7 +24,7 @@ const clients: { name: string; href?: string; external?: boolean }[] = [
 ];
 // A recommendation in a colleague's own words (from LinkedIn). Paste it in and the block appears under the intro; empty stays hidden.
 const recommendation = { quote: '', name: '', title: '' };
-const tools = ['Figma', 'Adobe Creative Cloud', 'HTML & CSS', 'Astro', 'Claude Code', 'Power BI', 'Azure DevOps', 'Miro', 'SharePoint', 'Salesforce'];
+const tools = ['Figma', 'Miro', 'Adobe Creative Cloud', 'HTML & CSS', 'Astro', 'Claude Code', 'Wix', 'Power BI', 'Power Platform', 'InVision', 'Azure DevOps', 'SharePoint', 'Salesforce'];
 // Only offer the download once the PDF is actually in /public, so the button never 404s.
 const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
 ---
@@ -33,7 +33,7 @@ const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
     <h1>I make complicated things feel simple, and I care just as much about how they look.</h1>
     <div class="body">
       <p>I’m a senior UX/UI and brand designer with more than 15 years in design and advertising. I started in graphic design, building identities, campaigns and event experiences, and grew into product design for organizations where the stakes are high and the rules are many: healthcare, insurance, agriculture and professional education.</p>
-      <p>Since 2020 I’ve been a consultant at SDG (Solution Design Group). I partner with business leaders, product owners and developers to turn tangled workflows into tools people can use, and to give teams design systems that keep growing products consistent.</p>
+      <p>Since 2020 I’ve been a consultant at SDG (Solution Design Group). I partner with business leaders, product owners and developers to turn tangled workflows into tools people can use, to map the journeys and services around them, and to give teams design systems that keep growing products consistent.</p>
       <p>I’m bilingual in English and Spanish, and I build what I design. I was a web master long before “design engineer” was a title, and today I prototype and ship with code and AI tools.</p>
     </div>
     {recommendation.quote && (
@@ -82,6 +82,7 @@ const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
       <h2>How I work</h2>
       <ul class="list">
         <li><b>Start with the people doing the work.</b> Interviews, workshops and journey maps before screens.</li>
+        <li><b>Map the service, not just the screen.</b> Journey maps, service blueprints and process maps show who does what, and where a product fits among people, systems and handoffs.</li>
         <li><b>Design the system behind the screen.</b> Data models, components and documentation that outlast the project.</li>
         <li><b>Agree with developers early.</b> I check feasibility with developers before a design is final and stay involved through QA and handoff.</li>
         <li><b>Accessible by default.</b> Contrast, keyboard access and plain language from the first draft.</li>
