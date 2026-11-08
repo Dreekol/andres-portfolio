@@ -68,8 +68,14 @@ const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
             <p class="when">{r.dates}</p>
             <div>
               <h3>{r.title}</h3>
-              <p class="org">{r.org}</p>
-              <ul>{r.points.map((p) => <li>{p}</li>)}</ul>
+              {r.org && <p class="org">{r.org}</p>}
+              {r.points && <ul>{r.points.map((p) => <li>{p}</li>)}</ul>}
+              {r.groups && r.groups.map((g) => (
+                <section class="client">
+                  <h4>{g.client}</h4>
+                  <ul>{g.points.map((p) => <li>{p}</li>)}</ul>
+                </section>
+              ))}
             </div>
           </li>
         ))}
@@ -150,6 +156,8 @@ const hasPdf = existsSync(join(process.cwd(), 'public', site.resumePdf));
   h3 { font-size: var(--step-1); font-weight: 600; letter-spacing: -0.015em; }
   .org { color: var(--mute); margin-top: 2px; }
   .roles ul { margin-top: 12px; padding-left: 1.1em; display: grid; gap: 6px; color: var(--ink-2); max-width: 70ch; }
+  .client { margin-top: 20px; }
+  h4 { font-size: var(--step-0); font-weight: 700; color: var(--ink); }
   .roles ul li::marker { color: var(--accent); }
 
   @media (max-width: 900px) {
