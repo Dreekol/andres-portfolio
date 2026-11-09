@@ -15,11 +15,13 @@ scope: [Logo, Brand standards, Harris County Pets brand, Campaigns, Conference d
 liveUrl: https://www.countypets.com/
 color: "#1F5FAE"
 colorName: Public Health Blue
-cover: ../../../assets/work/harris-county/hcph-logo-cover.jpg
-coverAlt: "The Harris County Public Health logo: four overlapping colored squares beside the wordmark and the line “Building a Healthy Community”"
+cover: ../../../assets/work/harris-county/brand-cover.jpg
+coverAlt: "Illustration of the brand: the Harris County Public Health mark and its blue, green, pink and yellow palette flow out to a billboard, a conference program and the Harris County Pets website"
 coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
+import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
 import family from '../../../assets/work/harris-county/brand-family.jpg';
 import pets from '../../../assets/work/harris-county/pets-site.jpg';
 import fss from '../../../assets/work/harris-county/food-safety-summit.jpg';
@@ -27,9 +29,24 @@ import prep from '../../../assets/work/harris-county/preparedness.jpg';
 
 {/* TODO(Andrés): add a line on how the brand standards were rolled out across divisions, and the Harris County Pets dates. */}
 
-I developed the logo and established the brand standards used throughout the organization, then designed print and digital work for it and its divisions, including recurring yearly conferences, displays and lighting.
+## How the work ran
 
-## Harris County Pets
+<Process label="How the work ran" steps={[
+  { title: 'Logo', text: 'A new mark for the department.' },
+  { title: 'Brand standards', text: 'Used throughout the organization.' },
+  { title: 'Harris County Pets', text: 'A sister brand for the county shelter.' },
+  { title: 'Campaigns and events', text: 'Print and digital work, conferences and displays.' },
+]} />
+
+<Step n={1}>Logo</Step>
+
+I developed the Harris County Public Health logo.
+
+<Step n={2}>Brand standards</Step>
+
+I established the brand standards used throughout the organization.
+
+<Step n={3}>Harris County Pets</Step>
 
 I also established the brand for Harris County Pets, the county’s animal shelter, so it reads as part of the same family as Public Health.
 
@@ -37,7 +54,9 @@ I also established the brand for Harris County Pets, the county’s animal shelt
 
 <Figure src={pets} alt="The countypets.com homepage with the logo, navigation and color-coded Adopt, Foster, Volunteer and Calendar panels" caption="The Pets brand on countypets.com today." />
 
-## Campaigns and events
+<Step n={4}>Campaigns and events</Step>
+
+I designed print and digital work for the department and its divisions, including recurring yearly conferences, displays and lighting.
 
 <Figure src={fss} alt="Food Safety Summit identity across print and digital" caption="Food Safety Summit: identity across program, web and e-blasts." />
 

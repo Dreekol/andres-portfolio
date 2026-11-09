@@ -12,13 +12,14 @@ tools: [Wix]
 liveUrl: https://www.componentassembly.com/
 color: "#C2410C"
 colorName: Construction Orange
-cover: ../../assets/work/cas/style-guide.jpg
-coverAlt: CAS style guide cover
+cover: ../../assets/work/cas/cover.jpg
+coverAlt: "The live componentassembly.com homepage, framed in a desktop browser and on a phone: America’s Premier Drywall & Ceiling Contractor over the lower Manhattan skyline"
 coverPosition: center
 ---
 import Figure from '../../components/Figure.astro';
 import Pair from '../../components/Pair.astro';
 import Process from '../../components/Process.astro';
+import Step from '../../components/Step.astro';
 import home from '../../assets/work/cas/home.jpg';
 import hero from '../../assets/work/cas/site-hero.jpg';
 import sectors from '../../assets/work/cas/site-sectors.jpg';
@@ -48,9 +49,27 @@ The CAS website was due for modernization. The new one had to show owners, gener
   { title: 'Test', text: 'Test iteratively with users and refine.' },
 ]} label="How the redesign ran" />
 
-I led the redesign. I evaluated the existing site, set goals and success metrics, and built the roadmap. I worked with CAS stakeholders through exercises, workshops and co-working sessions to organize the content and settle the layout and style together. From there I created the wireframes, led design critiques with junior designers, and planned how content would move to the new site. I chose technology that would keep the site accessible and easy for CAS to update, then tested iteratively with users.
+<Step n={1}>Evaluate</Step>
+
+I led the redesign. I evaluated the existing site and set goals and success metrics for the new one.
+
+<Step n={2}>Plan</Step>
+
+I built the roadmap and planned how content would move to the new site.
+
+<Step n={3}>Design</Step>
+
+I worked with CAS stakeholders through exercises, workshops and co-working sessions to organize the content and settle the layout and style together. From there I created the wireframes and led design critiques with junior designers.
 
 <Figure src={home} alt="Homepage design with placeholder copy, sector cards, services and office locations" caption="The homepage design, before final copy." tall />
+
+<Step n={4}>Build</Step>
+
+I chose technology that would keep the site accessible and easy for CAS to update.
+
+<Step n={5}>Test</Step>
+
+I tested iteratively with users and refined the design.
 
 ## The live site
 

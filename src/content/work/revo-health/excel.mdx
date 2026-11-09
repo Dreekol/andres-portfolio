@@ -1,0 +1,67 @@
+---
+title: A patient-management app built around how nurses already work
+client: Revo Health
+name: EXCEL patient-management app
+parent: revo-health
+summary: For EXCEL, Revo Health’s fixed-price joint-replacement program, I designed the app its nurses use to qualify patients and follow them through recovery, organized around the way they already work.
+order: 1
+domains: [Healthcare]
+workTypes: [Internal tools, Research]
+kind: Patient-management app
+role: UX/UI designer
+scope: [User interviews, Workflow mapping, Patient qualification, Dashboard, Reminders]
+color: "#006699"
+colorName: EXCEL Blue
+cover: ../../../assets/work/revo-health/excel-cover.jpg
+coverAlt: "Illustration of the EXCEL app: filtered call lists lead to a dashboard of overdue and upcoming calls, a patient chart with several patients open in tabs, and a list of automated reminders"
+coverPosition: center
+---
+import Figure from '../../../components/Figure.astro';
+import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
+import ProtectedNote from '../../../components/ProtectedNote.astro';
+import excel from '../../../assets/work/revo-health/excel-dashboard.jpg';
+
+{/* TODO(Andrés): confirm the “What we heard” summary is fine to show publicly, and add the team, timeline and any outcome. */}
+
+## The challenge
+
+EXCEL is a value-based, fixed-price program for total joint replacement. Before surgery, every patient needs an assessment to confirm they’re a good fit for outpatient care, and the care team follows each one for 90 days afterward.
+
+Revo Health wanted software to make qualification faster, automate communication and reminders, capture patient data and outcomes, and connect with Twin Cities Orthopedics’ systems. The first release would focus on qualification, automated communication and milestone tracking, and it had to scale and meet HIPAA requirements.
+
+## How the work ran
+
+<Process label="How the work ran" steps={[
+  { title: 'Learn the program', text: 'Start from the program’s goals and the features it needed.' },
+  { title: 'Listen to the nurses', text: 'Interview the care team about how their day really runs.' },
+  { title: 'Follow their workflow', text: 'Organize the app around the lists and calls nurses already work from.' },
+  { title: 'Qualify faster', text: 'Put the factors that rule a patient out first.' },
+  { title: 'Remind automatically', text: 'Show what’s due and automate the reminders.' },
+]} />
+
+<Step n={1}>Learn the program</Step>
+
+The program brief set out what the software needed to cover: case management, pre-surgical screening, content, surveys and reminders, tracking each patient’s care, reporting, and automated forms and approvals. I used it to understand the whole program before narrowing in on the first release.
+
+<Step n={2}>Listen to the nurses</Step>
+
+I wrote an interview guide about the team’s challenges, how they split work before and after surgery, and what a rolled-up dashboard should show, then interviewed the nursing team’s lead.
+
+**What we heard.** Nurses plan their day from filtered lists: assessment calls, pre-op physicals, and the calls that follow a patient from discharge to 90 days. Patients call in constantly, so nurses need to jump between several patients at once. Follow-ups lived on sticky notes and calendar reminders, because tasks in the old system didn’t alert anyone.
+
+<Step n={3}>Follow their workflow</Step>
+
+I reshaped the app around the nurses’ natural workflow. They start from the same filtered lists they already use, open a patient’s chart from the list, and keep several patients open at once. Each chart is organized by tabs.
+
+<Step n={4}>Qualify faster</Step>
+
+I prioritized the disqualifying factors in the assessment, so a patient who isn’t a fit for outpatient surgery is caught early, before the team spends time on the rest of the intake.
+
+<Step n={5}>Remind automatically</Step>
+
+A dashboard shows assessment calls at a glance: what’s overdue, what’s due this week and what’s coming up this month. Reminders are automated, so follow-ups no longer depend on notes and memory.
+
+<Figure src={excel} alt="EXCEL care dashboard, shown as a wireframe" caption="Tracking each patient through the program." />
+
+<ProtectedNote href="/private/work/revo-health/excel" title="EXCEL screens" text="The patient record, the patient list and the new-patient form." />

@@ -20,6 +20,7 @@ coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
 import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
 import vusage from '../../../assets/work/cargill/dataviz-usage.jpg';
 
@@ -37,25 +38,25 @@ Cargill wanted its products around the world to look and behave consistently, wi
   { title: 'Extend to data', text: 'Data-visualization standards and role-based reporting in Power BI.' },
 ]} />
 
-<h3><span class="step">1</span>Audit</h3>
+<Step n={1}>Audit</Step>
 
 I started by auditing the legacy design system, the product teams using it, and the templates they worked from. That gave a clear picture of how teams were really using the system.
 
-<h3><span class="step">2</span>Document</h3>
+<Step n={2}>Document</Step>
 
 The system is built on shared foundations: a color theme with alternates, one typeface across a full type scale, and a single icon library. On top of those sit the components. I documented them so a designer could open a component and find what they needed: its anatomy, spacing, variants, states and when to use each one. I also onboarded and trained new team members on the system.
 
-<h3><span class="step">3</span>Bring people together</h3>
+<Step n={3}>Bring people together</Step>
 
 A system lives through the people who use it. I created global ceremonies and ran town halls to showcase products built with the design system. Alongside them, office hours gave designers a place to bring questions.
 
 I worked directly with the designers designing with the system. The showcases and office hours helped them connect, help each other and get inspired by what other teams were shipping.
 
-<h3><span class="step">4</span>Connect with development</h3>
+<Step n={4}>Connect with development</Step>
 
 The same sessions brought designers closer to developers, so they could solve problems together. We co-created a QA relationship and a way to negotiate feasibility, and aligned on ways of working for handoff and design QA, so designs translated into code as intended.
 
-<h3><span class="step">5</span>Extend to data</h3>
+<Step n={5}>Extend to data</Step>
 
 With the global IT group, I designed role-based Power BI dashboards, so every level of stakeholder could find, understand and report on what they needed. I checked in with developers often to keep the designs buildable in Power BI. Then I documented my design choices against chart-usage best practice and added components so future reports stay consistent.
 

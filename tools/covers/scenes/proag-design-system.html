@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/proag/ds-cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#004C22');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// Principles → foundations → a component library → the products built on it.
+const PG = ['#004C22', '#3E8E41', '#1F6FB2', '#C8102E', '#E87722', '#8DC63F'];
+let a = '';
+// principles
+['star', 'tune', 'heart', 'bulb'].forEach((ic, i) => { a += badge(ic, 70, 200 + i * 140, 46, i === 0 ? C.color : C.mid); });
+a += arrow('M134 410 H194');
+// foundations: color, type, icons
+a += card(206, 120, 380, 580, { r: 26 });
+PG.forEach((c, i) => { for (let t = 0; t < 4; t++) a += rect(238 + i * 54, 156 + t * 34, 46, 30, C.mix(c, '#ffffff', t * 0.24), 5); });
+a += `<text x="238" y="390" font-family="TeX Gyre Heros, Helvetica, Arial, sans-serif" font-weight="700" font-size="96" fill="${C.ink}">Aa</text>` + bar(400, 330, 150, 12, C.ink) + bar(400, 356, 120, 10, C.grey) + bar(400, 378, 90, 8, C.grey2);
+['home', 'search', 'chart', 'doc', 'calendar', 'pin', 'truck', 'drop'].forEach((ic, i) => { const x = 238 + (i % 4) * 82, y = 440 + Math.floor(i / 4) * 110; a += rect(x, y, 66, 66, C.grey2, 12) + icon(ic, x + 15, y + 15, 36, C.color); });
+a += arrow('M594 410 H654');
+// components
+a += card(666, 120, 400, 580, { r: 26 });
+a += pill(698, 160, 160, 48, C.color, '#fff') + rect(876, 160, 160, 48, '#fff', 24, `stroke="${C.color}" stroke-width="3"`) + bar(912, 180, 88, 9, C.color);
+a += bar(698, 240, 80, 8, C.grey) + `<rect x="698" y="256" width="338" height="44" rx="8" fill="#fff" stroke="${C.grey}" stroke-width="2"/>` + bar(714, 274, 140, 9, C.ink) + icon('down', 1002, 266, 24, C.mute);
+a += rect(698, 330, 64, 34, C.color, 17) + circle(745, 347, 13, '#fff') + rect(782, 330, 64, 34, C.grey, 17) + circle(799, 347, 13, '#fff') + check(870, 334, 28) + check(912, 334, 28, false);
+a += card(698, 396, 338, 270, { r: 14, stroke: C.grey2, sw: 2, shadow: false }) + rect(698, 396, 338, 110, C.soft, 14) + rect(698, 486, 338, 20, C.soft) + icon('drop', 840, 426, 50, C.color) + bar(720, 528, 160, 14, C.ink) + lines(720, 560, 290, 2, 22, 9) + pill(720, 610, 110, 34, C.color, '#fff');
+a += arrow('M1074 410 H1134');
+// products
+a += screen(1146, 150, 450, 250, { kind: 'form', rows: 2, cols: 2 });
+a += screen(1146, 440, 450, 250, { kind: 'table', rows: 4 });
+C.draw(a);
+</script></body></html>

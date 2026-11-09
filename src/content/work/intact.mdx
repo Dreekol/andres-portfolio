@@ -10,10 +10,13 @@ role: UX/UI designer
 scope: [Account setup, Eligibility, Product selection, Quoting]
 color: "#B91C1C"
 colorName: Intact Red
-cover: ../../assets/work/intact/setup-1.png
-coverAlt: First step of the account setup flow, shown as a wireframe
+cover: ../../assets/work/intact/cover.jpg
+coverAlt: "Illustration of the flow: six steps down the left of a setup screen with a client lookup filling in details, then a fleet of trucks and product choices, then a quote with sliders for limits"
+coverPosition: center
 ---
 import Figure from '../../components/Figure.astro';
+import Process from '../../components/Process.astro';
+import Step from '../../components/Step.astro';
 import ProtectedNote from '../../components/ProtectedNote.astro';
 import s2 from '../../assets/work/intact/setup-2.png';
 
@@ -21,12 +24,31 @@ import s2 from '../../assets/work/intact/setup-2.png';
 
 I designed the account setup flow brokers use to bring a trucking client to Intact and quote coverage. It splits a long application into six steps, listed down the left, with Save and Exit always in reach.
 
-**Look the client up instead of retyping them.** A lookup fills in the client’s details, and what the system already knows arrives pre-filled.
+## How the flow runs
 
-<Figure src={s2} alt="Step two of the flow with a lookup and contact fields, shown as a wireframe" caption="Step two: a lookup fills in the client’s details." />
+<Process label="How the flow runs" steps={[
+  { title: 'Set up the account', text: 'Look the client up instead of retyping them.' },
+  { title: 'Check eligibility', text: 'Plain-language questions in the broker’s words.' },
+  { title: 'Choose products', text: 'Product choices and the client’s fleet shape the quote.' },
+  { title: 'Quote', text: 'Set limits and benefits.' },
+]} />
 
-**Ask in the broker’s words.** Each section opens with a plain-language question instead of a form label.
+<Step n={1}>Set up the account</Step>
 
-**Shape the quote around the client.** Product choices and the details of the client’s fleet build the quote, then the broker sets limits and benefits.
+A lookup fills in the client’s details, and what the system already knows arrives pre-filled.
+
+<Figure src={s2} alt="Step two of the flow with a lookup and contact fields, shown as a wireframe" caption="A lookup fills in the client’s details." />
+
+<Step n={2}>Check eligibility</Step>
+
+Like every section, eligibility opens with plain-language questions instead of form labels.
+
+<Step n={3}>Choose products</Step>
+
+Product choices and the details of the client’s fleet build the quote.
+
+<Step n={4}>Quote</Step>
+
+The broker then sets limits and benefits.
 
 <ProtectedNote href="/private/work/intact" title="Account setup, steps three to five" text="The rest of the flow." />

@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/healthpartners/medication-cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#306CD0');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// Home with four jobs → who's due → log the call → reports and hours.
+let a = '';
+// home: four tiles
+a += card(0, 170, 330, 480) + bar(30, 206, 140, 14, C.ink);
+['phone', 'chart', 'clock', 'apps'].forEach((ic, i) => { const x = 30 + (i % 2) * 140, y = 250 + Math.floor(i / 2) * 180; a += rect(x, y, 126, 160, i === 0 ? C.color : C.grey2, 16) + icon(ic, x + 39, y + 40, 48, i === 0 ? '#fff' : C.color) + bar(x + 24, y + 116, 78, 10, i === 0 ? '#fff' : C.grey); });
+a += arrow('M338 410 H398');
+// call invites: due first
+a += card(410, 110, 400, 600, { r: 26 }) + bar(440, 150, 160, 16, C.ink);
+a += rect(440, 190, 340, 40, C.grey2, 20) + rect(444, 194, 110, 32, C.color, 16) + bar(470, 206, 60, 8, '#fff') + bar(580, 206, 60, 8, C.grey) + bar(680, 206, 60, 8, C.grey);
+for (let r = 0; r < 7; r++) { const y = 260 + r * 62, due = r < 2; a += rect(440, y, 340, 50, due ? C.soft : '#fff', 12, due ? '' : `stroke="${C.grey2}" stroke-width="2"`) + avatar(470, y + 25, 16, due ? C.color : C.grey) + bar(500, y + 14, 130, 10, due ? C.ink : C.grey) + bar(500, y + 30, 80, 8, C.grey2) + (due ? icon('bell', 744, y + 13, 24, C.accent2) : pill(700, y + 15, 64, 20, C.grey2)); }
+a += arrow('M818 410 H878');
+// log a call
+a += card(890, 170, 330, 480) + bar(920, 206, 130, 14, C.ink) + avatar(940, 262, 26) + bar(978, 252, 120, 12, C.ink) + bar(978, 272, 80, 8, C.grey);
+for (let r = 0; r < 3; r++) { const y = 316 + r * 72; a += bar(920, y, 80, 8, C.grey) + `<rect x="920" y="${y + 16}" width="270" height="36" rx="8" fill="#fff" stroke="${C.grey}" stroke-width="2"/>`; }
+a += icon('down', 1158, 404, 22, C.mute) + pill(1070, 590, 120, 36, C.color, '#fff');
+a += arrow('M1228 410 H1288');
+// reports + hours
+a += card(1300, 160, 300, 260) + bars(1320, 200, 260, 190, [0.5, 0.72, 0.6, 0.9, 0.78], C.color);
+a += card(1300, 450, 300, 210) + ring(1390, 555, 56, 0.72, C.color, C.grey2, 16) + icon('clock', 1372, 537, 36, C.color) + bar(1470, 520, 100, 12, C.ink) + bar(1470, 546, 70, 9, C.grey) + bar(1470, 568, 84, 9, C.grey);
+C.draw(a);
+</script></body></html>

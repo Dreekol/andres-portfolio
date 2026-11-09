@@ -11,15 +11,40 @@ scope: [Technical assessment, User journeys, Dashboard design, Design guidelines
 tools: [Power BI, Figma]
 color: "#0F766E"
 colorName: Clinical Teal
-cover: ../../assets/work/partners-in-excellence/overview.png
-coverAlt: Organization overview dashboard shown as a wireframe
+cover: ../../assets/work/partners-in-excellence/cover.jpg
+coverAlt: "Illustration of the cascade: an organization dashboard steps down to a department view and a team view, with a lock for role-based security and the same charts on a phone"
+coverPosition: center
 ---
 import Figure from '../../components/Figure.astro';
+import Process from '../../components/Process.astro';
+import Step from '../../components/Step.astro';
 import ProtectedNote from '../../components/ProtectedNote.astro';
 import overview from '../../assets/work/partners-in-excellence/overview.png';
 
-With cross-functional stakeholders, I assessed the current state and designed a future-state framework for one reporting dashboard spanning clinical, financial and HR systems. I architected a “cascade of granularity”: five role-based views that run from the whole organization down to individual teams, aligned with row-level security, and set chart guidelines for desktop and mobile.
+{/* TODO(Andrés): add what the user journeys showed, the team, and any outcomes. */}
+
+With cross-functional stakeholders, I designed one reporting dashboard spanning clinical, financial and HR systems, built to cut the context switching between them.
+
+## How the work ran
+
+<Process label="How the work ran" steps={[
+  { title: 'Assess', text: 'The current state of reporting, with stakeholders.' },
+  { title: 'Design the cascade', text: 'Five role-based views, from the organization down to teams.' },
+  { title: 'Set guidelines', text: 'Chart guidelines for desktop and mobile.' },
+]} />
+
+<Step n={1}>Assess</Step>
+
+With stakeholders, I assessed the current state and designed a future-state framework for the dashboard.
+
+<Step n={2}>Design the cascade</Step>
+
+I architected a “cascade of granularity”: five role-based views that run from the whole organization down to individual teams, aligned with row-level security so each person sees what their role allows.
 
 <Figure src={overview} alt="Organization-level overview dashboard, shown as a wireframe" caption="The organization view, shown as a wireframe." tall />
+
+<Step n={3}>Set guidelines</Step>
+
+I set chart guidelines for desktop and mobile, so every view reads the same way.
 
 <ProtectedNote href="/private/work/partners-in-excellence" title="More dashboard views" text="More of the dashboard views." />

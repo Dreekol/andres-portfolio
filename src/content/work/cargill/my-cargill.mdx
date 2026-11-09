@@ -23,6 +23,7 @@ coverPosition: center
 import Figure from '../../../components/Figure.astro';
 import Pair from '../../../components/Pair.astro';
 import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
 import home from '../../../assets/work/cargill/mc-design-home.jpg';
 import value from '../../../assets/work/cargill/mc-design-value.jpg';
 import steps from '../../../assets/work/cargill/mc-request-steps.jpg';
@@ -50,7 +51,7 @@ The portal ran alongside the build of Cargill's [design system](/work/cargill/de
   { title: 'Confirm', text: 'Know the request went through and what happens next.' },
 ]} />
 
-<h3><span class="step">1</span>Land</h3>
+<Step n={1}>Land</Step>
 
 The homepage does two jobs at once. Returning customers can sign in straight away from the card on the left. Everyone else sees, in plain words, what myCargill is for, and gets a clear way to request access.
 
@@ -60,13 +61,13 @@ Further down the page, a short section explains what customers get: immediate ac
 
 <Figure src={value} alt="myCargill homepage section: a headline, a short paragraph and a Get Access button next to a mosaic of photos and green tiles for document access, self-service and 24/7 information" caption="What customers get, explained before they sign up." />
 
-<h3><span class="step">2</span>Request</h3>
+<Step n={2}>Request</Step>
 
 Requesting access used to mean an email thread. I turned it into a short form split into three steps: contact details, business information, then the portal they need and why. A tracker at the top shows where they are and how much is left, so the form never feels longer than it is.
 
 <Figure src={steps} alt="Three request-access screens: contact information, business information, and the portal request with terms and a reCAPTCHA check, each with a step tracker at the top" caption="Three short steps, with a tracker showing progress." />
 
-<h3><span class="step">3</span>Confirm</h3>
+<Step n={3}>Confirm</Step>
 
 The last screen confirms the request was sent and tells customers what to do next: check their email to continue.
 

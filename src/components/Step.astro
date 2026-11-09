@@ -1,0 +1,7 @@
+---
+// A numbered step heading inside a case study. Steps follow the order of the <Process> summary above them,
+// so the number here matches the dot there. Usage: <Step n={1}>Audit</Step>
+interface Props { n: number }
+const { n } = Astro.props;
+---
+<h3><span class="step">{n}</span><slot /></h3>

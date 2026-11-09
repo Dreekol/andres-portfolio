@@ -12,11 +12,13 @@ tools: [Wix]
 liveUrl: https://www.nextlevelpartners.xyz/
 color: "#1E1B4B"
 colorName: Partner Indigo
-cover: ../../assets/work/next-level-partners/site-home.jpg
-coverAlt: "The Next Level Partners homepage: logo and navigation, the mission line on an indigo band, and a welcome section beside a photo of a builder at work"
-coverPosition: top
+cover: ../../assets/work/next-level-partners/cover.jpg
+coverAlt: "The live Next Level Partners homepage framed in a desktop browser: logo and navigation, the mission line on an indigo band, and a welcome section beside a photo of a builder at work"
+coverPosition: center
 ---
 import Figure from '../../components/Figure.astro';
+import Process from '../../components/Process.astro';
+import Step from '../../components/Step.astro';
 import brand from '../../assets/work/next-level-partners/brand.png';
 import drives from '../../assets/work/next-level-partners/site-drives.jpg';
 import solutions from '../../assets/work/next-level-partners/site-solutions.jpg';
@@ -42,11 +44,21 @@ Their model rests on three things partners bring to a business.
 
 The businesses they back create jobs and pathways for people in their communities. Among them are a construction firm building careers for people from underserved communities, a fair-trade jewelry brand, a social-impact caterer and two cleaning companies that offer second-chance employment. So far, their site counts 5 business partners, $1M in loan capital raised, $10M in partner revenue growth and 50 jobs created.
 
-## The website
+## How the work ran
 
-The site speaks to two audiences at once. Investors, advisors, corporations and foundations need to understand the model and find a way to get involved. Business owners need to see what partnership offers and how to apply. I built it on Wix, with a clear path for each.
+<Process label="How the work ran" steps={[
+  { title: 'Serve two audiences', text: 'A clear path for investors and for business owners.' },
+  { title: 'Build the site', text: 'Build each page on Wix.' },
+  { title: 'Explore the identity', text: 'Logo lockups, color and type.' },
+]} />
 
-The homepage, shown at the top of this page, opens with the mission on an indigo band, followed by a welcome and a short video. Below that, “What Drives Us” lays out the problem, the belief and the results so far.
+<Step n={1}>Serve two audiences</Step>
+
+The site speaks to two audiences at once. Investors, advisors, corporations and foundations need to understand the model and find a way to get involved. Business owners need to see what partnership offers and how to apply. The site gives each a clear path.
+
+<Step n={2}>Build the site</Step>
+
+I built it on Wix. The homepage, shown at the top of this page, opens with the mission on an indigo band, followed by a welcome and a short video. Below that, “What Drives Us” lays out the problem, the belief and the results so far.
 
 <Figure src={drives} alt="The What Drives Us section: three white cards on indigo for economic disparities, the firm's belief and its results so far" caption="“What Drives Us” sets out the problem, the belief and the results." />
 
@@ -58,7 +70,7 @@ About Us carries the mission, the core values and the ten-year goal, along with 
 
 <Figure src={values} alt="The About Us page: four core values on an indigo band, then the ten-year goal in an outlined box" caption="About Us: core values and the ten-year goal." />
 
-## The identity
+<Step n={3}>Explore the identity</Step>
 
 Alongside the site, I explored an identity for the group: logo lockups, a color palette led by deep indigo and a type specification.
 

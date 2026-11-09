@@ -517,12 +517,12 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
       }
     ]
   },
-  "revo-health": {
-    "title": "EXCEL and Habits to Health screens",
-    "intro": "More of both products, shown as wireframes, and the service blueprint with details blurred.",
+  "revo-health/excel": {
+    "title": "EXCEL screens",
+    "intro": "More of the EXCEL app, shown as wireframes.",
     "sections": [
       {
-        "heading": "EXCEL",
+        "heading": null,
         "figures": [
           {
             "images": [
@@ -558,9 +558,15 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
             "caption": "Adding a new patient, one section at a time."
           }
         ]
-      },
+      }
+    ]
+  },
+  "revo-health/habits-to-health": {
+    "title": "Habits to Health screens and service blueprint",
+    "intro": "The service blueprint with details blurred, and more of the app, shown as wireframes.",
+    "sections": [
       {
-        "heading": "Habits to Health",
+        "heading": null,
         "figures": [
           {
             "images": [

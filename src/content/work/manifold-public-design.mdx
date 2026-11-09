@@ -12,11 +12,13 @@ tools: [Wix]
 liveUrl: https://www.manifoldpublicdesign.com/
 color: "#364342"
 colorName: Manifold Slate
-cover: ../../assets/work/manifold-public-design/home.jpg
-coverAlt: The Manifold Public Design homepage, with the line “People today navigate fluidly between digital and physical spaces” above a collage of portraits and geometric shapes
-coverPosition: top center
+cover: ../../assets/work/manifold-public-design/cover.jpg
+coverAlt: "The live Manifold Public Design homepage, framed in a desktop browser and on a phone, with the line “People today navigate fluidly between digital and physical spaces”"
+coverPosition: center
 ---
 import Figure from '../../components/Figure.astro';
+import Process from '../../components/Process.astro';
+import Step from '../../components/Step.astro';
 import areas from '../../assets/work/manifold-public-design/areas.jpg';
 import featured from '../../assets/work/manifold-public-design/featured.jpg';
 import services from '../../assets/work/manifold-public-design/services.jpg';
@@ -34,7 +36,23 @@ Its work spans four areas: digital design, brand identity and campaigns, marketi
 
 ## How we worked
 
-I worked closely with the studio's stakeholders to decide what the site would say and how it would look. Through exercises, workshops and co-working sessions, we organized the content, worked out the layout and settled the visual style together. Then I built the site on Wix.
+<Process label="How we worked" steps={[
+  { title: 'Organize the content', text: 'Decide together what the site says, and where.' },
+  { title: 'Set layout and style', text: 'Work out the layout and visual style together.' },
+  { title: 'Build', text: 'Build the site on Wix.' },
+]} />
+
+<Step n={1}>Organize the content</Step>
+
+I worked closely with the studio’s stakeholders to decide what the site would say. Through exercises, workshops and co-working sessions, we organized the content together.
+
+<Step n={2}>Set layout and style</Step>
+
+In the same sessions, we worked out the layout and settled the visual style.
+
+<Step n={3}>Build</Step>
+
+Then I built the site on Wix.
 
 ## The website
 

@@ -13,23 +13,40 @@ scope: [Enrollment, Status tracking, Member records, Reporting]
 tools: [Figma, Power Platform]
 color: "#306CD0"
 colorName: HealthPartners Blue
-cover: ../../../assets/work/healthpartners/incentives.png
-coverAlt: Member incentives list shown as a wireframe
-coverPosition: top left
+cover: ../../../assets/work/healthpartners/incentives-cover.jpg
+coverAlt: "Illustration of the tool: members flow into one enrollment form, then a list of incentives with status tags, then an export"
+coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
+import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
-import Pair from '../../../components/Pair.astro';
 import list from '../../../assets/work/healthpartners/incentives.png';
 
 {/* TODO(Andrés): add the problem in your words, your role and any outcomes. */}
 
-## What I designed
+Coordinators use the tool to enroll members in incentive programs, track status and report on results.
 
-**Status at a glance.** Active and termed incentives are separate views, with status tags, filters and export.
+## How the tool works
+
+<Process label="How the tool works" steps={[
+  { title: 'Enroll', text: 'One form for the member and the incentive.' },
+  { title: 'Track', text: 'Status at a glance, active and termed.' },
+  { title: 'Report', text: 'Filter and export.' },
+]} />
+
+<Step n={1}>Enroll</Step>
+
+A single enrollment form captures the member’s identification and the incentive details.
+
+<Step n={2}>Track</Step>
+
+Active and termed incentives are separate views, each with status tags.
 
 <Figure src={list} alt="Member incentives list with status tags and filters, shown as a wireframe" caption="The incentives list." />
 
-**A single enrollment form** capturing member identification and incentive details.
+<Step n={3}>Report</Step>
+
+Filters narrow the list, and export takes it out for reporting.
 
 <ProtectedNote href="/private/work/healthpartners/member-incentives" title="Member incentives screens" text="Enrollment, the member record and reports." />

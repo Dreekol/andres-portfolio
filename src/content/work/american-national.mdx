@@ -16,12 +16,14 @@ liveUrl: https://annuities.americannational.com
 color: "#0D3455"
 colorName: American National Navy
 logo: ../../assets/logos/american-national.svg
-cover: ../../assets/work/american-national/calculator.png
-coverAlt: American National rate calculator showing a $50,000 premium over five years with a bar chart of projected growth
-coverPosition: top center
+cover: ../../assets/work/american-national/cover.jpg
+coverAlt: "Illustration of the buying flow: a landing page with a rate and comparison table leads to a rate calculator with a growth chart, then an application checklist with a signature, and the same flow on a phone"
+coverPosition: center
 ---
 import Figure from '../../components/Figure.astro';
 import Pair from '../../components/Pair.astro';
+import Process from '../../components/Process.astro';
+import Step from '../../components/Step.astro';
 import landing from '../../assets/work/american-national/landing-full.png';
 import calc from '../../assets/work/american-national/calculator.png';
 import intro from '../../assets/work/american-national/app-intro.png';
@@ -35,21 +37,35 @@ import mIntro from '../../assets/work/american-national/mobile-app-intro.png';
 
 Annuities are usually sold through an agent. American National wanted buyers to be able to purchase a fixed annuity entirely online, which meant the site had to do the agent’s job: explain a financial product plainly, show what it would earn, and carry a legally heavy application without losing people.
 
-## What I designed
+## How the flow runs
 
-**A landing page that answers “is this for me?” before asking for anything.** It leads with the guaranteed rate, compares the product against CDs and savings in one table, and breaks the process into three plain steps.
+<Process label="How the flow runs" steps={[
+  { title: 'Decide', text: 'A landing page that answers “is this for me?” before asking for anything.' },
+  { title: 'Estimate', text: 'A calculator that shows the money first.' },
+  { title: 'Apply', text: 'An application that sets expectations before it asks.' },
+]} />
+
+<Step n={1}>Decide</Step>
+
+The landing page answers “is this for me?” before asking for anything. It leads with the guaranteed rate, compares the product against CDs and savings in one table, and breaks the process into three plain steps.
 
 <Figure src={landing} alt="Full American National MYGA landing page: hero, rate callout, comparison table, ratings, three-step process and FAQs" caption="The landing page, top to bottom. Live at annuities.americannational.com." tall />
 
-**A calculator that shows the money first.** Buyers enter a premium and pick a 3, 5 or 7-year period, and the result shows future value, base rate and interest together, with a chart of growth year by year. Applying comes after the number makes sense.
+<Step n={2}>Estimate</Step>
+
+The calculator shows the money first. Buyers enter a premium and pick a 3, 5 or 7-year period, and the result shows future value, base rate and interest together, with a chart of growth year by year. Applying comes after the number makes sense.
 
 <Figure src={calc} alt="Rate calculator with premium amount, accumulation period options, a growth chart and future account value of $65,193" caption="Sample estimate: $50,000 over five years." />
 
-**An application that sets expectations before it asks.** The intro lists everything a buyer will need, and the required disclosures are presented in a readable panel before consent.
+<Step n={3}>Apply</Step>
+
+The application sets expectations before it asks. The intro lists everything a buyer will need, and the required disclosures are presented in a readable panel before consent.
 
 <Pair a={intro} aAlt="Application intro listing what applicants need before they begin" b={terms} bAlt="Terms and conditions page with electronic signature and customer notice disclosures" caption="What to expect, then the disclosures, before any personal details." />
 
-**Designed for phones as much as desktops.**
+## On every screen
+
+Every step was designed for phones as much as desktops.
 
 <Pair a={mLanding} aAlt="Mobile rate calculator results" b={mIntro} bAlt="Mobile application intro" caption="The same flow at phone width." narrow />
 

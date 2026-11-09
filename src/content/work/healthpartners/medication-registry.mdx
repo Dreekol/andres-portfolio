@@ -13,27 +13,45 @@ scope: [Information architecture, Call logging, Reporting, Time tracking]
 tools: [Figma, Power Platform]
 color: "#306CD0"
 colorName: HealthPartners Blue
-cover: ../../../assets/work/healthpartners/medopt-calls.png
-coverAlt: Call invites list shown as a wireframe
-coverPosition: top left
+cover: ../../../assets/work/healthpartners/medication-cover.jpg
+coverAlt: "Illustration of the registry: a home with four entry points leads to a call list with follow-ups due at the top, a call log form, and reports beside a ring of recorded hours"
+coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
+import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
-import Pair from '../../../components/Pair.astro';
 import home from '../../../assets/work/healthpartners/medopt-home.png';
 
 {/* TODO(Andrés): add the problem in your words, your role and any outcomes. */}
 
-## What I designed
+The registry gives the medication-optimization team one place to invite members, log calls and outcomes, record hours and run reports.
 
-**A home built around four jobs:** calls, reports, record hours and other payors.
+## How outreach runs
+
+<Process label="How outreach runs" steps={[
+  { title: 'Start from home', text: 'Four jobs, one click away.' },
+  { title: 'See who’s due', text: 'Follow-ups and this week’s invites first.' },
+  { title: 'Log the call', text: 'Member, call details and outcome in one form.' },
+  { title: 'Report', text: 'Reports and recorded hours in the same place.' },
+]} />
+
+<Step n={1}>Start from home</Step>
+
+The home is built around four jobs: calls, reports, record hours and other payors. Payor choices moved out of a popup and into the main navigation, so nothing is hidden.
 
 <Figure src={home} alt="Registry home with four entry points, shown as a wireframe" caption="Registry home." />
 
-**Outreach that shows what’s due.** Call invites surface follow-ups and this week’s invites at the top, with filters by program and outcome. Logging a call captures the member, call details and outcome in one form.
+<Step n={2}>See who’s due</Step>
 
-**Reporting and time tracking in the same place.**
+Call invites surface follow-ups and this week’s invites at the top, with filters by program and outcome.
 
-**Fewer hidden options.** Payor choices moved out of a popup and into the main navigation.
+<Step n={3}>Log the call</Step>
+
+Logging a call captures the member, call details and outcome in one form.
+
+<Step n={4}>Report</Step>
+
+Reporting and time tracking live in the same place as the outreach.
 
 <ProtectedNote href="/private/work/healthpartners/medication-registry" title="Medication optimization registry screens" text="Calls, reports, weekly hours and a before-and-after." />

@@ -13,34 +13,57 @@ scope: [Planning workshops, Stakeholder interviews, Principles, Foundations, Fig
 tools: [Figma]
 color: "#004C22"
 colorName: ProAg Green
-cover: ../../../assets/work/proag/library.png
-coverAlt: ProAg design system library with onboarding, changelog, foundations and components covers
-coverPosition: center right
+cover: ../../../assets/work/proag/ds-cover.jpg
+coverAlt: "Illustration of the design system: four principles lead to foundations of color, type and icons, then a component library of buttons, fields, toggles and cards, then the product screens built from them"
+coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
+import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
 import principles from '../../../assets/work/proag/ds-principles.jpg';
 import palette from '../../../assets/work/proag/ds-palette.jpg';
 import type from '../../../assets/work/proag/ds-type.jpg';
 import icons from '../../../assets/work/proag/ds-icons.jpg';
 
+{/* TODO(Andrés): add a public view of the component library and its documentation (wireframed or blurred) if you want a components step on this page. */}
+
 ## The problem
 
 The UX strategy pointed to one cohesive experience across ProAg’s tools, and design and development needed a shared foundation to build it on.
 
-## What I did
+## How the work ran
 
-**Learned the business first.** I studied ProAg’s systems and information architecture, and how its teams work.
+<Process label="How the work ran" steps={[
+  { title: 'Learn the business', text: 'ProAg’s systems, information architecture and teams.' },
+  { title: 'Plan', text: 'Planning workshops and stakeholder interviews.' },
+  { title: 'Pitch options', text: 'Approaches for IT and product management to weigh.' },
+  { title: 'Set principles', text: 'Four principles the system answers to.' },
+  { title: 'Build foundations', text: 'Color, type and icons.' },
+  { title: 'Put it to work', text: 'Figma, documentation, ceremonies and onboarding.' },
+]} />
 
-**Ran planning workshops to decide what to tackle first**, and interviewed stakeholders about how they work with design.
+<Step n={1}>Learn the business</Step>
 
-**Pitched options, not a single answer.** I presented different design-system approaches so IT and product management could weigh expectations and feasibility before committing.
+I studied ProAg’s systems and information architecture, and how its teams work.
 
-**Set principles the system answers to.**
+<Step n={2}>Plan</Step>
+
+I ran planning workshops to decide what to tackle first, and interviewed stakeholders about how they work with design.
+
+<Step n={3}>Pitch options</Step>
+
+I presented different design-system approaches, not a single answer, so IT and product management could weigh expectations and feasibility before committing.
+
+<Step n={4}>Set principles</Step>
+
+I set four principles the system answers to: purposeful, versatile, compelling and thoughtful.
 
 <Figure src={principles} alt="Design system principles: purposeful, versatile, compelling and thoughtful, each with a short description" caption="Four principles for the system." />
 
-## Foundations
+<Step n={5}>Build foundations</Step>
+
+The foundations cover color with accessible tints and shades, Proxima Nova in three weights, and icons built on the Carbon set, extended with agriculture-specific ones.
 
 <Figure src={palette} alt="Color palette: ProAg greens, blues, reds, oranges, lime and neutrals, each with tints and shades" caption="Color, with accessible tints and shades." />
 
@@ -48,13 +71,9 @@ The UX strategy pointed to one cohesive experience across ProAg’s tools, and d
 
 <Figure src={icons} alt="Icon grid built on the Carbon icon set, with agriculture-specific icons" caption="Iconography on the Carbon set." />
 
-## Components and documentation
+<Step n={6}>Put it to work</Step>
 
-## How teams use it
-
-**Built the operating model around the components.** I organized ProAg’s Figma instance and created the documentation, ceremonies, templates and onboarding material for people joining.
-
-**Gave design and development one vocabulary.** Defining components in shared chunks of information created a language between teams, keeping components and products consistent.
+I organized ProAg’s Figma instance around the components and created the documentation, ceremonies, templates and onboarding material for people joining. Defining components in shared chunks of information gave design and development one vocabulary, keeping components and products consistent.
 
 <ProtectedNote href="/private/work/proag/design-system" title="Design system library and specs" text="The library, component specs, the working cadence and code handoff." />
 

@@ -19,6 +19,7 @@ coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
 import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
 import account from '../../../assets/work/cargill/xs-pattern-account.jpg';
 import actions from '../../../assets/work/cargill/xs-pattern-actions.jpg';
@@ -40,25 +41,25 @@ The goal was to help reps grow the accounts they already had, inside the sales s
   { title: 'Plan what’s next', text: 'A future state where feedback from reps improves every suggestion.' },
 ]} />
 
-<h3><span class="step">1</span>Listen</h3>
+<Step n={1}>Listen</Step>
 
 We started with conversations on both sides of the relationship. Sales reps, sales coordinators and customers walked us through how a new account gets set up and how an existing one grows.
 
 A few themes came up again and again. Setting up an account is a team effort on the customer's side, with buyers, finance, legal and the warehouse each owning a piece. Everyone wanted to see where things stood without chasing people by email. And reps wanted a clearer read on which customers to grow, and with what.
 
-<h3><span class="step">2</span>Prototype</h3>
+<Step n={2}>Prototype</Step>
 
 The first prototype tackled the front door: bringing on a new customer. A rep starts the request. The customer gets an invitation and fills in a setup form broken into short sections, then follows a tracker that shows progress and how long setup should take.
 
 A second set of screens asked customers which supplier offerings mattered most to them, from added services to payment terms to ease of doing business.
 
-<h3><span class="step">3</span>Test</h3>
+<Step n={3}>Test</Step>
 
 We walked customers and members of the sales team through the prototype and asked them to think out loud.
 
 Customers liked having everything in one place and seeing their progress. They asked for a way to hand sections to the right department, and they were wary of clicking links in emails they weren't expecting. Reps wanted customers to confirm any information filled in for them, and they wanted reminders about who to follow up with. Each round of feedback went back into the design.
 
-<h3><span class="step">4</span>Design the MVP</h3>
+<Step n={4}>Design the MVP</Step>
 
 From there, the focus moved to the rep's side: helping them grow customers they already had.
 
@@ -70,7 +71,7 @@ Every suggestion needed a next step, so each one comes with quick actions. A rep
 
 <Figure src={actions} alt="Three dialog patterns: snooze a suggestion, mark it complete, and add an opportunity" caption="Snooze, mark complete, or add an opportunity." />
 
-<h3><span class="step">5</span>Plan what's next</h3>
+<Step n={5}>Plan what's next</Step>
 
 Suggestions only get better if the tool learns from them. In the future state, reps tell the tool why a product wasn't a fit or how the conversation went. A product that doesn't match drops off that customer's list, and the reasons feed the next round of suggestions and campaigns.
 

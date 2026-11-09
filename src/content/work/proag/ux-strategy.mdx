@@ -12,11 +12,13 @@ role: Contributing UX designer (SDG team)
 scope: [Interviews, System demos, Workshops, Archetype, Survey, Journey map, Concepts, Roadmap]
 color: "#004C22"
 colorName: ProAg Green
-cover: ../../../assets/work/proag/s-coconcept.jpg
-coverAlt: Co-concepting session slide with the board and notes blurred
-coverPosition: top center
+cover: ../../../assets/work/proag/strategy-cover.jpg
+coverAlt: "Illustration of the strategy work: sticky notes grouped into themes lead to an impact and effort matrix, an agent archetype and a phased horizon roadmap"
+coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
+import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
 import coconcept from '../../../assets/work/proag/s-coconcept.jpg';
 
@@ -24,26 +26,45 @@ import coconcept from '../../../assets/work/proag/s-coconcept.jpg';
 
 ProAg wanted a more cohesive experience across the tools its agents use every day, and needed to know where to start. Our SDG team ran a two-phase UX strategy project to find out.
 
+## How the work ran
+
+<Process label="How the work ran" steps={[
+  { title: 'Listen', text: 'Interviews with staff and agents, and system demos.' },
+  { title: 'Ideate together', text: 'Workshops, an impact and effort matrix, co-concepting.' },
+  { title: 'Frame the choice', text: 'Strategic paths for leadership to weigh.' },
+  { title: 'Picture the agent', text: 'An archetype, tested with a survey.' },
+  { title: 'Find a start', text: 'Early concepts and quick wins.' },
+  { title: 'Plan', text: 'A phased horizon map.' },
+]} />
+
 ## Phase 1: discovery
 
-**Listened first.** We interviewed ProAg stakeholders across roles and agents across regions, then affinity-mapped the recordings into themes.
+<Step n={1}>Listen</Step>
 
-**Toured the systems.** System demos gave us the context around the tools agents rely on.
+We interviewed ProAg stakeholders across roles and agents across regions, then affinity-mapped the recordings into themes. System demos gave us the context around the tools agents rely on.
 
-**Ideated together.** In “How might we” workshops with ProAg, small teams generated ideas and plotted the strongest themes on an impact and effort matrix. Co-concepting sessions turned them into statements written from the agent’s point of view.
+<Step n={2}>Ideate together</Step>
+
+In “How might we” workshops with ProAg, small teams generated ideas and plotted the strongest themes on an impact and effort matrix. Co-concepting sessions turned them into statements written from the agent’s point of view.
 
 <Figure src={coconcept} alt="Co-concepting session slide with the board and notes blurred" caption="Co-concepting, from the agent’s point of view." />
 
-**Framed the choice.** We laid out strategic paths for leadership to weigh against the research and the product vision.
+<Step n={3}>Frame the choice</Step>
+
+We laid out strategic paths for leadership to weigh against the research and the product vision.
 
 ## Phase 2: a plan for the plan
 
-**Gave the team a shared picture of the agent.** We wrote an agent archetype and ran a survey to test what we had heard at a larger scale.
+<Step n={4}>Picture the agent</Step>
 
-**Concepted a starting point.** We sketched early concepts for where agents begin their work.
+We wrote an agent archetype to give the team a shared picture of the agent, and ran a survey to test what we had heard at a larger scale.
 
-**Looked for quick wins.** We identified small improvements that could ship ahead of larger changes.
+<Step n={5}>Find a start</Step>
 
-**Turned it into a roadmap.** Strategy sessions with leaders across disciplines produced a phased horizon map for product strategy, user research and design.
+We sketched early concepts for where agents begin their work, and identified small improvements that could ship ahead of larger changes.
+
+<Step n={6}>Plan</Step>
+
+Strategy sessions with leaders across disciplines produced a phased horizon map for product strategy, user research and design.
 
 <ProtectedNote href="/private/work/proag/ux-strategy" title="UX strategy research and roadmap" text="More of the research and planning artifacts." />

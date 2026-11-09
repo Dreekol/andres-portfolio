@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/healthpartners/pharmacy-cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#306CD0');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// Interviews → data model → contract with pricing → accessible by design.
+let a = '';
+// interviews
+a += card(0, 200, 280, 420) + avatar(80, 280, 40) + rect(130, 250, 120, 56, C.grey2, 14) + bar(146, 266, 80, 8, C.grey) + bar(146, 284, 56, 8, C.grey);
+a += avatar(200, 430, 40, C.mid) + rect(30, 400, 120, 56, C.soft, 14) + bar(46, 416, 80, 8, '#fff') + bar(46, 434, 56, 8, '#fff');
+a += avatar(80, 560, 40) + rect(130, 530, 120, 56, C.grey2, 14) + bar(146, 546, 80, 8, C.grey) + bar(146, 564, 56, 8, C.grey);
+a += arrow('M288 410 H348');
+// data model
+const node = (cx, cy, ic, main) => circle(cx, cy, 44, main ? C.color : '#fff', 'filter="url(#sh)"') + icon(ic, cx - 22, cy - 22, 44, main ? '#fff' : C.color);
+a += line('M450 410 L560 260 M450 410 L560 560 M560 260 L670 410 M560 560 L670 410', { color: C.mid, w: 4 });
+a += node(450, 410, 'doc', true) + node(560, 260, 'home') + node(560, 560, 'tag') + node(670, 410, 'chart');
+a += arrow('M724 410 H784');
+// contract with pricing table
+a += card(796, 120, 500, 580, { r: 26 }) + bar(830, 160, 220, 18, C.ink) + bar(830, 194, 140, 10, C.grey);
+['Detail', 'Fees', 'Pricing'].forEach((t, i) => { a += rect(830 + i * 120, 230, 108, 36, i === 2 ? C.color : C.grey2, 18) + bar(850 + i * 120, 244, 68, 9, i === 2 ? '#fff' : C.grey); });
+a += rect(830, 290, 432, 34, C.grey2, 8);
+for (let r = 0; r < 6; r++) { const y = 344 + r * 44; a += bar(846, y + 6, 130, 10, C.grey) + bar(1010, y + 6, 70, 10, C.grey2) + bar(1150, y + 6, 90, 10, r === 2 ? C.color : C.grey2); }
+a += rect(830, 616, 432, 52, C.soft, 12) + bar(850, 636, 110, 12, C.color) + bar(1140, 634, 100, 16, C.ink);
+// accessibility, from the start
+a += badge('access', 1300, 140, 54, C.ink);
+a += line('M1300 200 C 1300 230, 1290 240, 1270 252', { color: C.ink, w: 3, dash: '2 9' });
+C.draw(a);
+</script></body></html>

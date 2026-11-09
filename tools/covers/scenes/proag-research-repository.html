@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/proag/repository-cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#004C22');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// Research from many sources → one tagged, searchable repository → every team draws from it.
+let a = '';
+// inputs
+a += card(0, 150, 240, 140) + avatar(56, 220, 30) + rect(100, 198, 110, 44, C.grey2, 12) + bar(114, 212, 70, 8, C.grey) + bar(114, 226, 50, 8, C.grey);
+a += card(0, 330, 240, 140) + icon('doc', 30, 362, 56, C.color) + lines(104, 372, 110, 3, 20, 8);
+a += card(0, 510, 240, 140) + bars(24, 530, 192, 100, [0.4, 0.75, 0.55, 0.9], C.mid);
+a += arrow('M248 220 C 330 220, 330 360, 408 360') + arrow('M248 400 H408') + arrow('M248 580 C 330 580, 330 440, 408 440');
+// the repository
+a += card(420, 120, 560, 580, { r: 28 }) + head(420, 120, 560, 110, C.color, 28) + icon('hub', 452, 150, 50, '#fff') + bar(520, 162, 200, 18, '#fff') + bar(520, 192, 120, 10, 'rgba(255,255,255,.6)');
+a += `<rect x="452" y="256" width="496" height="48" rx="24" fill="#fff" stroke="${C.grey}" stroke-width="2.5"/>` + icon('search', 470, 268, 24, C.mute) + bar(506, 274, 160, 12, C.grey);
+[['#FFE27A', 110], ['#B9E4C9', 90], ['#BFD8FF', 130], ['#FFB4C8', 80]].forEach(([c, w], i) => { a += rect(452 + [0, 124, 228, 372][i], 324, w, 30, c, 15); });
+for (let r = 0; r < 4; r++) { const y = 380 + r * 76; a += rect(452, y, 496, 62, r === 0 ? C.soft : '#fff', 12, r === 0 ? '' : `stroke="${C.grey2}" stroke-width="2"`) + icon(['chat', 'doc', 'chart', 'chat'][r], 470, y + 17, 28, C.color) + bar(514, y + 16, 200, 11, C.ink) + bar(514, y + 36, 130, 8, C.grey) + rect(850, y + 20, 74, 22, ['#FFE27A', '#BFD8FF', '#B9E4C9', '#FFB4C8'][r], 11); }
+a += arrow('M988 410 H1068');
+// teams
+[['group', C.color], ['chart', C.mid], ['chat', C.mid], ['apps', C.mid]].forEach(([ic, c], i) => { const y = 180 + i * 140; a += badge(ic, 1150, y + 40, 48, c) + bar(1220, y + 30, 120, 14, C.ink) + bar(1220, y + 56, 80, 10, C.grey); });
+a += line('M1076 410 C 1090 410, 1090 220, 1096 220 M1076 410 C 1090 410, 1090 600, 1096 600', { color: C.color, w: 4 });
+C.draw(a);
+</script></body></html>

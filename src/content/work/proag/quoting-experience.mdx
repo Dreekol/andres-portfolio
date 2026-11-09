@@ -13,11 +13,13 @@ scope: [Heuristic evaluation, Severity scoring, Quoter concepts, Printout valida
 tools: [Figma]
 color: "#004C22"
 colorName: ProAg Green
-cover: ../../../assets/work/proag/q-summary.jpg
-coverAlt: Evaluation summary slide with details blurred
-coverPosition: left center
+cover: ../../../assets/work/proag/quoting-cover.jpg
+coverAlt: "Illustration of three methods rising in fidelity: a heuristic checklist with severity scores, a quoter concept in low to mid fidelity, and a printed quote summary"
+coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
+import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
 import methods from '../../../assets/work/proag/q-methods.jpg';
 import heuristics from '../../../assets/work/proag/q-heuristics.jpg';
@@ -26,9 +28,17 @@ import summary from '../../../assets/work/proag/q-summary.jpg';
 
 Next we focused on the quoting experience, using three methods of increasing fidelity.
 
+## How the work ran
+
+<Process label="How the work ran" steps={[
+  { title: 'Heuristic evaluation', text: 'Grade the quoting flow and score every issue.' },
+  { title: 'Quoter concepts', text: 'A low to mid-fidelity prototype, reviewed with agents.' },
+  { title: 'Printout validation', text: 'The same review for printed summaries.' },
+]} />
+
 <Figure src={methods} alt="Fidelity of methods: heuristic evaluation, quoter concepts and printout validation, from low to high fidelity" caption="Three methods, from low to high fidelity." />
 
-## Heuristic evaluation
+<Step n={1}>Heuristic evaluation</Step>
 
 We walked through the quoting flow and graded it against Jakob Nielsen’s 10 usability heuristics, scoring each issue by how often it happens, how hard it is to overcome and how long it persists.
 
@@ -38,9 +48,13 @@ We walked through the quoting flow and graded it against Jakob Nielsen’s 10 us
 
 <Figure src={summary} alt="Evaluation summary slide with details blurred" caption="Every issue documented and scored by severity." />
 
-## Quoter and printout concepts
+<Step n={2}>Quoter concepts</Step>
 
-Building on earlier concepts, we made a low to mid-fidelity prototype, applied the design system, and reviewed it with agents and stakeholders. We did the same for printed summaries.
+Building on earlier concepts, we made a low to mid-fidelity prototype, applied the design system, and reviewed it with agents and stakeholders.
+
+<Step n={3}>Printout validation</Step>
+
+We did the same for printed summaries.
 
 ## What came out of it
 

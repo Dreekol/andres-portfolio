@@ -1,0 +1,155 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/cargill/amf-illustration.jpg"><style>html,body{margin:0;background:#EEF3E8}</style></head><body>
+<svg id="c" width="1600" height="840" viewBox="0 0 1600 840" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#1F7A3D" opacity=".10"/></pattern>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0b3d1f" flood-opacity=".16"/></filter>
+    <marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1F7A3D"/></marker>
+    <linearGradient id="pin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5DB04E"/><stop offset="1" stop-color="#1B6633"/></linearGradient>
+    <clipPath id="screen"><rect x="682" y="152" width="236" height="546" rx="26"/></clipPath>
+    <!-- one awning stripe pair, reused -->
+    <g id="aw">
+      <path d="M0 0 H40 V46 a20 20 0 0 1 -40 0 Z" fill="#2E8B47"/>
+      <path d="M40 0 H80 V46 a20 20 0 0 1 -40 0 Z" fill="#F6E7BF"/>
+    </g>
+    <g id="cat">
+      <circle r="38" fill="#A9D46F"/>
+      <path d="M0 0 V-38 M0 0 L33 19 M0 0 L-33 19" stroke="#fff" stroke-width="4"/>
+      <circle r="38" fill="none" stroke="#7CBF4E" stroke-width="3"/>
+      <rect x="-22" y="-26" width="12" height="16" rx="3" fill="#fff" opacity=".9"/>
+      <rect x="8" y="-22" width="16" height="11" rx="3" fill="#fff" opacity=".9"/>
+      <rect x="-8" y="14" width="18" height="10" rx="5" fill="#fff" opacity=".9"/>
+    </g>
+  </defs>
+  <rect width="1600" height="840" fill="#EEF3E8"/>
+  <rect width="1600" height="840" fill="url(#dots)"/>
+
+  <g transform="translate(800 424) scale(0.99) translate(-784 -423)">
+
+  <!-- delivery route behind everything -->
+  <path d="M1330 650 C 1420 650, 1450 560, 1440 430" fill="none" stroke="#F2B12A" stroke-width="5" stroke-dasharray="2 14" stroke-linecap="round"/>
+
+  <!-- ===== store, all in one place ===== -->
+  <ellipse cx="320" cy="660" rx="250" ry="42" fill="#1E6B3A"/>
+  <!-- category arc -->
+  <path d="M70 540 C 70 190, 570 190, 570 540" fill="none" stroke="#7CBF4E" stroke-width="4" stroke-dasharray="12 10"/>
+  <use href="#cat" x="80" y="452"/>
+  <use href="#cat" x="196" y="250"/>
+  <use href="#cat" x="444" y="250"/>
+  <use href="#cat" x="560" y="452"/>
+  <!-- little sparkle ticks like the ad -->
+  <g stroke="#F2B12A" stroke-width="5" stroke-linecap="round">
+    <path d="M172 196 l-8 -16 M194 190 v-18 M216 196 l8 -16"/>
+    <path d="M590 400 l12 -10 M600 420 l16 -2"/>
+  </g>
+  <g filter="url(#sh)">
+    <rect x="186" y="430" width="268" height="212" fill="#fff"/>
+    <rect x="176" y="340" width="288" height="56" fill="#fff"/>
+  </g>
+  <!-- sign: two neutral brand pills -->
+  <rect x="236" y="356" width="80" height="24" rx="12" fill="#DDE8F3"/>
+  <rect x="332" y="354" width="70" height="28" rx="10" fill="#F6D2CC"/>
+  <!-- awning -->
+  <g transform="translate(166 396)">
+    <use href="#aw" x="0"/><use href="#aw" x="80"/><use href="#aw" x="160"/><use href="#aw" x="240"/>
+  </g>
+  <!-- window and door -->
+  <rect x="214" y="496" width="118" height="100" rx="4" fill="#7FC3E8" stroke="#F3C9A8" stroke-width="6"/>
+  <path d="M232 510 L262 510 L232 548 Z" fill="#fff" opacity=".45"/>
+  <rect x="352" y="496" width="72" height="146" rx="4" fill="#2E8B47"/>
+  <rect x="362" y="508" width="52" height="70" rx="3" fill="#8FD0EE"/>
+  <rect x="186" y="630" width="268" height="12" fill="#E9DCC8"/>
+
+  <!-- connector store -> app -->
+  <path d="M470 610 C 600 610, 590 430, 650 430" fill="none" stroke="#1F7A3D" stroke-width="4" stroke-linecap="round" marker-end="url(#ah)"/>
+
+  <!-- ===== the app ===== -->
+  <g filter="url(#sh)"><rect x="668" y="136" width="264" height="578" rx="40" fill="#1F2A24"/></g>
+  <rect x="682" y="152" width="236" height="546" rx="26" fill="#fff"/>
+  <g clip-path="url(#screen)">
+    <rect x="682" y="152" width="236" height="112" fill="#F3F8EE"/>
+    <!-- mini awning across the top of the screen -->
+    <g transform="translate(672 152) scale(0.62)">
+      <use href="#aw" x="0"/><use href="#aw" x="80"/><use href="#aw" x="160"/><use href="#aw" x="240"/><use href="#aw" x="320"/>
+    </g>
+    <!-- leaf badge from the logo -->
+    <path d="M748 224 C 748 198, 772 186, 802 186 H860 C 860 214, 838 238, 806 238 H760 C 752 238, 748 232, 748 224 Z" fill="#2E8B47"/>
+    <path d="M836 186 C 846 172, 864 170, 872 174 C 868 188, 852 196, 838 194 Z" fill="#9BD06A"/>
+    <rect x="770" y="202" width="56" height="10" rx="5" fill="#fff"/>
+    <rect x="770" y="218" width="40" height="8" rx="4" fill="#B9E08E"/>
+    <!-- product tiles -->
+    <g>
+      <rect x="698" y="284" width="98" height="132" rx="14" fill="#F4F7F2"/>
+      <rect x="710" y="296" width="74" height="58" rx="10" fill="#CFE8B6"/>
+      <circle cx="747" cy="325" r="16" fill="#9BD06A"/>
+      <rect x="710" y="364" width="60" height="9" rx="4.5" fill="#2B3A31"/>
+      <rect x="710" y="384" width="40" height="18" rx="9" fill="#F2B12A"/>
+
+      <rect x="804" y="284" width="98" height="132" rx="14" fill="#F4F7F2"/>
+      <rect x="816" y="296" width="74" height="58" rx="10" fill="#FBE3B3"/>
+      <rect x="840" y="310" width="26" height="32" rx="6" fill="#F2B12A"/>
+      <rect x="816" y="364" width="52" height="9" rx="4.5" fill="#2B3A31"/>
+      <rect x="816" y="384" width="40" height="18" rx="9" fill="#F2B12A"/>
+
+      <rect x="698" y="428" width="98" height="132" rx="14" fill="#F4F7F2"/>
+      <rect x="710" y="440" width="74" height="58" rx="10" fill="#F6D2CC"/>
+      <ellipse cx="747" cy="469" rx="22" ry="14" fill="#E99A8C"/>
+      <rect x="710" y="508" width="56" height="9" rx="4.5" fill="#2B3A31"/>
+      <rect x="710" y="528" width="40" height="18" rx="9" fill="#F2B12A"/>
+
+      <rect x="804" y="428" width="98" height="132" rx="14" fill="#F4F7F2"/>
+      <rect x="816" y="440" width="74" height="58" rx="10" fill="#DDE8F3"/>
+      <rect x="836" y="452" width="14" height="34" rx="4" fill="#9CC3E6"/><rect x="856" y="458" width="14" height="28" rx="4" fill="#9CC3E6"/>
+      <rect x="816" y="508" width="60" height="9" rx="4.5" fill="#2B3A31"/>
+      <rect x="816" y="528" width="40" height="18" rx="9" fill="#F2B12A"/>
+    </g>
+    <!-- cart button -->
+    <rect x="698" y="586" width="204" height="50" rx="25" fill="#2E8B47"/>
+    <rect x="760" y="606" width="80" height="10" rx="5" fill="#fff"/>
+    <rect x="740" y="660" width="120" height="6" rx="3" fill="#DCE3DE"/>
+  </g>
+
+  <!-- connector app -> delivery -->
+  <path d="M950 410 C 1010 410, 1010 470, 1060 490" fill="none" stroke="#1F7A3D" stroke-width="4" stroke-linecap="round" marker-end="url(#ah)"/>
+
+  <!-- ===== scooter delivery ===== -->
+  <ellipse cx="1200" cy="684" rx="170" ry="14" fill="#0b3d1f" opacity=".10"/>
+  <!-- delivery box with check -->
+  <g filter="url(#sh)"><rect x="1062" y="476" width="96" height="84" rx="10" fill="#4FA34A"/></g>
+  <rect x="1062" y="476" width="96" height="20" rx="6" fill="#3E8E3C"/>
+  <circle cx="1110" cy="440" r="22" fill="#2E8B47"/>
+  <path d="M1099 440 l8 8 l15 -16" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- scooter body -->
+  <path d="M1080 600 C 1080 570, 1110 556, 1150 556 H1230 L1262 498 H1286 L1300 600 C 1300 630, 1270 640, 1240 640 H1120 C 1094 640, 1080 626, 1080 600 Z" fill="#9BD06A"/>
+  <path d="M1262 498 L1296 446" stroke="#2B3A31" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1284 444 H1316" stroke="#2B3A31" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1270 520 C 1310 520, 1330 560, 1330 600" fill="none" stroke="#7CBF4E" stroke-width="16" stroke-linecap="round"/>
+  <rect x="1120" y="544" width="96" height="18" rx="9" fill="#2B3A31"/>
+  <!-- wheels -->
+  <circle cx="1124" cy="646" r="38" fill="#2B3A31"/><circle cx="1124" cy="646" r="16" fill="#C9D3CC"/>
+  <circle cx="1310" cy="646" r="38" fill="#2B3A31"/><circle cx="1310" cy="646" r="16" fill="#C9D3CC"/>
+  <!-- rider -->
+  <path d="M1180 548 L1200 470 C 1206 446, 1226 436, 1246 446 L1262 456 L1250 486 L1232 478 L1222 548 Z" fill="#2E8B47"/>
+  <path d="M1236 462 L1290 452" stroke="#2E8B47" stroke-width="16" stroke-linecap="round"/>
+  <path d="M1188 548 L1236 548 L1250 610" stroke="#1F4D33" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="1238" cy="410" r="30" fill="#F2C9A0"/>
+  <path d="M1206 408 C 1206 380, 1226 366, 1246 368 C 1268 370, 1276 388, 1272 404 L1214 412 Z" fill="#4FA34A"/>
+  <rect x="1240" y="398" width="34" height="12" rx="6" fill="#2E8B47"/>
+  <!-- speed lines -->
+  <g stroke="#C9D3CC" stroke-width="5" stroke-linecap="round"><path d="M1010 600 H1050 M1000 624 H1056 M1018 648 H1060"/></g>
+
+  <!-- ===== stores near you ===== -->
+  <ellipse cx="1440" cy="432" rx="58" ry="20" fill="#F2B12A" opacity=".55"/>
+  <g filter="url(#sh)">
+    <path d="M1440 430 C 1404 380, 1384 352, 1384 318 A56 56 0 1 1 1496 318 C 1496 352, 1476 380, 1440 430 Z" fill="url(#pin)"/>
+  </g>
+  <circle cx="1440" cy="318" r="30" fill="#fff"/>
+  <circle cx="1440" cy="318" r="18" fill="#7CBF4E"/>
+  <path d="M1500 270 C 1520 280, 1528 300, 1526 318" fill="none" stroke="#F2B12A" stroke-width="5" stroke-linecap="round"/>
+  <!-- small pin -->
+  <ellipse cx="1360" cy="216" rx="30" ry="10" fill="#F2B12A" opacity=".5"/>
+  <path d="M1360 214 C 1342 190, 1332 176, 1332 160 A28 28 0 1 1 1388 160 C 1388 176, 1378 190, 1360 214 Z" fill="url(#pin)"/>
+  <circle cx="1360" cy="160" r="12" fill="#fff"/>
+
+  </g>
+</svg>
+</body></html>

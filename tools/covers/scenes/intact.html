@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/intact/cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#B91C1C');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// Account setup → eligibility → product selection and fleet → quote with limits.
+let a = '';
+// guided setup: six steps down the left, a lookup filling in the client
+a += card(0, 90, 620, 640, { r: 26 }) + rect(0, 90, 170, 640, C.grey2, 26) + rect(140, 90, 30, 640, C.grey2);
+for (let i = 0; i < 6; i++) { const y = 140 + i * 90; a += (i < 6 - 1 ? line(`M44 ${y + 18} V${y + 90}`, { color: i < 1 ? C.color : C.grey, w: 3 }) : '') + (i === 0 ? check(30, y + 4, 28, true) : circle(44, y + 18, 14, i === 1 ? C.color : '#fff', i === 1 ? '' : `stroke="${C.grey}" stroke-width="3"`)) + bar(72, y + 12, 70, 10, i === 1 ? C.ink : C.grey); }
+a += pill(30, 676, 112, 30, '#fff', C.grey);
+a += bar(206, 136, 260, 18, C.ink) + bar(206, 168, 170, 10, C.grey);
+a += `<rect x="206" y="210" width="380" height="48" rx="10" fill="#fff" stroke="${C.color}" stroke-width="3"/>` + icon('search', 222, 222, 24, C.color) + bar(258, 228, 150, 12, C.ink);
+a += card(206, 266, 380, 108, { r: 12 }) + rect(214, 274, 364, 44, C.soft, 8) + icon('truck', 226, 284, 24, C.color) + bar(262, 290, 180, 12, C.ink) + bar(262, 336, 150, 10, C.grey);
+for (let r = 0; r < 3; r++) for (let c = 0; c < 2; c++) { const x = 206 + c * 196, y = 410 + r * 92; a += bar(x, y, 90, 8, C.grey) + `<rect x="${x}" y="${y + 16}" width="184" height="40" rx="8" fill="${C.soft}" stroke="${C.mid}" stroke-width="2"/>` + bar(x + 14, y + 31, 110, 10, C.ink); }
+a += arrow('M628 410 H688');
+// fleet and products
+a += card(700, 180, 300, 460) + bar(730, 216, 150, 14, C.ink);
+for (let r = 0; r < 3; r++) { const y = 260 + r * 74; a += rect(730, y, 240, 60, r === 0 ? C.color : C.grey2, 12) + icon('truck', 746, y + 12, 36, r === 0 ? '#fff' : C.color) + bar(796, y + 18, 100, 10, r === 0 ? '#fff' : C.grey) + bar(796, y + 34, 60, 8, r === 0 ? 'rgba(255,255,255,.6)' : C.grey); }
+a += check(730, 498, 24) + bar(766, 504, 140, 10, C.grey) + check(730, 540, 24) + bar(766, 546, 110, 10, C.grey) + check(730, 582, 24, false) + bar(766, 588, 120, 10, C.grey2);
+a += arrow('M1008 410 H1068');
+// quote: limits and benefits
+a += card(1080, 130, 420, 560, { r: 26 }) + head(1080, 130, 420, 130, C.color, 26) + bar(1112, 168, 140, 12, 'rgba(255,255,255,.7)') + bar(1112, 196, 200, 28, '#fff');
+[0.7, 0.45, 0.85].forEach((v, r) => { const y = 300 + r * 92; a += bar(1112, y, 110, 10, C.grey) + rect(1112, y + 30, 356, 8, C.grey2, 4) + rect(1112, y + 30, 356 * v, 8, C.color, 4) + circle(1112 + 356 * v, y + 34, 13, '#fff', `stroke="${C.color}" stroke-width="4"`); });
+a += pill(1112, 616, 356, 44, C.color, '#fff');
+C.draw(a);
+</script></body></html>

@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/american-national/cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#0D3455');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// Landing page → rate calculator → application → phone.
+const G = '#E9A23B';
+let a = '';
+// landing: rate, comparison, three steps
+a += card(0, 120, 340, 520) + head(0, 120, 340, 150, C.color) + bar(32, 160, 170, 16, '#fff') + bar(32, 190, 110, 10, 'rgba(255,255,255,.6)');
+a += pill(32, 220, 120, 30, G, '#fff');
+for (let r = 0; r < 4; r++) { const y = 300 + r * 46; a += bar(32, y + 6, 110, 10, C.grey) + (r === 0 ? check(190, y, 22) : circle(201, y + 11, 6, C.grey2)) + circle(281, y + 11, 6, C.grey2); }
+a += line('M60 560 H280', { color: C.soft, w: 3 });
+[60, 170, 280].forEach((x, i) => { a += circle(x, 560, 18, i === 0 ? C.color : '#fff', `stroke="${C.color}" stroke-width="3"`); });
+a += arrow('M348 380 H408');
+// calculator: premium, 3/5/7 years, growth, result
+a += card(420, 70, 440, 620, { r: 26 });
+a += bar(456, 110, 150, 14, C.ink) + `<rect x="456" y="140" width="368" height="50" rx="10" fill="#fff" stroke="${C.grey}" stroke-width="2.5"/>` + bar(476, 160, 120, 12, C.ink);
+a += rect(456, 214, 368, 46, C.grey2, 23) + rect(580, 218, 120, 38, C.color, 19) + bar(496, 232, 44, 10, C.grey) + bar(616, 232, 48, 10, '#fff') + bar(740, 232, 44, 10, C.grey);
+a += rect(456, 286, 368, 250, '#F5F7FA', 14) + bars(476, 306, 328, 210, [0.42, 0.53, 0.65, 0.8, 1], [C.mid, C.mid, C.mid, C.mid, C.color]);
+a += bar(456, 570, 120, 10, C.grey) + bar(456, 594, 220, 26, C.color) + bar(700, 600, 124, 14, G);
+a += pill(456, 640, 368, 34, G, '#fff');
+a += arrow('M868 380 H928');
+// application: what you'll need, then sign
+a += card(940, 150, 340, 460) + bar(972, 188, 160, 14, C.ink);
+for (let r = 0; r < 5; r++) { const y = 228 + r * 50; a += check(972, y, 26) + bar(1014, y + 8, 160 - (r % 3) * 26, 10, C.grey); }
+a += line('M972 560 C 1000 520, 1020 590, 1050 548 S 1100 530, 1120 556', { color: C.color, w: 4 }) + line('M972 572 H1248', { color: C.grey, w: 2 });
+a += arrow('M1288 380 H1348');
+// phone
+a += phone(1360, 200, 170, null, { inner: head(1367, 207, 156, 66, C.color, 18) + bar(1382, 232, 90, 10, '#fff') + rect(1380, 290, 130, 120, '#F5F7FA', 10) + bars(1388, 298, 114, 104, [0.4, 0.55, 0.7, 0.85, 1], [C.mid, C.mid, C.mid, C.mid, C.color]) + bar(1380, 428, 90, 16, C.color) + pill(1380, 470, 130, 26, G, '#fff') });
+C.draw(a);
+</script></body></html>

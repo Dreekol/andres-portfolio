@@ -10,20 +10,46 @@ role: UX/UI designer
 scope: [Heuristic analysis, Learning flows, Icon set, Workshops]
 color: "#5B3FD6"
 colorName: Learning Violet
-cover: ../../assets/work/holmes/credential-tiles.jpg
-coverAlt: Course tiles on a learner dashboard, shown as a wireframe
+cover: ../../assets/work/holmes/cover.jpg
+coverAlt: "Illustration of the work: a heuristic checklist with flagged issues leads to a lesson reading with an inline definition, an original icon set and workshop notes grouped into themes"
+coverPosition: center
 ---
 import Figure from '../../components/Figure.astro';
+import Process from '../../components/Process.astro';
+import Step from '../../components/Step.astro';
 import ProtectedNote from '../../components/ProtectedNote.astro';
 import reading from '../../assets/work/holmes/reading.jpg';
 import dash from '../../assets/work/holmes/assessment-dashboard.jpg';
 
-I ran a heuristic analysis of a learning system and its assessments, then redesigned login, product selection, loading screens, the main learning flows, scalable lesson readings, inline definitions and search/glossary. I also drew an original icon set.
+{/* TODO(Andrés): add the problem in your words, the team and timeline, and any outcomes. */}
+
+## How the work ran
+
+<Process label="How the work ran" steps={[
+  { title: 'Review', text: 'A heuristic analysis of the learning system and its assessments.' },
+  { title: 'Redesign', text: 'Login, product selection, loading screens and the main learning flows.' },
+  { title: 'Draw icons', text: 'An original icon set for the platform.' },
+  { title: 'Run workshops', text: 'Stakeholder workshops for a professional-development portal.' },
+]} />
+
+<Step n={1}>Review</Step>
+
+I ran a heuristic analysis of the learning system and its assessments.
+
+<Step n={2}>Redesign</Step>
+
+I redesigned login, product selection, loading screens and the main learning flows, along with scalable lesson readings, inline definitions and search and the glossary.
 
 <Figure src={reading} alt="Desktop lesson reading view with inline glossary support, shown as a wireframe" caption="Lesson reading, redesigned for scanning and inline definitions." />
+
+<Figure src={dash} alt="Assessment dashboard, shown as a wireframe" caption="Assessment dashboard." />
+
+<Step n={3}>Draw icons</Step>
+
+I also drew an original icon set.
+
+<Step n={4}>Run workshops</Step>
 
 For a professional-development portal, I facilitated stakeholder workshops and turned the findings into themes and recommendations.
 
 <ProtectedNote href="/private/holmes-sage-workshop" title="SAGE portal workshop analysis" text="The workshop readout and how we prioritized." />
-
-<Figure src={dash} alt="Assessment dashboard, shown as a wireframe" caption="Assessment dashboard." />

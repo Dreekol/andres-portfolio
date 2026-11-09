@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/revo-health/hh-cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#E11D48');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// Biometric screening → a health report → weekly emails with a call to action → progress → the incentive.
+const NAVY = '#1E3A5F';
+let a = '';
+// screening
+a += card(0, 230, 260, 360) + badge('drop', 130, 320, 54, C.color);
+for (let r = 0; r < 3; r++) a += bar(32, 410 + r * 46, 90, 10, C.grey) + bar(150, 410 + r * 46, 78, 10, C.ink);
+a += arrow('M268 410 H328');
+// the health report
+a += card(340, 140, 380, 540, { r: 26 }) + head(340, 140, 380, 100, NAVY, 26) + bar(372, 172, 160, 14, '#fff') + bar(372, 198, 100, 10, 'rgba(255,255,255,.6)');
+[[0.78, '#2E9E6B'], [0.52, C.accent2], [0.86, '#2E9E6B'], [0.34, C.color]].forEach(([v, c], r) => { const y = 280 + r * 74; a += bar(372, y, 120, 10, C.grey) + rect(372, y + 24, 316, 14, C.grey2, 7) + rect(372, y + 24, 316 * v, 14, c, 7); });
+a += rect(372, 586, 316, 64, C.soft, 12) + icon('bulb', 388, 602, 32, C.color) + bar(432, 606, 160, 10, C.ink) + bar(432, 626, 110, 8, C.grey);
+a += arrow('M728 410 H788');
+// weekly emails
+[0, 1, 2].forEach((i) => { const x = 800 + i * 34, y = 120 + i * 60; a += card(x, y, 320, 460, { r: 18 }) + head(x, y, 320, 60, NAVY, 18) + rect(x + 20, y + 24, 80, 12, '#fff', 6) + rect(x + 20, y + 84, 280, 120, C.soft, 10) + bar(x + 20, y + 228, 200, 14, C.ink) + lines(x + 20, y + 258, 270, 3, 22, 9) + pill(x + 20, y + 340, 150, 40, C.color, '#fff'); });
+a += arrow('M1196 410 H1256');
+// progress toward the incentive
+a += card(1268, 250, 260, 320) + ring(1398, 360, 70, 0.75, C.color, C.grey2, 18) + icon('check', 1374, 336, 48, C.color);
+for (let r = 0; r < 6; r++) a += rect(1300 + r * 34, 470, 24, 24, r < 4 ? C.color : C.grey2, 6);
+a += bar(1300, 520, 160, 10, C.grey);
+a += badge('gift', 1560, 410, 54, C.accent2);
+a += line('M1532 410 H1500', { color: C.color, w: 4 });
+C.draw(a);
+</script></body></html>

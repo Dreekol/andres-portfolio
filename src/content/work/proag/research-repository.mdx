@@ -12,11 +12,13 @@ role: Contributing UX designer (SDG team)
 scope: [Requirements, Tool evaluation, Recommendation, Demo]
 color: "#004C22"
 colorName: ProAg Green
-cover: ../../../assets/work/proag/r-tags.jpg
-coverAlt: A research repository workspace with details blurred
-coverPosition: top left
+cover: ../../../assets/work/proag/repository-cover.jpg
+coverAlt: "Illustration of the repository: interviews, documents and survey results flow into one tagged, searchable repository, which researchers, sales, support and product teams draw from"
+coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
+import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
 import foundation from '../../../assets/work/proag/r-foundation.jpg';
 
@@ -24,10 +26,24 @@ Research lived in separate files from project to project. Just as the design sys
 
 <Figure src={foundation} alt="Illustration: everyone benefits from a research repository, with researchers, sales, support and product teams contributing and drawing from it" caption="The case for a repository." />
 
-**Defined the requirements.** What a shared repository needed to do for the teams contributing to it and using it.
+## How the work ran
 
-**Compared tools and recommended one.** We evaluated options against those requirements and made a recommendation.
+<Process label="How the work ran" steps={[
+  { title: 'Define requirements', text: 'What the repository needed to do for everyone using it.' },
+  { title: 'Compare and recommend', text: 'Evaluate tools against the requirements.' },
+  { title: 'Demo', text: 'Show contributing, tagging and analyzing.' },
+]} />
 
-**Showed how it would work.** A demo walked through contributing, tagging and analyzing research.
+<Step n={1}>Define requirements</Step>
+
+We defined what a shared repository needed to do for the teams contributing to it and using it.
+
+<Step n={2}>Compare and recommend</Step>
+
+We evaluated options against those requirements and made a recommendation.
+
+<Step n={3}>Demo</Step>
+
+A demo walked through contributing, tagging and analyzing research.
 
 <ProtectedNote href="/private/work/proag/research-repository" title="Research repository recommendation" text="More of the evaluation and demo." />

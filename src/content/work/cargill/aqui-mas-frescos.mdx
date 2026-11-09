@@ -20,6 +20,8 @@ coverPosition: center
 import { Image } from 'astro:assets';
 import Figure from '../../../components/Figure.astro';
 import Pair from '../../../components/Pair.astro';
+import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
 import ProtectedNote from '../../../components/ProtectedNote.astro';
 import reg from '../../../assets/work/cargill/amf-registration.jpg';
 import findings from '../../../assets/work/cargill/amf-findings.jpg';
@@ -44,21 +46,37 @@ Aquí + Frescos is Cargill's food shopping brand in Central America. People buy 
 
 New customers had to create an account before they could order, and sign-up and login were where they got stuck. The team needed a clear picture of the current experience before redesigning it, and a way for design to work with their product and development teams.
 
-## What I did
+## How the work ran
 
-**Mapped the registration flow** end to end: every screen and decision a new customer goes through before they can shop. I also mapped the order workflow and the customer’s journey.
+<Process label="How the work ran" steps={[
+  { title: 'Map', text: 'The registration flow, the order workflow and the customer journey.' },
+  { title: 'Assess', text: 'Findings by area, turned into opportunities.' },
+  { title: 'Set the cadence', text: 'How design works with product and development.' },
+  { title: 'Redesign', text: 'Sign-up and sign-in, end to end.' },
+  { title: 'Look ahead', text: 'Concepts for the next features.' },
+]} />
+
+<Step n={1}>Map</Step>
+
+I mapped the registration flow end to end: every screen and decision a new customer goes through before they can shop. I also mapped the order workflow and the customer’s journey.
 
 <Figure src={reg} alt="Registration flow diagram with details blurred" caption="The existing registration flow, mapped." />
 
-**Assessed the experience** and grouped what I found by area, from login and password reset to the activation email. Then I turned the findings into ways to take the pain out of registration.
+<Step n={2}>Assess</Step>
+
+I assessed the experience and grouped what I found by area, from login and password reset to the activation email. Then I turned the findings into ways to take the pain out of registration.
 
 <Pair a={findings} aAlt="Findings slide grouped by area, details blurred" b={opps} bAlt="Opportunities slide: ways to reduce the pain during registration, details blurred" caption="Findings by area, then opportunities for registration." />
 
-**Set up how design would work with the team.** I defined a work cadence that takes a ticket through research, concepts, team validation, prototyping, stakeholder validation and dev handoff with QA. I also organized the Figma file by stage, so everyone could see what was in exploration, up for review, waiting on approval or ready for development.
+<Step n={3}>Set the cadence</Step>
+
+I set up how design would work with the team. I defined a work cadence that takes a ticket through research, concepts, team validation, prototyping, stakeholder validation and dev handoff with QA. I also organized the Figma file by stage, so everyone could see what was in exploration, up for review, waiting on approval or ready for development.
 
 <Pair a={ways} aAlt="Ways of working slide: the work cadence from project onboarding to development" b={deliv} bAlt="Deliverables slide: Figma file stages and a typical timeline" caption="The work cadence, and how the design file was organized." />
 
-**Redesigned sign-up and sign-in.** I designed the new flows end to end. People can look around as a guest, choose their city first so they see local prices, and sign up with a social account or an email. Signing back in got the same care: clear help when a login fails, a simple way to reset a password, and Touch ID so returning customers can skip typing.
+<Step n={4}>Redesign</Step>
+
+I redesigned sign-up and sign-in end to end. People can look around as a guest, choose their city first so they see local prices, and sign up with a social account or an email. Signing back in got the same care: clear help when a login fails, a simple way to reset a password, and Touch ID so returning customers can skip typing.
 
 <Figure src={signup} alt="Four sign-up screens: welcome with a guest option, choose your city, sign-up options, and create a password with clear rules" caption="Getting started: look around as a guest, choose a city, then sign up your way." />
 
@@ -66,7 +84,9 @@ New customers had to create an account before they could order, and sign-up and 
 
 <Figure src={signin} alt="Four sign-in screens: help after failed logins, choose how to reset a password, turn on Touch ID, and Touch ID added" caption="Signing back in: password help and Touch ID." />
 
-**Sketched what comes next.** Past those first pains, I laid out concepts for the home screen, search, checkout and the customer profile. They gave the team a starting point for each future feature, ready to place on the roadmap.
+<Step n={5}>Look ahead</Step>
+
+Past those first pains, I laid out concepts for the home screen, search, checkout and the customer profile. They gave the team a starting point for each future feature, ready to place on the roadmap.
 
 <Figure src={concepts} alt="Four concept screens shown as wireframes: home, search, choosing delivery or pick-up, and the customer profile" caption="Concepts for the next features, shown as wireframes." />
 

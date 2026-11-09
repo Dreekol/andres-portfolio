@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/proag/quoting-cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#004C22');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// Three methods of rising fidelity: heuristic evaluation → quoter concepts → printout validation.
+let a = '';
+a += arrow('M40 720 C 500 720, 1000 560, 1480 140', { dash: '2 14', opacity: 0.6 });
+// heuristic evaluation with severity
+a += card(0, 360, 340, 300) + bar(30, 396, 140, 14, C.ink);
+const sev = [C.color, C.mid, C.accent2, C.mid, '#D9534F'];
+for (let r = 0; r < 5; r++) { const y = 436 + r * 40; a += bar(30, y + 6, 180, 10, C.grey) + circle(296, y + 11, 13, sev[r]) + `<text x="296" y="${y + 16}" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="14" fill="#fff">${[0, 1, 2, 1, 4][r]}</text>`; }
+a += arrow('M348 500 C 390 500, 400 430, 448 430');
+// quoter concept, low to mid fidelity
+a += card(460, 200, 460, 420, { r: 24 }) + rect(460, 200, 460, 40, C.grey2, 24) + rect(460, 220, 460, 20, C.grey2);
+a += rect(490, 270, 120, 320, '#F2F5F3', 10, `stroke="${C.grey}" stroke-width="2" stroke-dasharray="6 6"`);
+for (let r = 0; r < 5; r++) a += bar(506, 290 + r * 50, 88, 10, r === 1 ? C.color : C.grey);
+for (let r = 0; r < 3; r++) for (let c = 0; c < 2; c++) a += bar(636 + c * 132, 280 + r * 74, 70, 8, C.grey) + `<rect x="${636 + c * 132}" y="${296 + r * 74}" width="120" height="34" rx="8" fill="#fff" stroke="${C.grey}" stroke-width="2"/>`;
+a += rect(636, 512, 252, 50, C.soft, 10) + bar(652, 530, 90, 12, C.color) + bar(800, 528, 70, 16, C.ink);
+a += arrow('M928 400 C 980 400, 990 320, 1048 320');
+// printed summary
+a += card(1060, 60, 380, 500, { r: 10 }) + rect(1092, 92, 70, 24, C.color, 4) + bar(1180, 98, 140, 12, C.ink);
+a += rect(1092, 140, 316, 2, C.grey) + lines(1092, 166, 316, 3, 22, 9) + rect(1092, 244, 316, 30, C.grey2, 4);
+for (let r = 0; r < 5; r++) a += bar(1104, 290 + r * 30, 120, 9, C.grey) + bar(1300, 290 + r * 30, 90, 9, C.grey2);
+a += rect(1092, 456, 316, 54, C.soft, 6) + bar(1108, 476, 120, 12, C.color) + bar(1300, 474, 90, 16, C.ink);
+a += badge('print', 1440, 560, 40, C.color);
+C.draw(a);
+</script></body></html>

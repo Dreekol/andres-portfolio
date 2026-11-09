@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/holmes/cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#5B3FD6');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// Heuristic review → lesson reading with an inline definition → an icon set → workshop findings.
+let a = '';
+// heuristic checklist
+a += card(0, 180, 300, 460) + bar(30, 216, 150, 14, C.ink);
+for (let r = 0; r < 6; r++) { const y = 260 + r * 56, bad = r === 2 || r === 4; a += (bad ? badge('warning', 43, y + 13, 14, C.accent2) : check(30, y, 26)) + bar(70, y + 8, 150 - (r % 3) * 24, 10, C.grey) + rect(240, y + 6, 30, 14, bad ? C.accent2 : C.grey2, 7); }
+a += arrow('M308 410 H368');
+// lesson reading with definition popover
+a += card(380, 100, 520, 620, { r: 26 }) + rect(380, 100, 120, 620, C.grey2, 26) + rect(470, 100, 30, 620, C.grey2);
+for (let r = 0; r < 6; r++) a += rect(404, 140 + r * 52, 72, 34, r === 1 ? C.color : '#fff', 8);
+a += bar(532, 144, 240, 20, C.ink) + lines(532, 190, 330, 4, 24, 10);
+a += lines(532, 300, 330, 3, 24, 10) + rect(632, 324, 120, 14, C.soft, 4) + bar(632, 324, 120, 10, C.color);
+a += line('M692 340 V378', { color: C.color, w: 3 });
+a += card(560, 380, 300, 150, { r: 16, stroke: C.color, sw: 3 }) + icon('book', 584, 404, 30, C.color) + bar(626, 410, 140, 14, C.ink) + lines(584, 450, 250, 3, 22, 9);
+a += lines(532, 580, 330, 4, 24, 10);
+a += arrow('M908 410 H968');
+// icon set
+a += card(980, 170, 300, 300);
+['home', 'search', 'book', 'star', 'chat', 'calendar', 'person', 'check', 'bulb'].forEach((ic, i) => { const x = 1010 + (i % 3) * 86, y = 200 + Math.floor(i / 3) * 86; a += rect(x, y, 70, 70, i === 4 ? C.color : C.grey2, 14) + icon(ic, x + 17, y + 17, 36, i === 4 ? '#fff' : C.color); });
+// workshop: stickies into themes
+a += card(980, 500, 520, 220) + rect(1010, 530, 120, 10, C.grey, 5) + rect(1180, 530, 120, 10, C.grey, 5) + rect(1350, 530, 120, 10, C.grey, 5);
+const S = ['#FFE27A', '#FFB4C8', '#B9E4C9'];
+for (let c = 0; c < 3; c++) for (let r = 0; r < 2; r++) a += sticky(1010 + c * 170 + r * 46, 560 + r * 40, 74, S[c], (r ? 4 : -3) * (c % 2 ? -1 : 1));
+a += line('M1130 470 V496', { color: C.mid, w: 3, dash: '2 9' });
+C.draw(a);
+</script></body></html>

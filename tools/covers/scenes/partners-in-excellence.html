@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/partners-in-excellence/cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#0F766E');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// A cascade of granularity: organization → department → team, secured by role, with chart guidelines for desktop and mobile.
+let a = '';
+const dash = (x, y, w, h, n, vals) => { let s = card(x, y, w, h, { r: 20 }) + bar(x + 24, y + 28, w * 0.36, 14, C.ink); const cw = (w - 48 - (n - 1) * 14) / n; for (let i = 0; i < n; i++) s += rect(x + 24 + i * (cw + 14), y + 62, cw, 60, C.grey2, 10) + bar(x + 36 + i * (cw + 14), y + 80, cw * 0.5, 16, i === 0 ? C.color : C.ink); s += rect(x + 24, y + 140, w - 48, h - 164, '#F3F7F6', 10) + bars(x + 40, y + 156, w - 80, h - 196, vals, C.color); return s; };
+a += dash(0, 90, 520, 420, 4, [0.5, 0.7, 0.62, 0.86, 0.74, 0.92, 0.8, 0.66]);
+a += dash(440, 300, 420, 340, 3, [0.6, 0.45, 0.78, 0.66, 0.9, 0.7]);
+a += dash(800, 470, 330, 280, 2, [0.4, 0.68, 0.55, 0.82]);
+a += arrow('M260 520 C 260 600, 330 620, 430 600', { dash: '2 12' }) + arrow('M650 650 C 650 720, 700 740, 790 720', { dash: '2 12' });
+// row-level security
+a += badge('lock', 1170, 470, 46, C.ink);
+a += line('M1124 490 C 1120 520, 1130 540, 1134 560', { color: C.ink, w: 3, dash: '2 9' });
+// mobile guidelines
+a += phone(1280, 120, 200, null, { inner: rect(1288, 128, 184, 394, '#fff') + bar(1304, 156, 100, 12, C.ink) + rect(1304, 186, 152, 64, C.grey2, 10) + bar(1318, 206, 70, 16, C.color) + rect(1304, 266, 152, 170, '#F3F7F6', 10) + bars(1314, 280, 132, 140, [0.5, 0.8, 0.65, 0.9], C.color) });
+C.draw(a);
+</script></body></html>

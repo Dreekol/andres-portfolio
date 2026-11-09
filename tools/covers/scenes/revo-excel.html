@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/revo-health/excel-cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#006699');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// Nurses' list views → a dashboard of what's due → the patient chart, with several patients open → automated reminders.
+const RED = '#D64545';
+let a = '';
+// filtered list views
+a += card(0, 130, 340, 560, { r: 26 }) + bar(30, 166, 150, 14, C.ink);
+for (let r = 0; r < 5; r++) { const y = 206 + r * 92; a += rect(30, y, 280, 76, r === 0 ? C.color : C.grey2, 14) + icon(['phone', 'calendar', 'clock', 'clock', 'chart'][r], 48, y + 22, 32, r === 0 ? '#fff' : C.color) + bar(96, y + 24, 120, 11, r === 0 ? '#fff' : C.ink) + bar(96, y + 44, 80, 8, r === 0 ? 'rgba(255,255,255,.6)' : C.grey) + rect(254, y + 26, 38, 24, r === 0 ? '#fff' : C.soft, 12); }
+a += arrow('M348 410 H408');
+// dashboard: overdue, this week, this month
+a += card(420, 150, 380, 520, { r: 26 }) + bar(450, 186, 170, 14, C.ink);
+[[RED, 0.9], [C.color, 0.7], [C.mid, 0.5]].forEach(([c, v], i) => { const x = 450 + i * 112; a += rect(x, 222, 100, 110, '#F3F7FA', 12) + rect(x, 222, 6, 110, c, 3) + bar(x + 20, 244, 50, 8, C.grey) + bar(x + 20, 266, 44, 30, c); });
+for (let r = 0; r < 4; r++) { const y = 366 + r * 68; a += rect(450, y, 320, 54, '#fff', 12, `stroke="${C.grey2}" stroke-width="2"`) + avatar(478, y + 27, 16, r === 0 ? RED : C.soft) + bar(506, y + 16, 140, 10, C.ink) + bar(506, y + 32, 90, 8, C.grey) + pill(694, y + 16, 60, 22, r === 0 ? RED : C.grey2); }
+a += arrow('M808 410 H868');
+// patient chart, several patients open in tabs, a reminder
+a += card(880, 100, 440, 620, { r: 26 });
+[0, 1, 2].forEach((i) => { a += rect(904 + i * 124, 124, 116, 40, i === 0 ? C.color : C.grey2, 12) + bar(922 + i * 124, 140, 60, 9, i === 0 ? '#fff' : C.grey); });
+a += avatar(940, 222, 34, C.soft) + bar(990, 204, 170, 16, C.ink) + bar(990, 232, 110, 10, C.grey);
+a += rect(910, 280, 380, 44, C.grey2, 10);
+['done', 'done', 'now', 'next', 'next'].forEach((s, i) => { const x = 940 + i * 80; a += (i ? line(`M${x - 66} 302 H${x - 14}`, { color: s === 'next' ? C.grey : C.color, w: 3 }) : '') + (s === 'done' ? check(x - 12, 290, 24) : circle(x, 302, 11, s === 'now' ? C.color : '#fff', s === 'now' ? '' : `stroke="${C.grey}" stroke-width="3"`)); });
+for (let r = 0; r < 3; r++) a += bar(910, 360 + r * 70, 90, 8, C.grey) + `<rect x="910" y="${376 + r * 70}" width="380" height="36" rx="8" fill="#fff" stroke="${C.grey}" stroke-width="2"/>`;
+a += lines(910, 588, 300, 2, 22, 9) + pill(1170, 650, 120, 36, C.color, '#fff');
+a += badge('bell', 1320, 150, 40, C.accent2);
+a += arrow('M1328 410 H1388');
+// automated reminders
+a += card(1400, 220, 300, 380) + icon('bell', 1430, 250, 30, C.color) + bar(1472, 258, 120, 12, C.ink);
+for (let r = 0; r < 5; r++) { const y = 312 + r * 52; a += rect(1430, y - 6, 240, 40, r === 0 ? C.soft : '#fff', 10, r === 0 ? '' : `stroke="${C.grey2}" stroke-width="2"`) + icon(r === 0 ? 'bell' : 'clock', 1440, y + 2, 22, r === 0 ? C.accent2 : C.mute) + bar(1474, y + 8, 120 - (r % 2) * 30, 9, r === 0 ? C.ink : C.grey) + bar(1620, y + 8, 36, 9, C.grey2); }
+C.draw(a);
+</script></body></html>

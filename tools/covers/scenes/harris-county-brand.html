@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/harris-county/brand-cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+const C = Cover.setColor('#1F5FAE');
+const { card, rect, bar, circle, line, arrow, icon, badge, avatar, pill, lines, sticky, check, bars, screen, phone, head, ring } = C;
+// The brand at the center: the mark and its four colors, flowing out to a billboard, a conference program and the Pets site.
+const B = '#1C9AD6', Gr = '#6CBE45', P = '#E5487F', Y = '#F9B21D';
+const mark = (x, y, s) => `<g opacity=".95"><rect x="${x}" y="${y + s * 0.32}" width="${s * 0.5}" height="${s * 0.5}" fill="${B}"/><rect x="${x + s * 0.22}" y="${y}" width="${s * 0.5}" height="${s * 0.5}" fill="${Gr}" style="mix-blend-mode:multiply"/><rect x="${x + s * 0.48}" y="${y + s * 0.2}" width="${s * 0.5}" height="${s * 0.5}" fill="${P}" style="mix-blend-mode:multiply"/><rect x="${x + s * 0.3}" y="${y + s * 0.5}" width="${s * 0.5}" height="${s * 0.5}" fill="${Y}" style="mix-blend-mode:multiply"/></g>`;
+let a = '';
+// brand standards card: mark, palette, type scale
+a += card(0, 110, 440, 620, { r: 26 });
+a += mark(150, 150, 140);
+[B, Gr, P, Y].forEach((c, i) => { a += rect(40 + i * 92, 340, 80, 110, c, 12) + bar(52 + i * 92, 464, 50, 8, C.grey); });
+a += bar(40, 520, 250, 26, C.ink) + bar(40, 566, 190, 16, C.grey) + lines(40, 606, 360, 4, 22, 9);
+// connectors
+a += arrow('M448 300 C 520 300, 520 210, 588 210') + arrow('M448 540 C 520 540, 520 640, 588 640');
+// billboard
+a += rect(744, 300, 12, 70, C.grey) + rect(864, 300, 12, 70, C.grey);
+a += card(600, 110, 420, 200) + rect(600, 110, 210, 200, C.color, 20) + rect(780, 110, 30, 200, C.color) + mark(650, 160, 90) + bar(830, 160, 150, 18, C.ink) + bar(830, 194, 110, 12, C.grey) + pill(830, 240, 120, 30, Y, '#fff');
+// conference program
+a += card(1060, 80, 230, 320) + head(1060, 80, 230, 120, Gr) + circle(1175, 140, 34, '#fff', 'opacity=".85"') + bar(1088, 228, 150, 14, C.ink) + lines(1088, 258, 170, 5, 22, 8) + rect(1088, 362, 60, 10, P, 5);
+// pets site
+a += card(600, 470, 690, 290) + rect(600, 470, 690, 34, C.grey2, 20) + rect(600, 490, 690, 14, C.grey2);
+a += mark(630, 524, 46) + bar(690, 536, 120, 14, C.ink) + bar(1050, 540, 200, 10, C.grey);
+[B, Gr, P, Y].forEach((c, i) => { a += rect(630 + i * 160, 600, 146, 130, c, 12) + badge(['heart', 'home', 'group', 'calendar'][i], 703 + i * 160, 650, 26, 'rgba(255,255,255,.25)') + bar(658 + i * 160, 700, 90, 10, '#fff'); });
+C.draw(a);
+</script></body></html>
