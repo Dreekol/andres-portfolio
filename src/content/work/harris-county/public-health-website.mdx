@@ -3,27 +3,54 @@ title: A website that informs 4.7 million county residents
 client: Harris County Public Health
 name: Public Health website
 parent: harris-county
-summary: I managed the Harris County Public Health website and reported on it with Google Analytics.
-order: 2
+summary: I managed the Harris County Public Health website, designed a responsive blog system for it, and reported on its performance with Google Analytics.
+order: 3
 period: 2015–2020
 anonymized: false
 domains: [Public sector, Healthcare]
 workTypes: [Websites]
 kind: Website
-role: Web master
-scope: [Website, Content, Analytics reporting]
+role: Web master & designer
+scope: [Website, Content, Blog design, Analytics reporting]
 liveUrl: https://publichealth.harriscountytx.gov/
 color: "#1F5FAE"
 colorName: Public Health Blue
 cover: ../../../assets/work/harris-county/hcph-site-frame.jpg
 coverAlt: The Harris County Public Health website today, framed in a desktop browser and on a phone
-coverPosition: top center
+coverPosition: center
 ---
 import Figure from '../../../components/Figure.astro';
+import Process from '../../../components/Process.astro';
+import Step from '../../../components/Step.astro';
+import blog from '../../../assets/work/harris-county/blog.jpg';
 import site from '../../../assets/work/harris-county/hcph-site.jpg';
 
-{/* TODO(Andrés): add a screenshot from your time there if you have one, plus what you owned (structure, content, accessibility, analytics decisions), so this page can follow the numbered-steps pattern. */}
+{/* TODO(Andrés): add a screenshot of the site from your time there if you have one, what you owned (structure, content, accessibility) and any analytics results. */}
 
-I managed the website that informs 4.7 million county residents and reported on its performance with Google Analytics.
+## The challenge
+
+The website is how Harris County Public Health reaches the 4.7 million people it serves. Every division’s campaign sent residents there to learn more, so the site had to keep up with all of them.
+
+## How the work ran
+
+<Process label="How the work ran" steps={[
+  { title: 'Run the site', text: 'Keep the department’s website current for every division.' },
+  { title: 'Design the blog', text: 'A responsive layout for articles from the department’s leaders.' },
+  { title: 'Report', text: 'Measure the site with Google Analytics.' },
+]} />
+
+<Step n={1}>Run the site</Step>
+
+I managed the department’s website, the destination for the campaigns I designed for its divisions.
+
+<Step n={2}>Design the blog</Step>
+
+I designed a blog system for the site: a responsive layout for articles by the department’s leaders and experts, on topics like Hurricane Harvey one year later, the peak of hurricane season and public health’s role in the community. Each article carries its author’s name and role, and the layout works from phone to desktop.
+
+<Figure src={blog} alt="The blog on a phone, a tablet and a laptop: article cards for Hurricane Harvey: One Year Later, How Public Health Is the Offensive Line, Hurricane Season Is at Its Peak and a mosquito story, with author headshots blurred" caption="The blog system from phone to desktop. Headshots blurred." />
+
+<Step n={3}>Report</Step>
+
+I reported on the site’s performance with Google Analytics.
 
 <Figure src={site} alt="The Harris County Public Health website header: the logo, an About heading and the department's mission line" caption="The site today, with the logo in place. It has been updated since my time there." />

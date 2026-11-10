@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="out" content="src/assets/work/harris-county/divisions-cover.jpg">
+<link rel="stylesheet" href="../kit.css"><script src="../kit.js"></script></head><body><script>
+// The department mark at the center, branching out to the divisions' work: a conference program, a preparedness billboard,
+// a mosquito billboard and a food-donation tee.
+const C = Cover.setColor('#1F5FAE');
+const { card, rect, bar, circle, line, arrow, icon, badge, pill, lines } = C;
+const B = '#1C9AD6', Gr = '#6CBE45', P = '#E5487F', Y = '#F9B21D', NAVY = '#2B3A8F', OR = '#EF8A2B', RED = '#D42A1E', BROWN = '#4A1F1E';
+const mark = (x, y, s) => `<g><rect x="${x}" y="${y + s * 0.32}" width="${s * 0.5}" height="${s * 0.5}" fill="${B}"/><rect x="${x + s * 0.22}" y="${y}" width="${s * 0.5}" height="${s * 0.5}" fill="${Gr}" style="mix-blend-mode:multiply"/><rect x="${x + s * 0.48}" y="${y + s * 0.2}" width="${s * 0.5}" height="${s * 0.5}" fill="${P}" style="mix-blend-mode:multiply"/><rect x="${x + s * 0.3}" y="${y + s * 0.5}" width="${s * 0.5}" height="${s * 0.5}" fill="${Y}" style="mix-blend-mode:multiply"/></g>`;
+let a = '';
+// the department
+a += card(0, 300, 240, 240, { r: 28 }) + mark(50, 350, 140);
+a += arrow('M248 360 C 330 360, 330 170, 412 170');
+a += arrow('M248 420 H 412') + arrow('M248 480 C 330 480, 330 660, 412 660');
+// conference program (Environmental Public Health)
+a += `<g transform="rotate(-4 520 180)">` + card(420, 40, 200, 270, { r: 8, fill: '#2F6FB6' });
+for (let i = 0; i < 9; i++) a += `<path d="M${430 + i * 22} 50 l14 -0" stroke="#8CC3EE" stroke-width="5" stroke-linecap="round"/>`;
+a += rect(452, 100, 136, 6, '#fff', 3) + bar(452, 124, 100, 22, '#fff') + bar(452, 158, 120, 14, '#fff') + bar(452, 182, 90, 14, '#fff') + bar(452, 216, 70, 10, RED) + bar(452, 236, 110, 10, '#fff') + `</g>`;
+// e-blast
+a += card(650, 70, 250, 230, { r: 14 }) + rect(650, 70, 250, 100, '#1E3F73', 14) + rect(650, 150, 250, 20, '#1E3F73') + bar(672, 100, 150, 14, '#fff') + bar(672, 124, 110, 10, 'rgba(255,255,255,.6)') + bar(672, 190, 120, 12, C.ink) + rect(672, 216, 80, 22, RED, 4) + rect(770, 186, 108, 90, '#9DB7D8', 8) + circle(824, 231, 16, '#fff', 'opacity=".9"');
+// preparedness billboard
+a += rect(560, 470, 12, 70, C.grey) + rect(820, 470, 12, 70, C.grey);
+a += card(420, 340, 560, 150, { r: 6, fill: '#EEF0FA' }) + rect(450, 384, 64, 22, OR, 4) + bar(450, 378, 280, 34, NAVY) + bar(470, 428, 220, 12, NAVY) + bar(530, 452, 160, 10, NAVY);
+a += `<path d="M860 402 a60 40 0 0 1 120 0 z" fill="${NAVY}"/><path d="M920 402 v60" stroke="${NAVY}" stroke-width="4"/><rect x="896" y="430" width="34" height="60" rx="10" fill="${NAVY}" opacity=".7"/>`;
+// mosquito billboard
+a += card(420, 580, 560, 160, { r: 6, fill: RED }) + bar(640, 620, 300, 50, '#1A1A1A') + `<path d="M650 668 C 700 610, 760 690, 820 630 S 900 640, 940 620" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/>` + bar(660, 700, 220, 10, '#fff');
+a += circle(500, 650, 46, '#1A1A1A') + circle(486, 640, 18, '#5C7A99') + circle(514, 640, 18, '#5C7A99') + `<path d="M520 666 l60 40" stroke="#1A1A1A" stroke-width="8" stroke-linecap="round"/><path d="M480 610 l-20 -40 M520 610 l20 -40" stroke="#1A1A1A" stroke-width="4"/>`;
+// food donation tee
+
+const tee = (x, y, fill) => `<path d="M${x} ${y + 40} l60 -40 h40 c10 20 50 20 60 0 h40 l60 40 l-36 56 l-34 -18 v180 h-200 v-180 l-34 18 z" fill="${fill}" filter="url(#sh)"/>`;
+a += rect(1040, 150, 400, 520, Y, 20, 'filter="url(#sh)"');
+a += tee(1100, 230, '#2EA0E0');
+a += `<rect x="1196" y="300" width="110" height="64" rx="32" fill="#fff"/>` + bar(1214, 318, 74, 10, '#E2483A') + bar(1222, 338, 56, 10, '#E2483A');
+a += `<path d="M1180 560 v-60 h140 v60 z" fill="${BROWN}"/><path d="M1200 500 v-24 h20 v24 M1280 500 v-24 h20 v24" stroke="${BROWN}" stroke-width="10" fill="none"/>` + bar(1205, 520, 90, 12, '#fff') + bar(1180, 590, 140, 16, '#D2302C');
+C.draw(a);
+</script></body></html>
