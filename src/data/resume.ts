@@ -6,19 +6,19 @@ export const roles: Role[] = [
         { client: "Cargill: customer portal, consumer app, sales tools, design system", points: [
           "Aquí + Frescos (UX designer and researcher): mapped the registration flow, the order workflow and the user journey for Cargill’s food shopping app in Central America. Grouped findings by area into prioritized opportunities, then redesigned guest browsing, city-first local pricing, sign-up and sign-in (social or email, password help, Touch ID).",
           "Defined a work cadence that takes each ticket through research, concepts, team validation, prototyping, stakeholder validation and developer handoff with QA, and organized the Figma file by stage. Sketched next-feature concepts for home, search, checkout and profile.",
-          "Cross Sell: ran a listen, prototype and test cycle with sales reps, coordinators and customers. Designed the MVP (target customers ranked by potential value and geographic advantage, an account view with suggested products, quick actions) and a future state where rep feedback improves each suggestion.",
+          "Sales opportunity tool: ran a listen, prototype and test cycle with sales reps, coordinators and customers. Designed the MVP (target customers ranked by potential value and geographic advantage, an account view with suggested products, quick actions) and a future state where rep feedback improves each suggestion.",
           "myCargill: with the product owner, business analyst and developers, designed the portal’s front door and a three-step self-serve access request that replaced emailing someone and waiting for an account. It is still live.",
           "Design system: audited the legacy system and its product teams, wrote documentation and onboarded new members. Created global ceremonies, town halls and office hours that built a community of designers, and set up QA and feasibility negotiation with developers. Helped stand up the white-label system now used across Cargill’s global products.",
           "Designed a role-based Power BI dashboard with global IT that turns application health data into views for each level of the organization, with data-visualization standards and components.",
         ] },
-        { client: "Revo Health / Twin Cities Orthopedics: Habits to Health and EXCEL", points: [
+        { client: "Revo Health / Twin Cities Orthopedics: patient-management app and employee wellness program", points: [
           "Interviewed stakeholders, mapped each group’s part in the current process, ran workflow workshops, and documented the new process in a service blueprint.",
-          "Habits to Health: designed weekly email challenges tailored by an initial health assessment, with incentives for taking part.",
-          "EXCEL: reshaped the app around how nurses work, prioritized disqualifying factors to speed up patient qualification, and automated patient reminders.",
+          "Wellness program: designed weekly email challenges tailored by an initial health assessment, with incentives for taking part.",
+          "Patient-management app: reshaped the app around how nurses work, prioritized disqualifying factors to speed up patient qualification, and automated patient reminders.",
         ] },
         { client: "HealthPartners: three internal tools replacing spreadsheets and manual steps", points: [
-          "Specialty pharmacy contracting: interviewed stakeholders about needs, pain points and expected workflows, then designed the data model and user journeys that replaced manual contract and pricing steps. Tested mid-fidelity designs early with stakeholders, designed to accessibility guidelines, and worked with developers and data analysts through implementation. The application reduces errors and makes pricing calculations more accurate.",
-          "Also designed a medication-optimization registry and a member incentives tool on one shared visual language, in Figma and Power Platform.",
+          "Contract management tool: interviewed stakeholders about needs, pain points and expected workflows, then designed the data model and user journeys that replaced manual contract and pricing steps. Tested mid-fidelity designs early with stakeholders, designed to accessibility guidelines, and worked with developers and data analysts through implementation. The application reduces errors and makes pricing calculations more accurate.",
+          "Also designed a member outreach registry and an incentive tracking tool on one shared visual language, in Figma and Power Platform.",
         ] },
         { client: "ProAg: UX strategy, research and design system for a crop insurer", points: [
           "Led the design system team and project. Ran planning workshops, interviewed stakeholders, and pitched approaches so IT and product management could weigh feasibility before committing. Set the system’s principles, organized the Figma workspace, and created documentation, templates, governance, ceremonies and onboarding.",

@@ -4,9 +4,9 @@ export type PImage = { src: string; width: number; height: number; alt: string }
 export type PFigure = { images: PImage[]; caption?: string };
 export type PSection = { heading?: string | null; figures: PFigure[] };
 export const protectedWork: Record<string, { title: string; intro: string; sections: PSection[] }> = {
-  "cargill/cross-sell": {
-    "title": "Cross Sell screens",
-    "intro": "More of the Cross Sell interface, shown as wireframes.",
+  "cargill/sales-tool": {
+    "title": "Sales tool screens",
+    "intro": "More of the sales tool, shown as wireframes.",
     "sections": [
       {
         "heading": "What I designed",
@@ -59,8 +59,8 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
       }
     ]
   },
-  "healthpartners/medication-registry": {
-    "title": "Medication optimization registry screens",
+  "healthpartners/outreach-registry": {
+    "title": "Member outreach registry screens",
     "intro": "More of the registry, shown as wireframes.",
     "sections": [
       {
@@ -121,8 +121,8 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
       }
     ]
   },
-  "healthpartners/member-incentives": {
-    "title": "Member incentives screens",
+  "healthpartners/incentive-tracking": {
+    "title": "Incentive tracking screens",
     "intro": "More of the incentives tool, shown as wireframes.",
     "sections": [
       {
@@ -160,8 +160,8 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
       }
     ]
   },
-  "healthpartners/pharmacy-contracting": {
-    "title": "Pharmacy contracting screens",
+  "healthpartners/contract-management": {
+    "title": "Contract management screens",
     "intro": "More of the contracting tool, shown as wireframes.",
     "sections": [
       {
@@ -517,9 +517,9 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
       }
     ]
   },
-  "revo-health/excel": {
-    "title": "EXCEL screens",
-    "intro": "More of the EXCEL app, shown as wireframes.",
+  "revo-health/patient-management": {
+    "title": "Patient-management app screens",
+    "intro": "More of the app, shown as wireframes.",
     "sections": [
       {
         "heading": null,
@@ -561,8 +561,8 @@ export const protectedWork: Record<string, { title: string; intro: string; secti
       }
     ]
   },
-  "revo-health/habits-to-health": {
-    "title": "Habits to Health screens and service blueprint",
+  "revo-health/wellness-program": {
+    "title": "Wellness program screens and service blueprint",
     "intro": "The service blueprint with details blurred, and more of the app, shown as wireframes.",
     "sections": [
       {
