@@ -44,7 +44,8 @@ import '@fontsource/geist-mono/500.css';
   /* "identity": a vector path drawn with a pen, anchors and handles showing, then the handles put away */
   .idn, .ifc { position: relative; display: inline-block; white-space: nowrap; }
   .path { position: absolute; left: 0; right: 0; bottom: -0.24em; width: 100%; height: 0.34em; overflow: visible; }
-  .path .stroke { fill: none; stroke: var(--accent); stroke-width: 5px; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 760ms var(--ease-in-out) 1750ms forwards; }
+  .path .stroke { fill: none; stroke: var(--accent); stroke-width: 5px; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: draw 760ms var(--ease-in-out) 1750ms forwards; }
+  /* with a non-scaling stroke the dash is measured on screen, so a wide desktop line peeked out before the draw; it stays hidden until the draw begins */
   .handles path { fill: none; stroke: #8a8a94; stroke-width: 1px; vector-effect: non-scaling-stroke; }
   .handles { opacity: 0; animation: handles 2000ms ease 1850ms both; }
   .a, .h { position: absolute; top: 66%; translate: -50% -50%; opacity: 0; pointer-events: none; }
@@ -52,7 +53,7 @@ import '@fontsource/geist-mono/500.css';
   .a1 { animation-delay: 1700ms; } .a2 { top: 50%; animation-delay: 2250ms; } .a3 { animation-delay: 2500ms; }
   .a2 { top: 50%; }
   .h { width: 0.09em; height: 0.09em; min-width: 7px; min-height: 7px; border-radius: 50%; background: #8a8a94; animation: handle-dot 2000ms ease 1850ms both; }
-  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes draw { from { opacity: 1; } to { opacity: 1; stroke-dashoffset: 0; } }
   @keyframes handles { 0%, 8% { opacity: 0; } 18%, 72% { opacity: 1; } 100% { opacity: 0; } }
   @keyframes handle-dot { 0%, 8% { opacity: 0; } 18%, 72% { opacity: 1; } 100% { opacity: 0; } }
   @keyframes pop { from { opacity: 0; scale: 0.2; } to { opacity: 1; scale: 1; } }
