@@ -15,7 +15,7 @@ const { entries } = Astro.props;
     const d = e.data;
     return (
       <li data-domains={d.domains.join('|')} data-types={d.workTypes.join('|')} data-accent={d.color} style={`view-transition-name: row-${e.id.replace(/\//g, '-')}`}>
-        <a class="row reveal" href={`/work/${e.id}`}>
+        <a class="row reveal" href={`/${e.id}`}>
           <span class="client">{d.client}</span>
           <span class="what">{d.title}</span>
           <span class="types">

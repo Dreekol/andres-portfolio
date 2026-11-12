@@ -21,7 +21,7 @@ const label = d.name ? `${d.name} case study` : `${d.client} case study`;
   title={page.title}
   client={d.client}
   color={d.color}
-  back={{ href: `/work/${slug}`, label }}
+  back={{ href: `/${slug}`, label }}
   intro={page.intro}
 >
   {page.sections.map((s) => (

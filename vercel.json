@@ -1,0 +1,79 @@
+{
+  "redirects": [
+    {
+      "source": "/work/cargill/cross-sell",
+      "destination": "/cargill/sales-tool",
+      "permanent": true
+    },
+    {
+      "source": "/cargill/cross-sell",
+      "destination": "/cargill/sales-tool",
+      "permanent": true
+    },
+    {
+      "source": "/work/healthpartners/pharmacy-contracting",
+      "destination": "/healthpartners/contract-management",
+      "permanent": true
+    },
+    {
+      "source": "/healthpartners/pharmacy-contracting",
+      "destination": "/healthpartners/contract-management",
+      "permanent": true
+    },
+    {
+      "source": "/work/healthpartners/medication-registry",
+      "destination": "/healthpartners/outreach-registry",
+      "permanent": true
+    },
+    {
+      "source": "/healthpartners/medication-registry",
+      "destination": "/healthpartners/outreach-registry",
+      "permanent": true
+    },
+    {
+      "source": "/work/healthpartners/member-incentives",
+      "destination": "/healthpartners/incentive-tracking",
+      "permanent": true
+    },
+    {
+      "source": "/healthpartners/member-incentives",
+      "destination": "/healthpartners/incentive-tracking",
+      "permanent": true
+    },
+    {
+      "source": "/work/revo-health/excel",
+      "destination": "/revo-health/patient-management",
+      "permanent": true
+    },
+    {
+      "source": "/revo-health/excel",
+      "destination": "/revo-health/patient-management",
+      "permanent": true
+    },
+    {
+      "source": "/work/revo-health/habits-to-health",
+      "destination": "/revo-health/wellness-program",
+      "permanent": true
+    },
+    {
+      "source": "/revo-health/habits-to-health",
+      "destination": "/revo-health/wellness-program",
+      "permanent": true
+    },
+    {
+      "source": "/work/harris-county/harris-county-pets-brand",
+      "destination": "/harris-county/public-health-brand",
+      "permanent": true
+    },
+    {
+      "source": "/harris-county/harris-county-pets-brand",
+      "destination": "/harris-county/public-health-brand",
+      "permanent": true
+    },
+    {
+      "source": "/work/:path+",
+      "destination": "/:path+",
+      "permanent": true
+    }
+  ]
+}

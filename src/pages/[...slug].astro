@@ -1,9 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 import { Image, getImage } from 'astro:assets';
-import Base from '../../layouts/Base.astro';
-import Lightbox from '../../components/Lightbox.astro';
-import InitiativeCard from '../../components/InitiativeCard.astro';
+import Base from '../layouts/Base.astro';
+import Lightbox from '../components/Lightbox.astro';
+import InitiativeCard from '../components/InitiativeCard.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('work');
@@ -37,13 +37,13 @@ const og = d.cover ? await getImage({ src: d.cover, width: 1200, height: 630, fi
   <article style={`--c:${d.color}`}>
     <header class:list={['band', { nocover: !isHub && !d.cover }]} style={`view-transition-name: tile-${vt}`}>
       <div class="wrap band-inner">
-        <a class="back" href={isPart ? `/work/${parent!.id}` : '/#work'}>
+        <a class="back" href={isPart ? `/${parent!.id}` : '/#work'}>
           <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3m4 4L3 8l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           {isPart ? `All ${d.client} work` : 'All work'}
         </a>
         {isPart ? (
           <nav class="crumbs" aria-label="Breadcrumb">
-            <ol><li><a href="/#work">Work</a></li><li><a href={`/work/${parent!.id}`}>{d.client}</a></li><li aria-current="page">{d.name}</li></ol>
+            <ol><li><a href="/#work">Work</a></li><li><a href={`/${parent!.id}`}>{d.client}</a></li><li aria-current="page">{d.name}</li></ol>
           </nav>
         ) : (
           <p class="client">{logo ? <span class="plate"><Image src={logo} alt={d.client} height={44} densities={[1, 2]} loading="eager" /></span> : d.client}</p>
@@ -60,7 +60,7 @@ const og = d.cover ? await getImage({ src: d.cover, width: 1200, height: 630, fi
         {isPart && siblings.length > 1 && (
           <nav class="siblings" aria-label={`Other ${d.client} initiatives`}>
             {siblings.map((sib) => (
-              <a href={`/work/${sib.id}`} aria-current={sib.id === entry.id ? 'page' : undefined}>{sib.data.name}</a>
+              <a href={`/${sib.id}`} aria-current={sib.id === entry.id ? 'page' : undefined}>{sib.data.name}</a>
             ))}
           </nav>
         )}
@@ -88,7 +88,7 @@ const og = d.cover ? await getImage({ src: d.cover, width: 1200, height: 630, fi
       </div>
     </div>
 
-    <a class="next wrap" href={`/work/${next.id}`} data-accent={next.data.color} style={`--n:${next.data.color}`}>
+    <a class="next wrap" href={`/${next.id}`} data-accent={next.data.color} style={`--n:${next.data.color}`}>
       <span class="next-label">{next.data.parent ? `Next ${next.data.client} initiative` : 'Next project'}</span>
       <span class="next-title">{next.data.parent ? next.data.name : next.data.client}</span>
       <span class="next-sum">{next.data.title}</span>

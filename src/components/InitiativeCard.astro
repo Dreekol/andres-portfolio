@@ -5,7 +5,7 @@ interface Props { entry: CollectionEntry<'work'> }
 const { entry } = Astro.props;
 const d = entry.data;
 ---
-<a class="init reveal" href={`/work/${entry.id}`} style={`--c:${d.color}`}>
+<a class="init reveal" href={`/${entry.id}`} style={`--c:${d.color}`}>
   <div class="frame" style={`view-transition-name: cover-${entry.id.replace('/', '-')}`}>
     {d.cover ? (
       <Image src={d.cover} alt={d.coverAlt} widths={[480, 800, 1200]} sizes="(max-width: 760px) 92vw, 46vw" loading="lazy" style={`object-position:${d.coverPosition}`} />

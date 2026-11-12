@@ -4,7 +4,7 @@ const path = Astro.url.pathname;
 // Name split into letters so the accent can sit over the e
 const nameChars = [...'Andres Velasco'];
 const links = [
-  { href: '/', label: 'Work', match: (p: string) => p === '/' || p.startsWith('/work') },
+  { href: '/', label: 'Work', match: (p: string) => !['/about', '/access', '/private'].some((x) => p.startsWith(x)) },
   { href: '/about', label: 'About', match: (p: string) => p.startsWith('/about') },
 ];
 ---

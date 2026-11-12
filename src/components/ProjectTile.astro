@@ -17,8 +17,8 @@ const slug = entry.id;
 const vt = slug.replace(/\//g, '-');
 const children = (await getCollection('work')).filter((e) => e.data.parent === slug).sort((a, b) => a.data.order - b.data.order);
 const rows = children.length
-  ? children.map((c) => ({ href: `/work/${c.id}`, name: c.data.name ?? c.data.title, types: c.data.workTypes, status: c.data.status }))
-  : [{ href: `/work/${slug}`, name: d.name ?? d.kind, types: d.workTypes, status: d.status }];
+  ? children.map((c) => ({ href: `/${c.id}`, name: c.data.name ?? c.data.title, types: c.data.workTypes, status: c.data.status }))
+  : [{ href: `/${slug}`, name: d.name ?? d.kind, types: d.workTypes, status: d.status }];
 ---
 <article
   class:list={['tile', 'reveal', { hub: children.length > 0 }]}
@@ -28,7 +28,7 @@ const rows = children.length
   style={`--c:${d.color}; view-transition-name: tile-${vt}`}
 >
   <div class="top">
-    <a class="plate" href={`/work/${slug}`} aria-label={`${d.client}: ${children.length ? 'overview of all initiatives' : 'case study'}`}>
+    <a class="plate" href={`/${slug}`} aria-label={`${d.client}: ${children.length ? 'overview of all initiatives' : 'case study'}`}>
       {d.logo ? (
         <Image src={d.logo} alt="" height={44} densities={[1, 2]} loading={eager ? 'eager' : 'lazy'} class="logo" />
       ) : (
@@ -37,7 +37,7 @@ const rows = children.length
     </a>
   </div>
 
-  <h3><a href={`/work/${slug}`}>{d.title}</a></h3>
+  <h3><a href={`/${slug}`}>{d.title}</a></h3>
   {!children.length && <p class="summary">{d.summary}</p>}
 
   <div class="index">
