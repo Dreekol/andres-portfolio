@@ -1,6 +1,17 @@
 {
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "andres-portfolio-azure.vercel.app"
+        }
+      ],
+      "destination": "https://www.andresvelasco.work/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
