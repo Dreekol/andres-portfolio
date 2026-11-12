@@ -1,6 +1,17 @@
 {
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "andres-portfolio-azure.vercel.app"
+        }
+      ],
+      "destination": "https://www.andresvelasco.work/:path*",
+      "permanent": true
+    },
+    {
       "source": "/work/cargill/cross-sell",
       "destination": "/cargill/sales-tool",
       "permanent": true
